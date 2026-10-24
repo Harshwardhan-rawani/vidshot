@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion} from "framer-motion";
 
 import {
   ChevronLeft,
   ChevronRight,
   ArrowUpRight,
-  Pause,
-  Play,
+ 
 } from "lucide-react";
 
 // SVG ICONS
@@ -659,142 +658,186 @@ function ClientCard({ client, position }) {
    MAIN COMPONENT
 ========================================================= */
 
-export default function OurClients() {
-  const [activeClient, setActiveClient] = useState(0);
 
+
+const ClientCarousel = ({ clients = [] }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
-  const [isPaused, setIsPaused] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  const [direction, setDirection] = useState(1);
-
-  const [isDragging, setIsDragging] = useState(false);
-
-  /* =======================================================
-     RESPONSIVE BREAKPOINT
-  ======================================================= */
-
+  // Responsive layout
   useEffect(() => {
-    const checkScreen = () => {
-      setIsDesktop(window.innerWidth >= 1024);
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
     };
 
-    checkScreen();
-
-    window.addEventListener("resize", checkScreen);
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", checkScreen);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  /* =======================================================
-     CARDS PER VIEW
-  ======================================================= */
+  const total = clients.length;
+  const visibleCount = isDesktop ? 2 : 1;
+  const maxIndex = Math.max(0, total - visibleCount);
 
-  const cardsPerView = isDesktop ? 2 : 1;
-
-  /*
-    Maximum starting index.
-
-    Desktop with 4 clients:
-    0 → Client 1 + Client 2
-    1 → Client 2 + Client 3
-    2 → Client 3 + Client 4
-    3 → Client 4 + Client 1
-  */
-
-
-  /* =======================================================
-     NEXT
-  ======================================================= */
-
-  const nextClient = () => {
-    setDirection(1);
-
-    setActiveClient((current) => {
-      return (current + 1) % clients.length;
-    });
+  // Next: move the track left
+  const nextSlide = () => {
+    setActiveIndex((prev) =>
+      prev >= maxIndex ? 0 : prev + 1
+    );
   };
 
-  /* =======================================================
-     PREVIOUS
-  ======================================================= */
-
-  const previousClient = () => {
-    setDirection(-1);
-
-    setActiveClient((current) => {
-      return (
-        (current - 1 + clients.length) %
-        clients.length
-      );
-    });
+  // Previous: move the track right
+  const prevSlide = () => {
+    setActiveIndex((prev) =>
+      prev <= 0 ? maxIndex : prev - 1
+    );
   };
 
-  /* =======================================================
-     GO TO
-  ======================================================= */
-
-  const goToClient = (index) => {
-    setDirection(index > activeClient ? 1 : -1);
-
-    setActiveClient(index);
+  // Navigate using dots
+  const goToSlide = (index) => {
+    setActiveIndex(index);
   };
 
-  /* =======================================================
-     AUTO PLAY
-  ======================================================= */
-
+  // Keep index valid when responsive layout changes
   useEffect(() => {
-    if (!isPlaying || isPaused || isDragging || clients.length <= cardsPerView) {
-      return undefined;
-    }
+    setActiveIndex((prev) => Math.min(prev, maxIndex));
+  }, [maxIndex]);
 
-    const interval = window.setInterval(() => {
-      setDirection(1);
+  // Automatic right-to-left sliding
+  useEffect(() => {
+    if (isPaused || maxIndex === 0) return;
 
-      setActiveClient((current) => {
-        return (current + 1) % clients.length;
-      });
-    }, 4500);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) =>
+        prev >= maxIndex ? 0 : prev + 1
+      );
+    }, 3000);
 
-    return () => {
-      window.clearInterval(interval);
-    };
-  }, [isPlaying, isPaused, isDragging, cardsPerView]);
+    return () => clearInterval(interval);
+  }, [isPaused, maxIndex]);
 
-  /* =======================================================
-     DRAG
-  ======================================================= */
+  if (total === 0) return null;
 
-  const handleDragEnd = (_, info) => {
-    const threshold = 60;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="w-full min-w-0"
+    >
+      <div
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Client portfolio"
+      >
+        {/* SLIDER */}
+        <div className="overflow-hidden">
+          <motion.div
+            className="flex"
+            animate={{
+              x: `-${activeIndex * (100 / visibleCount)}%`,
+            }}
+            transition={{
+              duration: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {clients.map((client, index) => (
+              <div
+                key={client.id ?? index}
+                className="w-full shrink-0 px-2 md:w-1/2"
+              >
+                <ClientCard
+                  client={client}
+                  position={index}
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
 
-    if (info.offset.x < -threshold) {
-      nextClient();
-    }
+        {/* CONTROLS */}
+        <div className="mt-6 flex items-center justify-between gap-4">
 
-    if (info.offset.x > threshold) {
-      previousClient();
-    }
+          {/* CLICKABLE DOTS */}
+          <div className="flex flex-wrap items-center gap-2">
+            {Array.from({ length: maxIndex + 1 }).map(
+              (_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  aria-current={
+                    activeIndex === index ? "true" : undefined
+                  }
+                  className={`
+                    h-2 rounded-full
+                    transition-all duration-300
+                    ${
+                      activeIndex === index
+                        ? "w-8 bg-[#5428b0]"
+                        : "w-2 bg-gray-300 hover:bg-gray-400"
+                    }
+                  `}
+                />
+              )
+            )}
+          </div>
 
-    setIsDragging(false);
-  };
+          {/* PREVIOUS / NEXT BUTTONS */}
+          <div className="flex shrink-0 items-center gap-3">
 
-  /* =======================================================
-     VISIBLE CLIENTS
-  ======================================================= */
+            <button
+              type="button"
+              onClick={prevSlide}
+              aria-label="Previous slide"
+              className="
+                flex h-11 w-11 items-center justify-center
+                rounded-full border border-gray-200 bg-white
+                text-[#5428b0] transition-all duration-300
+                hover:bg-[#5428b0] hover:text-white
+                active:scale-95
+              "
+            >
+              <ChevronLeft size={20} />
+            </button>
 
-  const visibleClients = [];
+            <button
+              type="button"
+              onClick={nextSlide}
+              aria-label="Next slide"
+              className="
+                flex h-11 w-11 items-center justify-center
+                rounded-full border border-gray-200 bg-white
+                text-[#5428b0] transition-all duration-300
+                hover:bg-[#5428b0] hover:text-white
+                active:scale-95
+              "
+            >
+              <ChevronRight size={20} />
+            </button>
 
-  for (let i = 0; i < cardsPerView; i++) {
-    const index =
-      (activeClient + i) % clients.length;
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
-    visibleClients.push(clients[index]);
-  }
+
+
+
+
+export default function OurClients() {
+ 
 
   return (
     <section
@@ -1031,338 +1074,7 @@ export default function OurClients() {
               LEFT — CLIENT CAROUSEL
           ================================================== */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -30,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.1,
-            }}
-            transition={{
-              duration: 0.8,
-            }}
-            className="min-w-0"
-          >
-            {/* =================================================
-                CAROUSEL
-            ================================================== */}
-
-            <div
-              className="relative"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-              role="region"
-              aria-roledescription="carousel"
-              aria-label="Client portfolio carousel"
-            >
-              {/* =================================================
-                  VIEWPORT
-              ================================================== */}
-
-              <div className="overflow-hidden px-1 py-2">
-                <motion.div
-                  className="flex touch-pan-y"
-                  style={{ touchAction: "pan-y" }}
-                  animate={{
-                    x: 0,
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  drag="x"
-                  dragConstraints={{
-                    left: 0,
-                    right: 0,
-                  }}
-                  dragElastic={0.15}
-                  onDragStart={() => setIsDragging(true)}
-                  onDragEnd={handleDragEnd}
-                >
-                  <AnimatePresence
-                    mode="popLayout"
-                    initial={false}
-                    custom={direction}
-                  >
-                    {visibleClients.map(
-                      (clientItem, index) => (
-                        <motion.div
-                          key={`${clientItem.id}-${activeClient}`}
-                          custom={direction}
-                          initial={{
-                            opacity: 0,
-                            x:
-                              direction > 0
-                                ? 45
-                                : -45,
-                            scale: 0.97,
-                          }}
-                          animate={{
-                            opacity: 1,
-                            x: 0,
-                            scale: 1,
-                          }}
-                          exit={{
-                            opacity: 0,
-                            x:
-                              direction > 0
-                                ? -45
-                                : 45,
-                            scale: 0.97,
-                          }}
-                          transition={{
-                            duration: 0.55,
-                            delay: index * 0.06,
-                            ease: [
-                              0.22,
-                              1,
-                              0.36,
-                              1,
-                            ],
-                          }}
-                          className={`
-                            shrink-0
-                            px-1.5
-                            sm:px-2
-
-                            ${
-                              isDesktop
-                                ? "w-1/2"
-                                : "w-full"
-                            }
-                          `}
-                        >
-                          <ClientCard
-                            client={clientItem}
-                            position={index}
-                          />
-                        </motion.div>
-                      )
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </div>
-
-              {/* =================================================
-                  CAROUSEL CONTROLS
-              ================================================== */}
-
-              <div
-                className="
-                  mt-5
-                  flex
-                  flex-wrap
-                  items-center
-                  justify-between
-                  gap-4
-                  sm:mt-7
-                "
-              >
-                {/* Progress */}
-
-                <div className="flex min-w-0 items-center gap-3">
-                  <div
-                    className="
-                      flex
-                      items-center
-                      gap-1.5
-                    "
-                  >
-                    {clients.map(
-                      (item, index) => (
-                        <button
-                          key={item.id}
-                          type="button"
-                          onClick={() =>
-                            goToClient(index)
-                          }
-                          aria-label={`View ${item.name}`}
-                          className="
-                            flex
-                            h-5
-                            items-center
-                            justify-center
-                          "
-                        >
-                          <span
-                            className={`
-                              block
-                              h-1.5
-                              rounded-full
-                              transition-all
-                              duration-500
-
-                              ${
-                                activeClient ===
-                                index
-                                  ? "w-9 bg-[var(--primary-dark)]"
-                                  : "w-3 bg-slate-300 hover:bg-slate-400"
-                              }
-                            `}
-                          />
-                        </button>
-                      )
-                    )}
-                  </div>
-
-                  {/* Current number */}
-
-                  <span
-                    className="
-                      hidden
-                      text-[10px]
-                      font-bold
-                      uppercase
-                      tracking-[0.15em]
-                      text-slate-400
-                      sm:block
-                    "
-                  >
-                    {String(activeClient + 1).padStart(
-                      2,
-                      "0"
-                    )}
-                    {" / "}
-                    {String(clients.length).padStart(
-                      2,
-                      "0"
-                    )}
-                  </span>
-                </div>
-
-                {/* Navigation */}
-
-                <div className="flex shrink-0 items-center gap-2">
-                  {/* Autoplay toggle */}
-
-                  <motion.button
-                    type="button"
-                    onClick={() => setIsPlaying((playing) => !playing)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.94 }}
-                    aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
-                    title={isPlaying ? "Pause autoplay" : "Start autoplay"}
-                    className="
-                      flex h-10 w-10 items-center justify-center
-                      rounded-full border border-slate-200 bg-white
-                      text-[#17122a] shadow-sm transition-colors duration-300
-                      hover:border-[var(--primary-dark)] hover:text-[var(--primary-dark)]
-                      sm:h-12 sm:w-12
-                    "
-                  >
-                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                  </motion.button>
-
-                  {/* Previous */}
-
-                  <motion.button
-                    type="button"
-                    onClick={previousClient}
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                    whileTap={{
-                      scale: 0.94,
-                    }}
-                    aria-label="Previous client"
-                    className="
-                      flex
-                      h-10
-                      w-10
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-slate-200
-                      bg-white
-                      text-[#17122a]
-                      shadow-sm
-                      transition-colors
-                      duration-300
-                      hover:border-[var(--primary-dark)]
-                      hover:bg-[var(--primary-dark)]
-                      hover:text-white
-                      sm:h-12
-                      sm:w-12
-                    "
-                  >
-                    <ChevronLeft size={19} />
-                  </motion.button>
-
-                  {/* Next */}
-
-                  <motion.button
-                    type="button"
-                    onClick={nextClient}
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                    whileTap={{
-                      scale: 0.94,
-                    }}
-                    aria-label="Next client"
-                    className="
-                      flex
-                      h-10
-                      w-10
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-slate-200
-                      bg-white
-                      text-[#17122a]
-                      shadow-sm
-                      transition-colors
-                      duration-300
-                      hover:border-[var(--primary-dark)]
-                      hover:bg-[var(--primary-dark)]
-                      hover:text-white
-                      sm:h-12
-                      sm:w-12
-                    "
-                  >
-                    <ChevronRight size={19} />
-                  </motion.button>
-                </div>
-              </div>
-
-              {/* =================================================
-                  AUTO PLAY INDICATOR
-              ================================================== */}
-
-              <div className="mt-4 flex items-center gap-2" aria-live="polite">
-                <span
-                  className={`
-                    h-1.5
-                    w-1.5
-                    rounded-full
-                    ${
-                      !isPlaying
-                        ? "bg-slate-300"
-                        : isPaused || isDragging
-                        ? "bg-amber-400"
-                        : "bg-[#F8CC10]"
-                    }
-                  `}
-                />
-
-                <span className="text-[9px] font-medium uppercase tracking-[0.15em] text-slate-400">
-                  {!isPlaying
-                    ? "Autoplay stopped"
-                    : isPaused || isDragging
-                    ? "Paused"
-                    : "Auto playing"}
-                </span>
-              </div>
-            </div>
-          </motion.div>
+          <ClientCarousel clients={clients} />
 
           {/* =================================================
               RIGHT — ORBIT SYSTEM

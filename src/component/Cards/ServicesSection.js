@@ -854,7 +854,21 @@ export default function ServicesSection() {
             Visible only >= lg
         ================================================= */}
 
-        <div
+        <motion.div
+         initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+          }}
           className="
             hidden
             h-[500px]
@@ -939,7 +953,7 @@ export default function ServicesSection() {
             );
           })}
 
-        </div>
+        </motion.div>
 
 
         {/* =================================================

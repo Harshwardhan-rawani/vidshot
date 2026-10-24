@@ -48,10 +48,10 @@ export default function AnimatedButton({
           gap-3
           overflow-hidden
           rounded-full
-
+    
           border
           border-[var(--primary-dark)]
-
+          
           bg-[var(--primary-dark)]
           px-5
           py-2

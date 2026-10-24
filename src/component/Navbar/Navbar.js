@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import AnimatedButton from "../Button/AnimatedButton";
 
 const navItems = [
@@ -12,69 +12,84 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const closeMenu = () => setMenuOpen(false);
+  const location = useLocation();
+
+  // Glass effect activates on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Close mobile menu when navigating
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-4 sm:px-4 lg:px-6 backdrop-blur-md backdrop-saturate-150 bg-white">
-      <div className="mx-auto max-w-9xl rounded-[28px] border border-white/30 bg-white/10 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur-2xl backdrop-saturate-150">
-        <div className="flex items-center justify-between gap-3 px-3 py-3 sm:px-5 lg:px-6">
-           <Link
-                        to="/"
-                        className="
-                          group
-                          inline-flex
-                          items-center
-                          gap-3
-                        "
-                      >
-                        {/* Logo mark */}
-          
-                        <span
-                          className="
-                            flex
-                            h-12
-                            w-12
-                            items-center
-                            justify-center
-                            rounded-2xl
-                            bg-[#F8CC10]
-                            text-xl
-                            font-black
-                            text-[#5428B0]
-                            shadow-[0_10px_30px_rgba(248,204,16,0.15)]
-                            transition-transform
-                            duration-300
-                            group-hover:rotate-3
-                          "
-                        >
-                          V
-                        </span>
-          
-                        {/* Logo text */}
-          
-                        <span
-                          className="
-                            text-2xl
-                            font-black
-                            tracking-[-0.06em]
-                          "
-                        >
-                          VID<span className="text-[#F8CC10]">SHOT</span>
-                        </span>
-                      </Link>
+    <header
+      className={`
+        fixed inset-x-0 top-0 z-50
+        transition-all duration-300 ease-in-out
+        ${
+          scrolled
+            ? "border-b border-white/40 bg-white/75 shadow-[0_4px_30px_rgba(0,0,0,0.06)] backdrop-blur-xl"
+            : "border-b border-transparent bg-white/95"
+        }
+      `}
+    >
+      <div className="mx-auto max-w-8xl px-5 sm:px-8 lg:px-16 py-2">
+        <div className="flex h-[72px] items-center justify-between gap-6">
 
-          <nav className="hidden items-center gap-2 lg:flex">
+          {/* LOGO */}
+          <Link
+            to="/"
+            className="group inline-flex shrink-0 items-center gap-2"
+            aria-label="VidShot Media home"
+          >
+            <span className="text-[27px] font-black tracking-[-1.8px] text-[#17122A]">
+              VID
+              <span className="text-[#5428B0]">SHOT</span>
+            </span>
+
+            <span className="mt-1 hidden text-[9px] font-semibold uppercase tracking-[2px] text-[#71697E] sm:block">
+              Media
+            </span>
+          </Link>
+
+          {/* DESKTOP NAVIGATION */}
+          <nav
+            aria-label="Main navigation"
+            className="hidden items-center gap-7 md:flex lg:gap-9"
+          >
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
                 to={item.path}
+                end={item.path === "/"}
                 className={({ isActive }) =>
-                  `relative rounded-full px-4 py-2.5 text-sm font-medium tracking-[-0.02em] transition-all  hover:bg-white/25 hover:text-yellow-500 active:scale-[0.98] ${
-                    isActive
-                      ? "bg-white/40 text-purple-500 shadow-[0_10px_30px_rgba(15,23,42,0.08)] ring-1 ring-white/50"
-                      : "text-slate-700"
-                  }`
+                  `
+                    relative py-2 text-[13px] font-medium
+                    transition-colors duration-200
+                    after:absolute after:bottom-0 after:left-0
+                    after:h-[2px] after:rounded-full
+                    after:bg-[#5428B0] after:transition-all after:duration-300
+                    ${
+                      isActive
+                        ? "text-[#5428B0] after:w-full"
+                        : "text-[#55515D] after:w-0 hover:text-[#5428B0] hover:after:w-full"
+                    }
+                  `
                 }
               >
                 {item.name}
@@ -82,59 +97,120 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden items-center lg:flex">
-        <AnimatedButton
-  text="Let's Talk"
-  to="/contact"
-/>
-          </div>
+          {/* DESKTOP CTA */}
+          <AnimatedButton
+          className="md:block hidden"
+          text="Let's Talk"
+          to = "/contact"/>
+          {/* <Link
+            to="/contact"
+            className="
+              hidden items-center gap-2 rounded-full
+              bg-[#5428B0] px-5 py-2.5
+              text-[13px] font-semibold text-white
+              transition-all duration-300
+              hover:bg-[#43208E] hover:shadow-lg
+              active:scale-95 md:inline-flex
+            "
+          >
+            Let's Talk
+            <span aria-hidden="true" className="text-base">
+              ↗
+            </span>
+          </Link> */}
 
+          {/* MOBILE MENU BUTTON */}
           <button
             type="button"
-            aria-label="Toggle navigation"
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/20 text-slate-900 shadow-sm transition-all duration-300 hover:bg-white/35 active:scale-95 lg:hidden"
+            className="
+              flex h-10 w-10 items-center justify-center
+              rounded-full border border-[#5428B0]/15
+              text-[#17122A] transition-colors
+              hover:bg-[#5428B0]/5 md:hidden
+            "
           >
-            <span className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-all ${menuOpen ? "rotate-45" : "-translate-y-1.5"}`} />
-            <span className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-all ${menuOpen ? "opacity-0" : "opacity-100"}`} />
-            <span className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-all ${menuOpen ? "-rotate-45" : "translate-y-1.5"}`} />
+            <span className="relative block h-4 w-5">
+              <span
+                className={`
+                  absolute left-0 h-[1.5px] w-5 rounded-full bg-current
+                  transition-all duration-300
+                  ${menuOpen ? "top-[7px] rotate-45" : "top-[3px]"}
+                `}
+              />
+
+              <span
+                className={`
+                  absolute left-0 top-[7px] h-[1.5px] w-5
+                  rounded-full bg-current transition-all duration-300
+                  ${menuOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"}
+                `}
+              />
+
+              <span
+                className={`
+                  absolute left-0 h-[1.5px] w-5 rounded-full bg-current
+                  transition-all duration-300
+                  ${menuOpen ? "top-[7px] -rotate-45" : "top-[11px]"}
+                `}
+              />
+            </span>
           </button>
         </div>
+      </div>
 
-        <div
-          className={`overflow-hidden border-t border-white/20 bg-white/10 transition-all duration-300 ease-out lg:hidden ${
-            menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
-          }`}
+      {/* MOBILE NAVIGATION */}
+      <div
+        className={`
+          overflow-hidden border-t border-[#5428B0]/10
+          bg-white/95 backdrop-blur-xl
+          transition-all duration-300 ease-in-out
+          md:hidden
+          ${
+            menuOpen
+              ? "visible max-h-[420px] opacity-100"
+              : "invisible max-h-0 opacity-0"
+          }
+        `}
+      >
+        <nav
+          aria-label="Mobile navigation"
+          className="mx-auto flex max-w-7xl flex-col px-5 py-3 sm:px-8"
         >
-          <nav className="flex flex-col gap-2 p-3">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.path}
-                onClick={closeMenu}
-                className={({ isActive }) =>
-                  `rounded-2xl px-4 py-3 text-base font-medium transition-all duration-300 ${
+          {navItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.path}
+              end={item.path === "/"}
+              className={({ isActive }) =>
+                `
+                  flex items-center justify-between
+                  border-b border-[#17122A]/5 py-3.5
+                  text-sm font-medium transition-colors
+                  ${
                     isActive
-                      ? "bg-white/40 text-slate-900 shadow-inner"
-                      : "text-slate-700 hover:bg-white/20 hover:text-slate-900"
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
-
-            <Link
-              to="/contact"
-              onClick={closeMenu}
-              className="mt-2 inline-flex items-center justify-center gap-3 rounded-2xl bg-[#121821] px-4 py-3 text-base font-semibold text-white shadow-[0_18px_35px_rgba(18,21,33,0.2)] transition hover:bg-[#f15b38]"
+                      ? "text-[#5428B0]"
+                      : "text-[#55515D] hover:text-[#5428B0]"
+                  }
+                `
+              }
             >
-              Let&apos;s Talk
-              <span className="text-base">↗</span>
-            </Link>
-          </nav>
-        </div>
+              {item.name}
+              <span aria-hidden="true" className="text-base opacity-50">
+                ↗
+              </span>
+            </NavLink>
+          ))}
+          
+          <AnimatedButton
+          className=""
+          text =  "Let's Talk"
+          to="/contact"
+          />
+        
+        </nav>
       </div>
     </header>
   );

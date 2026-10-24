@@ -11,7 +11,7 @@ import AnimatedButton from '../../component/Button/AnimatedButton';
 import TrustedClients from '../../component/Button/TrustedClients';
 
 import AnimatedButton1 from '../../component/Button/AnimatedButton1';
-
+import { motion } from 'framer-motion';
 
 const metrics = [
   { value: '120+', label: 'brand stories launched' },
@@ -279,7 +279,22 @@ export default function Home() {
      <TestimonialCarousel/>
    
 
-   <section className="relative mt-10 overflow-hidden rounded-[30px] border border-white/10 bg-[#4820A0] px-6 py-8 text-white shadow-[0_25px_80px_rgba(84,40,176,0.25)] sm:px-8 lg:px-10 lg:py-10">
+   <motion.section
+       initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+          }}
+   className="relative mt-10 overflow-hidden rounded-[30px] border border-white/10 bg-[#4820A0] px-6 py-8 text-white shadow-[0_25px_80px_rgba(84,40,176,0.25)] sm:px-8 lg:px-10 lg:py-10">
 
   {/* ================= BACKGROUND TEXTURE ================= */}
   <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -450,7 +465,7 @@ export default function Home() {
 
   </div>
 
-</section>
+</motion.section>
    
 
       <FeedbackMarquee />

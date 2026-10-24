@@ -264,7 +264,21 @@ useEffect(() => {
           SLIDER
       ========================================= */}
 
-      <div
+      <motion.div
+          initial={{
+            opacity: 0,
+            y: 50,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+          }}
         className="relative mx-auto max-w-[1600px] bg-white p-5" 
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -491,7 +505,7 @@ useEffect(() => {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* =========================================
           CONTROLS

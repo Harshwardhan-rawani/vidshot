@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AnimatedButton1 from "../Button/AnimatedButton1";
-
+import { motion } from "framer-motion";
 const footerLinks = {
   company: [
     { name: "About", path: "/about" },
@@ -107,7 +107,21 @@ export default function Footer() {
 
             <div className="max-w-3xl">
 
-              <div
+              <motion.div
+                    initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
                 className="
                   mb-5
                   inline-flex
@@ -130,9 +144,23 @@ export default function Footer() {
                 <span className="h-2 w-2 rounded-full bg-[#F8CC10]" />
 
                 Let's create something
-              </div>
+              </motion.div>
 
-              <h2
+              <motion.h2
+                    initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1.5,
+          }}
                 className="
                   max-w-3xl
                   text-4xl
@@ -145,7 +173,7 @@ export default function Footer() {
               >
                 Your next story
                 <span className="text-[#F8CC10]"> starts here.</span>
-              </h2>
+              </motion.h2>
 
               <p
                 className="

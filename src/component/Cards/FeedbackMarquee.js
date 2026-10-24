@@ -81,7 +81,21 @@ function Stars({ rating }) {
 
 function TestimonialCard({ testimonial }) {
   return (
-    <article
+    <motion.article
+        initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
       className="
         group mx-2 flex w-[calc(100vw-40px)] max-w-[420px]
         shrink-0 flex-col rounded-2xl border border-black/[0.04]
@@ -154,7 +168,7 @@ function TestimonialCard({ testimonial }) {
           </p>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
