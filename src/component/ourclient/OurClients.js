@@ -16,6 +16,11 @@ import MetaIcon from "../../icons/meta-ads.svg";
 import Videoediting from "../../icons/video-editing.svg";
 import PodcastIcon from "../../icons/poadcast.svg";
 
+// Import images
+import deepak from "../../Images/client/deepak pandey.jpeg"
+import mohit from "../../Images/client/mohit Beriwala.jpeg"
+import deven from "../../Images/client/deven u pandey.jpeg"
+
 /* =========================================================
    CLIENT DATA
 ========================================================= */
@@ -23,73 +28,49 @@ import PodcastIcon from "../../icons/poadcast.svg";
 const clients = [
   {
     id: 1,
-    name: "Client One",
+    name: "Deven U Pandey",
     category: "Creator",
-
+     type : "Social Media Management",
     socials: [
       {
         platform: "Instagram",
         icon: InstagramIcon,
-        followers: "125K",
+        followers: "101K",
       },
       {
         platform: "YouTube",
         icon: YoutubeIcon,
-        followers: "82.4K",
+        followers: "52.4K",
       },
     ],
 
     images: [
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b5?w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1400&auto=format&fit=crop",
+      deven
+      
     ],
   },
 
   {
     id: 2,
-    name: "Client Two",
-    category: "Brand",
+    name: "Deepak Pandey",
+    category: "Creator",
+    type : "AI Tech and Business",
 
-    socials: [
-      {
-        platform: "Instagram",
-        icon: InstagramIcon,
-        followers: "246K",
-      },
-      {
-        platform: "Facebook",
-        icon: FacebookIcon,
-        followers: "118K",
-      },
-    ],
-
+  
     images: [
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1400&auto=format&fit=crop",
+      deepak
     ],
   },
 
   {
     id: 3,
-    name: "Client Three",
-    category: "Creator",
+    name: "Mohit Beriwala",
+    category: "Founder",
+    type : "Shree Rama Manager LLP",
 
-    socials: [
-      {
-        platform: "YouTube",
-        icon: YoutubeIcon,
-        followers: "1.2M",
-      },
-      {
-        platform: "Instagram",
-        icon: InstagramIcon,
-        followers: "420K",
-      },
-    ],
 
     images: [
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1400&auto=format&fit=crop",
+    mohit
     ],
   },
 
@@ -97,7 +78,7 @@ const clients = [
     id: 4,
     name: "Client Four",
     category: "Business",
-
+     type : "AI Tech and Business",
     socials: [
       {
         platform: "Instagram",
@@ -333,19 +314,14 @@ function OrbitIcon({ item }) {
    CLIENT CARD
 ========================================================= */
 
+
 function ClientCard({ client, position }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <motion.article
-      initial={{
-        opacity: 0,
-        y: 20,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
         delay: position * 0.05,
@@ -359,23 +335,30 @@ function ClientCard({ client, position }) {
         rounded-[24px]
         bg-[#17122a]
         shadow-[0_20px_60px_rgba(23,18,42,.12)]
+        transition-all
+        duration-500
+        hover:-translate-y-2
+        hover:shadow-[0_30px_70px_rgba(84,40,176,.3)]
         sm:rounded-[28px]
       "
     >
-      {/* =====================================================
-          IMAGE
-      ====================================================== */}
+      {/* =========================================
+          ANIMATED BORDER
+ 
+
+      {/* =========================================
+          IMAGE CONTAINER
+      ========================================== */}
 
       <div className="relative aspect-[4/5] w-full overflow-hidden">
-        {/* Background image */}
+
+        {/* Main Image */}
 
         <motion.img
-          src={client.images[0]}
+          src={client.images?.[0]}
           alt={`${client.name} campaign`}
           onLoad={() => setImageLoaded(true)}
-          initial={{
-            scale: 1.08,
-          }}
+          initial={{ scale: 1.08 }}
           animate={{
             scale: imageLoaded ? 1 : 1.08,
           }}
@@ -391,37 +374,45 @@ function ClientCard({ client, position }) {
             object-cover
             transition-transform
             duration-1000
-            group-hover:scale-105
+            ease-out
+            group-hover:scale-110
           "
         />
 
-        {/* Secondary image */}
-
-        <img
-          src={client.images[1]}
-          alt=""
-          aria-hidden="true"
-          className="
-            absolute
-            inset-0
-            h-full
-            w-full
-            object-cover
-            opacity-0
-            transition-all
-            duration-1000
-            group-hover:scale-105
-            group-hover:opacity-20
-          "
-        />
-
-        {/* Gradient */}
+        {/* =========================================
+            SHINE EFFECT
+        ========================================== */}
 
         <div
           className="
             pointer-events-none
             absolute
             inset-0
+            z-10
+            -translate-x-[150%]
+            skew-x-[-20deg]
+            bg-gradient-to-r
+            from-transparent
+            via-white/25
+            to-transparent
+            transition-transform
+            duration-[1200ms]
+            ease-in-out
+            group-hover:translate-x-[150%]
+          "
+        />
+
+
+        {/* =========================================
+            IMAGE OVERLAY
+        ========================================== */}
+
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-0
+            z-10
             bg-gradient-to-b
             from-black/30
             via-transparent
@@ -429,24 +420,9 @@ function ClientCard({ client, position }) {
           "
         />
 
-        {/* Purple tint */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-0
-            bg-gradient-to-tr
-            from-[#5428B0]/20
-            via-transparent
-            to-transparent
-            opacity-70
-          "
-        />
-
-        {/* =================================================
-            CATEGORY
-        ================================================== */}
+        {/* =========================================
+            CATEGORY BADGE
+        ========================================== */}
 
         <div
           className="
@@ -465,7 +441,7 @@ function ClientCard({ client, position }) {
               rounded-full
               border
               border-white/20
-              bg-black/25
+              bg-black/30
               px-3
               py-1.5
               text-[8px]
@@ -475,6 +451,10 @@ function ClientCard({ client, position }) {
               text-white
               shadow-lg
               backdrop-blur-xl
+              transition-all
+              duration-300
+              group-hover:border-[#F8CC10]/60
+              group-hover:bg-[#5428B0]/70
               sm:px-4
               sm:py-2
               sm:text-[9px]
@@ -484,9 +464,9 @@ function ClientCard({ client, position }) {
           </span>
         </div>
 
-        {/* =================================================
-            TOP LEFT NUMBER
-        ================================================== */}
+        {/* =========================================
+            CLIENT NUMBER
+        ========================================== */}
 
         <div
           className="
@@ -503,17 +483,20 @@ function ClientCard({ client, position }) {
               text-[9px]
               font-bold
               tracking-[0.15em]
-              text-white/60
+              text-white/70
+              transition-colors
+              duration-300
+              group-hover:text-[#F8CC10]
               sm:text-[10px]
             "
           >
-            0{client.id}
+            {String(client.id ?? position + 1).padStart(2, "0")}
           </span>
         </div>
 
-        {/* =================================================
+        {/* =========================================
             BOTTOM CONTENT
-        ================================================== */}
+        ========================================== */}
 
         <div
           className="
@@ -526,9 +509,10 @@ function ClientCard({ client, position }) {
             md:p-6
           "
         >
-          {/* Name */}
+          {/* Client Name */}
 
           <div className="pr-10">
+
             <h3
               className="
                 text-xl
@@ -536,6 +520,10 @@ function ClientCard({ client, position }) {
                 leading-none
                 tracking-[-0.045em]
                 text-white
+                transition-all
+                duration-500
+                group-hover:translate-x-1
+                group-hover:text-[#F8CC10]
                 sm:text-2xl
                 md:text-3xl
               "
@@ -545,22 +533,44 @@ function ClientCard({ client, position }) {
 
             <p
               className="
-                mt-1.5
+                mt-2
                 text-[9px]
                 font-medium
                 uppercase
                 tracking-[0.12em]
-                text-white/50
+                text-white/75
+                transition-colors
+                duration-300
+                group-hover:text-white
                 sm:text-[10px]
               "
             >
-              Social Media Management
+              {client.type}
             </p>
+
+            {/* Animated Accent Line */}
+
+            <div
+              className="
+                mt-3
+                h-[2px]
+                w-8
+                rounded-full
+                bg-[#F8CC10]
+                transition-all
+                duration-500
+                group-hover:w-16
+              "
+            />
+
           </div>
 
-          {/* Social platforms */}
+          {/* =========================================
+              SOCIAL PLATFORMS
+          ========================================== */}
 
           <div className="mt-4 flex flex-wrap gap-1.5 sm:gap-2">
+
             {client.socials?.map((social) => (
               <div
                 key={social.platform}
@@ -571,10 +581,14 @@ function ClientCard({ client, position }) {
                   rounded-full
                   border
                   border-white/15
-                  bg-black/25
+                  bg-black/30
                   px-2.5
                   py-1.5
                   backdrop-blur-xl
+                  transition-all
+                  duration-300
+                  group-hover:border-white/30
+                  group-hover:bg-[#5428B0]/50
                   sm:gap-2
                   sm:px-3
                 "
@@ -587,6 +601,9 @@ function ClientCard({ client, position }) {
                     w-3
                     shrink-0
                     object-contain
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
                     sm:h-3.5
                     sm:w-3.5
                   "
@@ -604,12 +621,13 @@ function ClientCard({ client, position }) {
                 </span>
               </div>
             ))}
+
           </div>
         </div>
 
-        {/* =================================================
-            ARROW
-        ================================================== */}
+        {/* =========================================
+            ANIMATED ARROW
+        ========================================== */}
 
         <div
           className="
@@ -623,11 +641,11 @@ function ClientCard({ client, position }) {
         >
           <motion.div
             whileHover={{
-              scale: 1.08,
-              rotate: 5,
+              scale: 1.12,
+              rotate: 45,
             }}
             whileTap={{
-              scale: 0.94,
+              scale: 0.9,
             }}
             className="
               flex
@@ -639,6 +657,9 @@ function ClientCard({ client, position }) {
               bg-white
               text-[#17122a]
               shadow-[0_10px_30px_rgba(0,0,0,.2)]
+              transition-colors
+              duration-300
+              group-hover:bg-[#F8CC10]
               sm:h-11
               sm:w-11
             "
@@ -649,10 +670,15 @@ function ClientCard({ client, position }) {
             />
           </motion.div>
         </div>
+
+      
+
       </div>
     </motion.article>
   );
 }
+
+
 
 /* =========================================================
    MAIN COMPONENT

@@ -41,7 +41,7 @@ const itemVariants = {
 
 export default function Contact() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-white text-[#17122a]">
+    <main className="relative min-h-screen overflow-hidden bg-white text-[#17122a] mt-11">
 
       {/* =====================================================
           BACKGROUND DECORATION

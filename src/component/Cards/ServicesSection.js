@@ -9,6 +9,10 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import videoediting from "../../Images/Services/Video_editing.jpeg"
+import social_media from "../../Images/Services/Social_media.jpeg"
+import creative_desing from "../../Images/Services/Creative_Design.jpeg"
+import performance from "../../Images/Services/Performance.jpeg"
 /* =========================================================
    SERVICES DATA
 ========================================================= */
@@ -29,7 +33,7 @@ const services = [
     ],
     icon: Play,
     image:
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200",
+      videoediting
   },
 
   {
@@ -47,7 +51,7 @@ const services = [
     ],
     icon: Smartphone,
     image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200",
+      social_media
   },
 
   {
@@ -65,7 +69,7 @@ const services = [
     ],
     icon: Palette,
     image:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200",
+      creative_desing
   },
 
   {
@@ -83,7 +87,7 @@ const services = [
     ],
     icon: Megaphone,
     image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200",
+      performance
   },
 
 {
