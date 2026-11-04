@@ -275,8 +275,7 @@ export default function Home() {
      <Stepper/>
      <OurClients/>
      <OurVision/>
-     {/* <PortfolioShowcase/> */}
-     <TestimonialCarousel/>
+
    
 
    <motion.section

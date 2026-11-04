@@ -57,14 +57,17 @@ export default function Navbar() {
             className="group inline-flex shrink-0 items-center gap-2"
             aria-label="VidShot Media home"
           >
-            <span className="text-[27px] font-black tracking-[-1.8px] text-[#17122A]">
-              VID
-              <span className="text-[#5428B0]">SHOT</span>
-            </span>
+            {/* Logo text */}
 
-            <span className="mt-1 hidden text-[9px] font-semibold uppercase tracking-[2px] text-[#71697E] sm:block">
-              Media
-            </span>
+              <span
+                className="
+                  text-2xl
+                  font-black
+                  tracking-[-0.06em]
+                "
+              >
+                VID<span className="text-[#F8CC10]">SHOT</span>
+              </span>
           </Link>
 
           {/* DESKTOP NAVIGATION */}
