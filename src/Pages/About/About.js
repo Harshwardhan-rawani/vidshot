@@ -500,6 +500,176 @@ export default function About() {
         </div>
       </section>
 
+{/* =====================================================
+    MEET OUR FOUNDER
+===================================================== */}
+
+<section className="relative overflow-hidden bg-[#F8F8F7] py-24 sm:py-32">
+
+  {/* Background Decoration */}
+  <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-[#5428B0]/[0.06] blur-[100px]" />
+
+  <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+
+    {/* Section Heading */}
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="mb-16"
+    >
+      <div className="mb-5 flex items-center gap-3">
+        <span className="h-2 w-2 rounded-full bg-[#F8CC10]" />
+
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#5428B0]">
+          The Person Behind VidShot
+        </span>
+      </div>
+
+      <h2 className="max-w-3xl text-4xl font-black leading-[0.95] tracking-[-0.06em] sm:text-5xl md:text-6xl">
+        Meet the mind behind
+        <span className="text-[#5428B0]"> the vision.</span>
+      </h2>
+    </motion.div>
+
+    {/* Founder Content */}
+    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+
+      {/* Founder Image */}
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative mx-auto w-full max-w-[480px]"
+      >
+
+        {/* Yellow Background */}
+        <div className="absolute -bottom-5 -right-5 h-full w-full rounded-[30px] bg-[#F8CC10]" />
+
+        <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-[#17122a]">
+
+          <img
+            src="/images/founder.jpg"
+            alt="Rohit Kumar Singh - Founder and CEO of VidShot Media"
+            className="h-full w-full object-cover"
+          />
+
+          {/* Image Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#17122a]/70 via-transparent to-transparent" />
+
+          <div className="absolute bottom-7 left-7">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#F8CC10]">
+              Founder & CEO
+            </span>
+
+            <h3 className="mt-2 text-3xl font-black text-white">
+              Rohit Kumar Singh
+            </h3>
+          </div>
+
+        </div>
+
+        {/* Floating Badge */}
+        <motion.div
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+          className="absolute -left-5 top-12 rounded-2xl border border-white bg-white px-5 py-4 shadow-xl"
+        >
+          <Sparkles className="mb-2 text-[#5428B0]" size={22} />
+
+          <p className="text-xs font-black text-[#17122a]">
+            Creative Vision
+          </p>
+
+          <p className="text-[10px] text-[#71697e]">
+            Ideas into Impact
+          </p>
+        </motion.div>
+
+      </motion.div>
+
+      {/* Founder Information */}
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="relative"
+      >
+
+        <motion.span
+          variants={fadeUp}
+          className="text-xs font-bold uppercase tracking-[0.2em] text-[#5428B0]"
+        >
+          A Message From Our Founder
+        </motion.span>
+
+        <motion.h3
+          variants={fadeUp}
+          className="mt-5 text-3xl font-black leading-tight tracking-[-0.05em] sm:text-4xl"
+        >
+          Rohit Kumar Singh
+
+          <span className="mt-2 block text-lg font-semibold tracking-normal text-[#5428B0]">
+            Founder & CEO, VidShot Media
+          </span>
+        </motion.h3>
+
+        <motion.p
+          variants={fadeUp}
+          className="mt-8 text-lg leading-8 text-[#17122a]"
+        >
+          Every great brand begins with an idea.
+          But turning that idea into something people
+          remember takes creativity, strategy and execution.
+        </motion.p>
+
+        <motion.p
+          variants={fadeUp}
+          className="mt-5 text-base leading-8 text-[#71697e]"
+        >
+          At VidShot Media, our vision is to bring creative
+          thinking, storytelling and digital innovation
+          together to help brands build meaningful connections
+          with their audiences.
+        </motion.p>
+
+        <motion.p
+          variants={fadeUp}
+          className="mt-5 text-base leading-8 text-[#71697e]"
+        >
+          We believe that content should do more than
+          capture attention. It should communicate a story,
+          create an impact and help businesses grow.
+        </motion.p>
+
+        {/* Signature */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-10 flex items-center gap-4 border-t border-[#17122a]/10 pt-7"
+        >
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#5428B0] text-xl font-black text-[#F8CC10]">
+            R
+          </div>
+
+          <div>
+            <p className="font-black text-[#17122a]">
+              Rohit Kumar Singh
+            </p>
+
+            <p className="mt-1 text-xs text-[#71697e]">
+              Founder & CEO
+            </p>
+          </div>
+        </motion.div>
+
+      </motion.div>
+
+    </div>
+  </div>
+</section>
       {/* =====================================================
           OUR STORY
       ===================================================== */}

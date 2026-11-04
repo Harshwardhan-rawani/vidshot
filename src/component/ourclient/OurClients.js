@@ -20,6 +20,8 @@ import PodcastIcon from "../../icons/poadcast.svg";
 import deepak from "../../Images/client/deepak pandey.jpeg"
 import mohit from "../../Images/client/mohit Beriwala.jpeg"
 import deven from "../../Images/client/deven u pandey.jpeg"
+import nidhi from "../../Images/client/nidhi aneja.png"
+import dhiren from "../../Images/client/dhiren bontra.jpeg"
 
 /* =========================================================
    CLIENT DATA
@@ -76,9 +78,9 @@ const clients = [
 
   {
     id: 4,
-    name: "Client Four",
-    category: "Business",
-     type : "AI Tech and Business",
+    name: "Nidhi Aneja",
+    category: "Creator",
+     type : "Social Media Management",
     socials: [
       {
         platform: "Instagram",
@@ -98,8 +100,34 @@ const clients = [
     ],
 
     images: [
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1400&auto=format&fit=crop",
+     nidhi
+    ],
+  },
+   {
+    id: 5,
+    name: "Dhiren Bontra",
+    category: "Creator",
+     type : "Social Media Management",
+    socials: [
+      {
+        platform: "Instagram",
+        icon: InstagramIcon,
+        followers: "96K",
+      },
+      {
+        platform: "Facebook",
+        icon: FacebookIcon,
+        followers: "54K",
+      },
+      {
+        platform: "YouTube",
+        icon: YoutubeIcon,
+        followers: "31K",
+      },
+    ],
+
+    images: [
+     dhiren
     ],
   },
 ];
