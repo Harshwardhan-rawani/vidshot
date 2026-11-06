@@ -299,7 +299,7 @@ export default function FeedbackMarquee() {
     pauseOnHover={true}
     pauseOnClick={false}
     gradient={false}
-    className="py-3"
+    className="py-3 overflow-hidden"
   >
     {testimonials.map((testimonial) => (
       <TestimonialCard

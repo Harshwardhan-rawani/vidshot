@@ -3,32 +3,28 @@ import Marquee from "react-fast-marquee";
 
 const brands = [
   {
-    name: "DISCOVER",
-    className: "font-bold tracking-[-2px]",
+    name: "Deepak Pandey",
+    className: "font-semibold tracking-wide",
   },
   {
-    name: "ESSEX",
+    name: "Mohit Beriwala",
+    className: "font-bold tracking-tight",
+  },
+  {
+    name: "Deven U Pandey",
     className: "font-serif tracking-wide",
   },
   {
-    name: "HOLOGIC",
-    className: "font-bold tracking-[-2px]",
+    name: "Nidhi Aneja",
+    className: "font-medium tracking-wide",
   },
   {
-    name: "Insulet",
-    className: "font-medium",
+    name: "Dhiren Bontra",
+    className: "font-bold tracking-tight",
   },
   {
-    name: "MASCO",
-    className: "font-serif tracking-wide",
-  },
-  {
-    name: "MOODY'S",
-    className: "font-black tracking-[-2px]",
-  },
-  {
-    name: "abbvie",
-    className: "font-light tracking-[-2px]",
+    name: "SS Alam",
+    className: "font-semibold tracking-wide",
   },
 ];
 
@@ -123,10 +119,10 @@ export default function TrustedPartners() {
                 <span
                   className={`
                     whitespace-nowrap
-                    text-[28px]
+                    text-[18px]
                     leading-none
                     text-[#111111]
-                    md:text-[36px]
+                    md:text-[25px]
                     ${brand.className}
                   `}
                 >

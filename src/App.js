@@ -9,12 +9,13 @@ import Contact from './Pages/Contact/Contact';
 import Footer from './component/Footer/Footer';
 import ScrollToTop from './ScrollToTop';
 
+
 function App() {
   return (
     <BrowserRouter>
       <div className="app-shell">
         <Navbar />
-     
+    
         <main className="route-content bg-white">
              <ScrollToTop />
           <Routes>

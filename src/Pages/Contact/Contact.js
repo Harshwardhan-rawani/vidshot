@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ArrowUpRight,
   Mail,
@@ -6,14 +6,23 @@ import {
   MapPin,
   Sparkles,
   Check,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-  },
+import deepak from "../../Images/client/deepak pandey.jpeg";
+import mohit from "../../Images/client/mohit Beriwala.jpeg";
+import deven from "../../Images/client/deven u pandey.jpeg";
+import nidhi from "../../Images/client/nidhi aneja.png";
+import dhiren from "../../Images/client/dhiren bontra.jpeg";
+import ssalam from "../../Images/client/ssalam.jpeg";
 
+const SCRIPT_URL = process.env.REACT_APP_GOOGLE_APPS_SCRIPT_URL || "";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
@@ -24,11 +33,7 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -40,6 +45,91 @@ const itemVariants = {
 };
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    budget: "",
+    services: [],
+    details: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  };
+
+  const handleServiceToggle = (service) => {
+    setFormData((current) => ({
+      ...current,
+      services: current.services.includes(service)
+        ? current.services.filter((item) => item !== service)
+        : [...current.services, service],
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!SCRIPT_URL) {
+      setStatus("error");
+      console.error(
+        "Missing REACT_APP_GOOGLE_APPS_SCRIPT_URL. Add your deployed Apps Script URL to the frontend environment."
+      );
+      return;
+    }
+
+    if (formData.services.length === 0) {
+      setStatus("Please select at least one service.");
+      return;
+    }
+
+    setLoading(true);
+    setStatus("");
+
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      budget: formData.budget,
+      services: formData.services.join(", "),
+      details: formData.details.trim(),
+    };
+
+    try {
+      // Google Apps Script is the secure server-side bridge:
+      // it sends the email and appends the inquiry to Google Sheets.
+      // no-cors makes this a fire-and-forget request; the browser cannot
+      // inspect Google's response, so deployment/configuration must be tested.
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        budget: "",
+        services: [],
+        details: "",
+      });
+    } catch (error) {
+      console.error("Contact form submission failed:", error);
+      setStatus("error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-white text-[#17122a] mt-11">
 
@@ -316,7 +406,7 @@ export default function Contact() {
               {/* Email */}
 
               <a
-                href="mailto:hello@vidshotstudio.com"
+                href="mailto:vidshotmediaproduction@gmail.com"
                 className="
                   group
                   flex
@@ -362,7 +452,7 @@ export default function Contact() {
                   </span>
 
                   <span className="mt-0.5 block truncate text-sm font-semibold text-[#17122a]">
-                    hello@vidshotstudio.com
+                    vidshotmediaproduction@gmail.com
                   </span>
                 </span>
 
@@ -384,7 +474,7 @@ export default function Contact() {
               {/* Phone */}
 
               <a
-                href="tel:+12125550148"
+                href="tel:+918210882863"
                 className="
                   group
                   flex
@@ -429,7 +519,7 @@ export default function Contact() {
                   </span>
 
                   <span className="mt-0.5 block text-sm font-semibold text-[#17122a]">
-                    +1 (212) 555-0148
+                    +91 821-088-2863
                   </span>
                 </span>
 
@@ -484,7 +574,7 @@ export default function Contact() {
                   </span>
 
                   <span className="mt-0.5 block text-sm font-semibold text-[#17122a]">
-                    New York · London · Remote
+                    Dhanbad, Jharkhand, India
                   </span>
                 </span>
 
@@ -511,56 +601,44 @@ export default function Contact() {
 
               {/* Avatars */}
 
-              <div className="flex items-center">
+           <div className="flex items-center">
+  {[deepak, mohit, deven, nidhi, dhiren, ssalam].map(
+    (image, index) => (
+      <div
+        key={index}
+        className={`
+          relative
+          h-8 w-8
+          overflow-hidden
+          rounded-full
+          border-2
+          border-[#F8F8F7]
+          ${index !== 0 ? "-ml-2" : ""}
+        `}
+      >
+        <img
+          src={image}
+          alt={`VidShot Media client ${index + 1}`}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    )
+  )}
 
-                {[
-                  "/clients/client-1.jpg",
-                  "/clients/client-2.jpg",
-                  "/clients/client-3.jpg",
-                ].map((image, index) => (
-                  <div
-                    key={image}
-                    className={`
-                      relative
-                      h-8
-                      w-8
-                      overflow-hidden
-                      rounded-full
-                      border-2
-                      border-[#F8F8F7]
-                      ${index !== 0 ? "-ml-2" : ""}
-                    `}
-                  >
-                    <img
-                      src={image}
-                      alt="Client"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                ))}
-
-                <div
-                  className="
-                    relative
-                    -ml-2
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    border-2
-                    border-[#F8F8F7]
-                    bg-[#5428B0]
-                    text-[9px]
-                    font-bold
-                    text-white
-                  "
-                >
-                  10+
-                </div>
-
-              </div>
+  <div
+    className="
+      relative -ml-2
+      flex h-8 w-8
+      items-center justify-center
+      rounded-full
+      border-2 border-[#F8F8F7]
+      bg-[#5428B0]
+      text-[9px] font-bold text-white
+    "
+  >
+    6+
+  </div>
+</div>
 
               <div>
                 <p className="text-xs font-bold text-[#17122a]">
@@ -638,303 +716,177 @@ export default function Contact() {
 
             </div>
 
-            <form className="space-y-5">
+         <form onSubmit={handleSubmit} className="space-y-5">
 
-              {/* Name + Email */}
+  {/* Name + Email */}
+  <div className="grid gap-5 sm:grid-cols-2">
 
-              <div className="grid gap-5 sm:grid-cols-2">
+    <label>
+      <span className="text-xs font-bold">Name</span>
 
-                <label className="block">
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Your name"
+        required
+        className="mt-2 w-full rounded-xl border border-[#17122a]/10 bg-[#F8F8F7] px-4 py-3.5 text-sm outline-none focus:border-[#5428B0]"
+      />
+    </label>
 
-                  <span className="text-xs font-bold text-[#17122a]">
-                    Name
-                  </span>
+    <label>
+      <span className="text-xs font-bold">Email</span>
 
-                  <input
-                    type="text"
-                    placeholder="Your name"
-                    className="
-                      mt-2
-                      w-full
-                      rounded-xl
-                      border
-                      border-[#17122a]/10
-                      bg-[#F8F8F7]
-                      px-4
-                      py-3.5
-                      text-sm
-                      text-[#17122a]
-                      outline-none
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="your@email.com"
+        required
+        className="mt-2 w-full rounded-xl border border-[#17122a]/10 bg-[#F8F8F7] px-4 py-3.5 text-sm outline-none focus:border-[#5428B0]"
+      />
+    </label>
 
-                      placeholder:text-[#71697e]/60
+  </div>
 
-                      transition-all
-                      duration-300
+  {/* Budget */}
+  <label className="block">
 
-                      focus:border-[#5428B0]
-                      focus:bg-white
-                      focus:ring-4
-                      focus:ring-[#5428B0]/[0.06]
-                    "
-                  />
+    <span className="text-xs font-bold">Budget</span>
 
-                </label>
+    <select
+      name="budget"
+      value={formData.budget}
+      onChange={handleChange}
+      required
+      className="mt-2 w-full rounded-xl border border-[#17122a]/10 bg-[#F8F8F7] px-4 py-3.5 text-sm outline-none focus:border-[#5428B0]"
+    >
+      <option value="" disabled>Select budget</option>
+      <option value="Under ₹10,000">Under ₹10,000</option>
+      <option value="₹10,000 - ₹25,000">₹10,000 - ₹25,000</option>
+      <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
+      <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+      <option value="₹1,00,000+">₹1,00,000+</option>
+    </select>
 
-                <label className="block">
+  </label>
 
-                  <span className="text-xs font-bold text-[#17122a]">
-                    Email
-                  </span>
+  {/* Services */}
+  <div>
 
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="
-                      mt-2
-                      w-full
-                      rounded-xl
-                      border
-                      border-[#17122a]/10
-                      bg-[#F8F8F7]
-                      px-4
-                      py-3.5
-                      text-sm
-                      text-[#17122a]
-                      outline-none
+    <span className="text-xs font-bold">
+      What do you need?
+    </span>
 
-                      placeholder:text-[#71697e]/60
+    <div className="mt-3 flex flex-wrap gap-2">
 
-                      transition-all
-                      duration-300
+      {[
+        "Reels",
+        "Brand Video",
+        "Social Media",
+        "Design",
+        "Ads",
+        "Other",
+      ].map((service) => {
 
-                      focus:border-[#5428B0]
-                      focus:bg-white
-                      focus:ring-4
-                      focus:ring-[#5428B0]/[0.06]
-                    "
-                  />
+        const selected = formData.services.includes(service);
 
-                </label>
+        return (
+          <button
+            key={service}
+            type="button"
+            onClick={() => handleServiceToggle(service)}
+            className={`rounded-full border px-4 py-2 text-xs font-semibold transition-all ${
+              selected
+                ? "border-[#5428B0] bg-[#5428B0] text-white"
+                : "border-[#17122a]/10 bg-white text-[#71697e] hover:border-[#5428B0]"
+            }`}
+          >
+            {service}
+          </button>
+        );
+      })}
 
-              </div>
+    </div>
 
-              {/* Company + Budget */}
+  </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
+  {/* Project Details */}
+  <label className="block">
 
-             
+    <span className="text-xs font-bold">
+      Project Details
+    </span>
 
-                <label className="block">
+    <textarea
+      name="details"
+      value={formData.details}
+      onChange={handleChange}
+      placeholder="Tell us about your project..."
+      required
+      className="mt-2 min-h-[145px] w-full resize-none rounded-xl border border-[#17122a]/10 bg-[#F8F8F7] px-4 py-3.5 text-sm outline-none focus:border-[#5428B0]"
+    />
 
-                  <span className="text-xs font-bold text-[#17122a]">
-                    Budget
-                  </span>
+  </label>
 
-                  <select
-                    className="
-                      mt-2
-                      w-full
-                      appearance-none
-                      rounded-xl
-                      border
-                      border-[#17122a]/10
-                      bg-[#F8F8F7]
-                      px-4
-                      py-3.5
-                      text-sm
-                      text-[#71697e]
-                      outline-none
+  {/* Status Message */}
+  {status === "success" && (
+    <div className="flex items-center gap-2 rounded-xl bg-green-50 p-4 text-sm text-green-700">
+      <CheckCircle2 size={18} />
+      Your inquiry has been sent. Thank you for contacting VidShot Media!
+    </div>
+  )}
 
-                      transition-all
-                      duration-300
+  {status === "error" && (
+    <div className="flex items-center gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-600">
+      <AlertCircle size={18} />
+      We couldn't send your inquiry. Please try again or email us directly at vidshotmediaproduction@gmail.com.
+    </div>
+  )}
 
-                      focus:border-[#5428B0]
-                      focus:bg-white
-                      focus:ring-4
-                      focus:ring-[#5428B0]/[0.06]
-                    "
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Select budget
-                    </option>
-                    <option value="under-2k">Under $2K</option>
-                    <option value="2k-5k">$2K – $5K</option>
-                    <option value="5k-10k">$5K – $10K</option>
-                    <option value="10k-plus">$10K+</option>
-                  </select>
+  {status && status !== "success" && status !== "error" && (
+    <div className="flex items-center gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-600">
+      <AlertCircle size={18} />
+      {status}
+    </div>
+  )}
 
-                </label>
+  {/* Submit Button */}
+  <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
 
-              </div>
+    <p className="flex items-center gap-2 text-[11px] text-[#71697e]">
+      <Check size={15} />
+      Usually reply within 24 hours
+    </p>
 
-              {/* Project type */}
+    <button
+      type="submit"
+      disabled={loading}
+      className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#5428B0] px-6 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-1 hover:bg-[#4820A0] disabled:cursor-not-allowed disabled:opacity-60"
+    >
 
-              <div>
+      {loading ? (
+        <>
+          Sending...
+          <Loader2 size={18} className="animate-spin" />
+        </>
+      ) : (
+        <>
+          Send Inquiry
 
-                <span className="text-xs font-bold text-[#17122a]">
-                  What do you need?
-                </span>
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F8CC10] text-[#5428B0] transition-transform group-hover:rotate-45">
+            <ArrowUpRight size={15} />
+          </span>
+        </>
+      )}
 
-                <div className="mt-3 flex flex-wrap gap-2">
+    </button>
 
-                  {[
-                    "Reels",
-                    "Brand Video",
-                    "Social Media",
-                    "Design",
-                    "Ads",
-                    "Other",
-                  ].map((item, index) => (
-                    <button
-                      type="button"
-                      key={item}
-                      className={`
-                        rounded-full
-                        border
-                        px-4
-                        py-2
-                        text-xs
-                        font-semibold
-                        transition-all
-                        duration-300
+  </div>
 
-                        ${
-                          index === 0
-                            ? "border-[#5428B0] bg-[#5428B0] text-white"
-                            : "border-[#17122a]/10 bg-white text-[#71697e] hover:border-[#5428B0]/30 hover:text-[#5428B0]"
-                        }
-                      `}
-                    >
-                      {item}
-                    </button>
-                  ))}
-
-                </div>
-
-              </div>
-
-              {/* Details */}
-
-              <label className="block">
-
-                <span className="text-xs font-bold text-[#17122a]">
-                  Project details
-                </span>
-
-                <textarea
-                  placeholder="Tell us about your goals, timeline, concept, or anything else we should know..."
-                  className="
-                    mt-2
-                    min-h-[145px]
-                    w-full
-                    resize-none
-                    rounded-xl
-                    border
-                    border-[#17122a]/10
-                    bg-[#F8F8F7]
-                    px-4
-                    py-3.5
-                    text-sm
-                    leading-6
-                    text-[#17122a]
-                    outline-none
-
-                    placeholder:text-[#71697e]/60
-
-                    transition-all
-                    duration-300
-
-                    focus:border-[#5428B0]
-                    focus:bg-white
-                    focus:ring-4
-                    focus:ring-[#5428B0]/[0.06]
-                  "
-                />
-
-              </label>
-
-              {/* Submit */}
-
-              <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-
-                <p className="flex items-center gap-2 text-[11px] text-[#71697e]">
-
-                  <span
-                    className="
-                      flex
-                      h-5
-                      w-5
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#F8CC10]/30
-                      text-[#5428B0]
-                    "
-                  >
-                    <Check size={11} strokeWidth={3} />
-                  </span>
-
-                  Usually reply within 24 hours
-
-                </p>
-
-                <button
-                  type="submit"
-                  className="
-                    group
-                    inline-flex
-                    items-center
-                    justify-center
-                    gap-3
-                    rounded-full
-                    bg-[#5428B0]
-                    px-6
-                    py-3.5
-                    text-sm
-                    font-bold
-                    text-white
-
-                    shadow-[0_12px_30px_rgba(84,40,176,0.20)]
-
-                    transition-all
-                    duration-500
-
-                    hover:-translate-y-1
-                    hover:bg-[#4820A0]
-                    hover:shadow-[0_18px_40px_rgba(84,40,176,0.28)]
-
-                    active:translate-y-0
-                    active:scale-[0.97]
-                  "
-                >
-                  Send inquiry
-
-                  <span
-                    className="
-                      flex
-                      h-7
-                      w-7
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#F8CC10]
-                      text-[#5428B0]
-
-                      transition-transform
-                      duration-500
-
-                      group-hover:rotate-45
-                    "
-                  >
-                    <ArrowUpRight size={15} />
-                  </span>
-
-                </button>
-
-              </div>
-
-            </form>
+</form>
 
           </div>
 

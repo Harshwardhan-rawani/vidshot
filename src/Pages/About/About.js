@@ -12,6 +12,8 @@ import {
 import AnimatedButton1 from "../../component/Button/AnimatedButton1";
 import AnimatedButton from "../../component/Button/AnimatedButton";
 
+
+import rohitsir from "../../Images/client/rohitsir.jpeg";
 /* =========================================================
    ANIMATION
 ========================================================= */
@@ -551,9 +553,9 @@ export default function About() {
         <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-[#17122a]">
 
           <img
-            src="/images/founder.jpg"
+            src= {rohitsir}
             alt="Rohit Kumar Singh - Founder and CEO of VidShot Media"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-top"
           />
 
           {/* Image Overlay */}

@@ -165,49 +165,44 @@ const orbitIcons = [
   {
     name: "Instagram",
     icon: InstagramIcon,
-    orbit: "outer",
     angle: 0,
-    distance: 43,
+    distance: 200,
+    orbit: "outer",
   },
-
   {
     name: "YouTube",
     icon: YoutubeIcon,
-    orbit: "outer",
     angle: 60,
-    distance: 43,
-  },
-
-  {
-    name: "Meta Ads",
-    icon: MetaIcon,
+    distance: 145,
     orbit: "outer",
-    angle: 120,
-    distance: 43,
   },
-
   {
     name: "Facebook",
     icon: FacebookIcon,
+    angle: 120,
+    distance: 145,
     orbit: "outer",
+  },
+  {
+    name: "Meta Ads",
+    icon: MetaIcon,
     angle: 180,
-    distance: 43,
+    distance: 145,
+    orbit: "outer",
   },
-
   {
-    name: "Content",
-    icon: Videoediting,
-    orbit: "inner",
-    angle: 240,
-    distance: 33,
-  },
-
-  {
-    name: "Podcast",
+    name: "Design",
     icon: PodcastIcon,
+    angle: 240,
+    distance: 100,
     orbit: "inner",
+  },
+  {
+    name: "Video",
+    icon: Videoediting,
     angle: 300,
-    distance: 33,
+    distance: 100,
+    orbit: "inner",
   },
 ];
 
@@ -218,21 +213,23 @@ const orbitIcons = [
 function OrbitIcon({ item }) {
   const angle = (item.angle * Math.PI) / 180;
 
-  const x = Math.cos(angle) * item.distance;
-  const y = Math.sin(angle) * item.distance;
+  const radius = item.distance;
+
+  const x = Math.cos(angle) * radius;
+  const y = Math.sin(angle) * radius;
 
   const isOuter = item.orbit === "outer";
 
   return (
     <motion.div
-      className="absolute left-1/2 top-1/2 z-30"
+      className="absolute left-1/2 top-1/2 z-50"
       style={{
-        x: "-50%",
-        y: "-50%",
+        marginLeft: -24,
+        marginTop: -24,
       }}
       animate={{
-        x: `calc(-50% + ${x}%)`,
-        y: `calc(-50% + ${y}%)`,
+        x,
+        y,
       }}
       transition={{
         duration: 0.8,
@@ -252,83 +249,33 @@ function OrbitIcon({ item }) {
         whileHover={{
           scale: 1.15,
         }}
-        className="group relative"
+        className="group relative cursor-pointer"
       >
         {/* Glow */}
 
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-[-12px]
-            rounded-full
-            bg-[#5428B0]/10
-            opacity-0
-            blur-xl
-            transition-opacity
-            duration-300
-            group-hover:opacity-100
-          "
-        />
+        <div className="absolute inset-[-12px] rounded-full bg-[#5428B0]/20 opacity-0 blur-xl transition-opacity group-hover:opacity-100" />
 
-        {/* Icon */}
+        {/* Icon Container */}
 
         <div
           className="
-            relative
-            flex
-            h-11
-            w-11
-            items-center
-            justify-center
-            rounded-full
-            border
-            border-[#17122a]/10
-            bg-white
-            shadow-[0_10px_30px_rgba(23,18,42,.10)]
-            transition-all
-            duration-500
-            group-hover:border-[#5428B0]/30
-            group-hover:shadow-[0_15px_40px_rgba(84,40,176,.18)]
-            sm:h-14
-            sm:w-14
-            md:h-16
-            md:w-16
+            relative flex h-12 w-12 items-center justify-center
+            rounded-full border border-[#17122a]/10
+            bg-white shadow-[0_10px_30px_rgba(23,18,42,.15)]
+            transition-all duration-500
+            group-hover:border-[#5428B0]/40
+            group-hover:shadow-[0_15px_40px_rgba(84,40,176,.25)]
+            sm:h-14 sm:w-14
           "
         >
           <img
             src={item.icon}
             alt={item.name}
-            className="
-              h-5
-              w-5
-              object-contain
-              transition-transform
-              duration-500
-              group-hover:scale-110
-              sm:h-7
-              sm:w-7
-              md:h-8
-              md:w-8
-            "
-          />
-
-          <span
-            className="
-              absolute
-              -right-1
-              top-1/2
-              h-1.5
-              w-1.5
-              -translate-y-1/2
-              rounded-full
-              bg-[#F8CC10]
-              opacity-0
-              shadow-[0_0_10px_rgba(248,204,16,.8)]
-              transition-opacity
-              duration-300
-              group-hover:opacity-100
-            "
+            onError={(e) => {
+              console.error("Icon failed to load:", item.icon);
+              e.currentTarget.style.display = "none";
+            }}
+            className="h-6 w-6 object-contain sm:h-7 sm:w-7"
           />
         </div>
 
@@ -336,23 +283,11 @@ function OrbitIcon({ item }) {
 
         <div
           className="
-            pointer-events-none
-            absolute
-            left-1/2
-            top-[calc(100%+8px)]
-            -translate-x-1/2
-            whitespace-nowrap
-            rounded-full
-            bg-[#17122a]
-            px-2.5
-            py-1
-            text-[8px]
-            font-semibold
-            text-white/80
-            opacity-0
-            transition-all
-            duration-300
-            group-hover:translate-y-1
+            pointer-events-none absolute left-1/2 top-full z-50
+            mt-2 -translate-x-1/2 whitespace-nowrap
+            rounded-full bg-[#17122a] px-3 py-1
+            text-[9px] font-semibold text-white
+            opacity-0 transition-all duration-300
             group-hover:opacity-100
           "
         >
@@ -424,7 +359,7 @@ function ClientCard({ client, position }) {
             inset-0
             h-full
             w-full
-            object-cover
+            object-cover object-top
             transition-transform
             duration-1000
             ease-out
@@ -1233,36 +1168,9 @@ export default function OurClients() {
                 border-[#17122a]/10
               "
             >
-              <span
-                className="
-                  absolute
-                  left-1/2
-                  top-[-4px]
-                  h-2
-                  w-2
-                  -translate-x-1/2
-                  rounded-full
-                  bg-[#F8CC10]
-                  shadow-[0_0_15px_rgba(248,204,16,.8)]
-                "
-              />
+         
             </motion.div>
 
-            {/* =================================================
-                OUTER DASHED ORBIT
-            ================================================== */}
-
-            <div
-              className="
-                absolute
-                h-[78%]
-                w-[78%]
-                rounded-full
-                border
-                border-dashed
-                border-[#5428B0]/10
-              "
-            />
 
             {/* =================================================
                 MIDDLE ORBIT

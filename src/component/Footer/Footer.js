@@ -344,7 +344,7 @@ export default function Footer() {
             <div className="mt-5 space-y-4">
 
               <a
-                href="mailto:hello@vidshotmedia.com"
+                href="mailto:vidshotmediaproduction@gmail.com"
                 className="
                   block
                   text-lg
@@ -355,7 +355,7 @@ export default function Footer() {
                   hover:text-[#F8CC10]
                 "
               >
-                hello@vidshotmedia.com
+              vidshotmediaproduction@gmail.com
               </a>
 
               <a
@@ -369,7 +369,7 @@ export default function Footer() {
                   hover:text-white
                 "
               >
-                +91 99999 99999
+                +91 821 088 2863
               </a>
 
               <p
