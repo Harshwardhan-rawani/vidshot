@@ -19,7 +19,7 @@ import nidhi from "../../Images/client/nidhi aneja.png";
 import dhiren from "../../Images/client/dhiren bontra.jpeg";
 import ssalam from "../../Images/client/ssalam.jpeg";
 
-const SCRIPT_URL = process.env.REACT_APP_GOOGLE_APPS_SCRIPT_URL || "";
+const SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL || "";
 
 const containerVariants = {
   hidden: { opacity: 0 },
