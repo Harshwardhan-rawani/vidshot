@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const footerLinks = {
   company: [
     { name: "About", path: "/about" },
-    { name: "Our Work", path: "/work" },
+    { name: "Our Work", path: "/portfolio" },
     { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" },
   ],
@@ -159,7 +159,7 @@ export default function Footer() {
             once: true,
           }}
           transition={{
-            duration: 1.5,
+            duration: 1,
           }}
                 className="
                   max-w-3xl

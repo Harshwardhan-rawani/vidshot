@@ -5,7 +5,6 @@ import TrustedPartners from '../../component/TrustedPartner/TrustedPartners';
 import ServicesSection from '../../component/Cards/ServicesSection';
 import OurClients from '../../component/ourclient/OurClients';
 import Stepper from '../../component/Stepper/Stepper';
-import TestimonialCarousel from '../../component/Cards/TestimonialCarousel';
 import OurVision from '../../component/ourvision/OurVision';
 import AnimatedButton from '../../component/Button/AnimatedButton';
 import TrustedClients from '../../component/Button/TrustedClients';
@@ -118,7 +117,7 @@ export default function Home() {
 
         <AnimatedButton1
           text="Explore our work"
-          to="/work"
+          to="/portfolio"
         />
       </div>
 

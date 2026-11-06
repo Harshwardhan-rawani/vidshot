@@ -22,6 +22,8 @@ import mohit from "../../Images/client/mohit Beriwala.jpeg"
 import deven from "../../Images/client/deven u pandey.jpeg"
 import nidhi from "../../Images/client/nidhi aneja.png"
 import dhiren from "../../Images/client/dhiren bontra.jpeg"
+import ssalam from "../../Images/client/ssalam.jpeg"
+
 
 /* =========================================================
    CLIENT DATA
@@ -128,6 +130,29 @@ const clients = [
 
     images: [
      dhiren
+    ],
+  },
+   {
+    id: 6,
+    name: "S S Alam",
+    category: "Creator",
+     type : "Social Media Management",
+    socials: [
+      {
+        platform: "Instagram",
+        icon: InstagramIcon,
+        followers: "101K",
+      },
+      {
+        platform: "YouTube",
+        icon: YoutubeIcon,
+        followers: "52.4K",
+      },
+    ],
+
+    images: [
+      ssalam
+      
     ],
   },
 ];

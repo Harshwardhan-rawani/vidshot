@@ -158,7 +158,7 @@ export default function About() {
                   max-w-5xl
                   text-5xl
                   font-black
-                  leading-[0.9]
+                  leading-[0.95]
 
                   sm:text-5xl
                   md:text-6xl
@@ -179,7 +179,7 @@ export default function About() {
                       -bottom-2
                       right-0
                       h-2
-                      w-16
+                      w-36
                       rounded-full
                       bg-[#F8CC10]
 
@@ -228,7 +228,7 @@ export default function About() {
            to = "/contact" />
            <AnimatedButton1
             text = "See our work"
-            to = "/work" />
+            to = "/portfolio" />
 
                
 

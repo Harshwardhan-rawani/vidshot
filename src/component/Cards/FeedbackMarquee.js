@@ -2,59 +2,58 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
 
+import deepak from "../../Images/client/deepak pandey.jpeg"
+import mohit from "../../Images/client/mohit Beriwala.jpeg"
+import deven from "../../Images/client/deven u pandey.jpeg"
+import nidhi from "../../Images/client/nidhi aneja.png"
+import dhiren from "../../Images/client/dhiren bontra.jpeg" 
 const testimonials = [
   {
     id: 1,
-    rating: 4,
+    rating: 5,
     feedback:
-      "Throughout the process, they kept me informed and involved, ensuring I was happy with the direction. I came to them with a vague idea, and they helped me refine it into a concrete plan.",
-    name: "Ema Watson",
-    role: "Founder at Ritof",
-    image:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200",
+      "VidShot Media did an excellent job bringing our ideas to life. Their creative approach, attention to detail, and commitment to quality made the entire experience smooth and professional. Highly recommended!",
+    name: "Deepak Pandey",
+    role: "Client",
+    image: deepak,
   },
   {
     id: 2,
     rating: 5,
     feedback:
-      "The team understood our vision from day one and transformed our ideas into content that actually connected with our audience.",
-    name: "Sarah Miller",
-    role: "Marketing Director",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200",
+      "What impressed me most was their understanding of our vision. The team delivered creative content with great attention to detail and made the entire process effortless. Really appreciate their work!",
+    name: "Mohit Beriwala",
+    role: "Client",
+    image: mohit,
   },
   {
     id: 3,
     rating: 5,
     feedback:
-      "From concept to final delivery, everything was handled professionally. The creative quality and attention to detail were outstanding.",
-    name: "Daniel Carter",
-    role: "CEO at Nova",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200",
+      "A talented and dedicated team with a great understanding of modern branding and content creation. They brought fresh ideas to the table and delivered results that truly stood out.",
+    name: "Deven U. Pandey",
+    role: "Client",
+    image: deven,
   },
   {
     id: 4,
-    rating: 4,
+    rating: 5,
     feedback:
-      "They took our rough concept and turned it into a clear creative direction. Communication was smooth and the final result exceeded our expectations.",
-    name: "Olivia Brown",
-    role: "Brand Manager",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200",
+      "Working with VidShot Media was a great experience. Their creativity, communication, and professionalism made a real difference. They understand how to turn ideas into impactful visual content.",
+    name: "Nidhi Aneja",
+    role: "Client",
+    image: nidhi,
   },
   {
     id: 5,
     rating: 5,
     feedback:
-      "A genuinely creative team that understands what brands need today. The content felt authentic, engaging and completely aligned with our brand.",
-    name: "James Wilson",
-    role: "Founder at Elevate",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200",
+      "The team brings a perfect combination of creativity and professionalism. From understanding the requirements to delivering the final work, everything was handled with care and dedication.",
+    name: "Dhiren Bontra",
+    role: "Client",
+    image: dhiren,
   },
 ];
-
 function Stars({ rating }) {
   return (
     <div
@@ -82,58 +81,65 @@ function Stars({ rating }) {
 function TestimonialCard({ testimonial }) {
   return (
     <motion.article
-        initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
+      initial={{
+        opacity: 0,
+        y: 30,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 0.7,
+        ease: "easeOut",
+      }}
       className="
-        group mx-2 flex w-[calc(100vw-40px)] max-w-[420px]
-        shrink-0 flex-col rounded-2xl border border-black/[0.04]
-        bg-[#f6f6f8] p-5
+         group mx-3 flex shrink-0 flex-col
+        w-[340px] h-[280px]
+        rounded-2xl
+        border border-black/[0.04]
+        bg-[#f6f6f8]
+        p-5
         transition-all duration-300
-        sm:mx-3 sm:w-[400px] sm:rounded-3xl sm:p-7
-        md:w-[440px] md:p-8
-        lg:w-[480px]
-        xl:w-[500px]
-        2xl:w-[520px]
+        hover:-translate-y-1
+        hover:shadow-lg
       "
     >
       {/* Rating */}
-      <Stars rating={testimonial.rating}/>
+      <div className="shrink-0">
+        <Stars rating={testimonial.rating} />
+      </div>
 
       {/* Feedback */}
       <p
         className="
-          mt-5 text-sm font-normal leading-7 tracking-[-0.01em]
+          mt-4 flex-1 overflow-hidden
+          text-xs font-normal
+          leading-[1.65]
+          tracking-normal
           text-[#303036]
-          sm:mt-6 sm:text-base sm:leading-7
-          lg:text-[17px] lg:leading-8
         "
       >
         {testimonial.feedback}
       </p>
 
       {/* Divider */}
-      <div className="my-5 border-t border-dashed border-[#d1d1d5] sm:my-6" />
+      <div className="my-4 shrink-0 border-t border-dashed border-[#d1d1d5]" />
 
-      {/* User information */}
-      <div className="mt-auto flex items-center gap-3 sm:gap-4">
+      {/* User Information */}
+      <div className="mt-auto flex shrink-0 items-center gap-3">
+
         {/* Avatar */}
         <div
           className="
-            h-11 w-11 shrink-0 overflow-hidden rounded-full
-            border border-[#dedede] bg-white p-[2px]
-            sm:h-14 sm:w-14
+            h-11 w-11 shrink-0
+            overflow-hidden rounded-full
+            border border-[#dedede]
+            bg-white p-[2px]
           "
         >
           <img
@@ -144,14 +150,13 @@ function TestimonialCard({ testimonial }) {
           />
         </div>
 
-        {/* Name and role */}
-        <div className="min-w-0">
+        {/* Name and Role */}
+        <div className="min-w-0 flex-1">
           <h3
             className="
-              truncate text-base font-semibold tracking-tight
+              truncate text-sm
+              font-semibold tracking-tight
               text-[var(--dark)]
-              sm:text-lg
-              lg:text-xl
             "
           >
             {testimonial.name}
@@ -159,9 +164,9 @@ function TestimonialCard({ testimonial }) {
 
           <p
             className="
-              mt-1 break-words text-xs font-medium leading-5
-              text-[#77777d]
-              sm:text-sm
+              mt-1 truncate
+              text-[11px] font-medium
+              leading-4 text-[#77777d]
             "
           >
             {testimonial.role}
@@ -254,44 +259,57 @@ export default function FeedbackMarquee() {
         </motion.div>
       </div>
 
-      {/* Full-width marquee */}
-      <div className="relative w-full">
-        {/* Left gradient */}
-        <div
-          aria-hidden="true"
-          className="
-            pointer-events-none absolute inset-y-0 left-0 z-10
-            w-5 bg-gradient-to-r from-[var(--neutral)] to-transparent
-            sm:w-10 md:w-16 lg:w-24
-          "
-        />
+     {/* ===============================
+      SMOOTH INFINITE MARQUEE
+=============================== */}
 
-        {/* Right gradient */}
-        <div
-          aria-hidden="true"
-          className="
-            pointer-events-none absolute inset-y-0 right-0 z-10
-            w-5 bg-gradient-to-l from-[var(--neutral)] to-transparent
-            sm:w-10 md:w-16 lg:w-24
-          "
-        />
+<div className="relative w-full overflow-hidden">
 
-        <Marquee
-          direction="left"
-          speed={35}
-          pauseOnHover
-          gradient={false}
-          loop={0}
-          autoFill
-        >
-          {testimonials.map((testimonial) => (
-            <TestimonialCard
-              key={testimonial.id}
-              testimonial={testimonial}
-            />
-          ))}
-        </Marquee>
-      </div>
+  {/* Left Gradient */}
+  <div
+    className="
+      pointer-events-none absolute
+      inset-y-0 left-0 z-10
+      w-12 sm:w-20 lg:w-32
+      bg-gradient-to-r
+      from-[var(--neutral)]
+      to-transparent
+    "
+  />
+
+  {/* Right Gradient */}
+  <div
+    className="
+      pointer-events-none absolute
+      inset-y-0 right-0 z-10
+      w-12 sm:w-20 lg:w-32
+      bg-gradient-to-l
+      from-[var(--neutral)]
+      to-transparent
+    "
+  />
+
+  <Marquee
+    direction="left"
+    speed={30}
+    delay={0}
+    loop={0}
+    autoFill={true}
+    play={true}
+    pauseOnHover={true}
+    pauseOnClick={false}
+    gradient={false}
+    className="py-3"
+  >
+    {testimonials.map((testimonial) => (
+      <TestimonialCard
+        key={testimonial.id}
+        testimonial={testimonial}
+      />
+    ))}
+  </Marquee>
+
+</div>
     </section>
   );
 }
