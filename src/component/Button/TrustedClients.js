@@ -96,8 +96,7 @@ export default function TrustedClients({
             className={`
               relative h-7 w-7 shrink-0 overflow-hidden
               rounded-full border-2 border-[#ffffff]
-              transition-all duration-300
-              hover:z-50 hover:scale-125 hover:-translate-y-1
+            
               ${index !== 0 ? "-ml-2" : ""}
             `}
           >
@@ -117,8 +116,8 @@ export default function TrustedClients({
               relative z-20 -ml-2 flex h-7 min-w-7
               items-center justify-center rounded-full
               border-2 border-[#ffffff]
-              bg-[#5428B0] px-1.5
-              text-[9px] font-bold tracking-tight text-white
+             bg-[#F8CC10] px-1.5
+              text-[9px] font-bold tracking-tight text-[#5428B0]
               shadow-[0_0_15px_rgba(84,40,176,0.35)]
               transition-all duration-300
               group-hover:bg-[#F8CC10]

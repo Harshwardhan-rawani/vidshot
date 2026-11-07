@@ -6,13 +6,12 @@ import {
   Palette,
   Megaphone,
   ArrowUpRight,
-  Sparkles,
+  Target,
 } from "lucide-react";
 
 import videoediting from "../../Images/Services/Video_editing.jpeg"
-import social_media from "../../Images/Services/Social_media.jpeg"
-import creative_desing from "../../Images/Services/Creative_Design.jpeg"
-import performance from "../../Images/Services/Performance.jpeg"
+import social_media from "../../Images/Services/social media.png"
+import metaads from "../../Images/Services/metaads.png"
 /* =========================================================
    SERVICES DATA
 ========================================================= */
@@ -39,8 +38,8 @@ const services = [
   {
     id: 2,
     number: "02",
-    title: "Social Media",
-    shortTitle: "Social",
+    title: "Social Media Management",
+    shortTitle: "Social Media",
     description:
       "Scroll-stopping short-form content designed to build attention, engagement and a recognizable brand presence.",
     tags: [
@@ -58,7 +57,7 @@ const services = [
     id: 3,
     number: "03",
     title: "Creative & Design",
-    shortTitle: "Design",
+    shortTitle: "Graphic Design",
     description:
       "Visual identities and creative systems that give your brand a distinct personality across every touchpoint.",
     tags: [
@@ -69,7 +68,7 @@ const services = [
     ],
     icon: Palette,
     image:
-      creative_desing
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=900&q=85"
   },
 
   {
@@ -87,25 +86,26 @@ const services = [
     ],
     icon: Megaphone,
     image:
-      performance
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=85"
   },
 
 {
   id: 5,
   number: "05",
-  title: "AI Ads",
-  shortTitle: "AI Ads",
+  title: "Meta Ads",
+  shortTitle: "Meta Ads",
   description:
-    "Create high-impact, AI-powered advertisements with stunning visuals, cinematic storytelling, and intelligent automation to boost engagement and drive conversions.",
+    "Reach the right audience with powerful Facebook and Instagram ad campaigns. Generate quality leads, boost conversions, and maximize your business growth.",
   tags: [
-    "AI Video Ads",
-    "AI Avatars",
-    "Product Visuals",
-    "Ad Creatives",
+    "Facebook Ads",
+    "Instagram Ads",
+    "Lead Generation",
+    "Audience Targeting",
+   
   ],
-  icon: Sparkles,
+  icon: Target,
   image:
-    "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200",
+    metaads
 },
 ];
 
@@ -120,36 +120,79 @@ function ClosedService({ service }) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.4 }}
       className="
-   
-      
-        absolute
-        inset-0
-        flex
-        flex-col
-        items-center
-        justify-between
+        absolute inset-0
+        flex flex-col
+        items-center justify-between
+        overflow-hidden
+        rounded-[24px]
         py-7
+        bg-slate-900
       "
     >
-      {/* Number */}
+      {/* Background Image */}
+      {service.image && (
+        <motion.img
+          src={service.image}
+          alt={service.title}
+          className="
+            absolute inset-0
+            h-full w-full
+            object-cover
+          "
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+      )}
 
-      <span className="text-xs font-semibold text-slate-400">
+      {/* Dark overlay for readability */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-b
+          from-black/65
+          via-black/35
+          to-black/80
+        "
+      />
+
+      {/* Subtle purple overlay */}
+      <div className="
+        absolute inset-0
+        bg-[#5428B0]/15
+        mix-blend-multiply
+      " />
+
+      {/* Number */}
+      <span className="
+        relative z-10
+        text-xs
+        font-bold
+        tracking-widest
+        text-white
+        drop-shadow-lg
+      ">
         {service.number}
       </span>
 
-      {/* Vertical title */}
-
-      <div className="flex flex-1 items-center justify-center">
+      {/* Vertical Title */}
+      <div className="
+        relative z-10
+        flex flex-1
+        items-center
+        justify-center
+      ">
         <span
           className="
             whitespace-nowrap
             text-sm
-            font-bold
+            font-extrabold
             uppercase
-            tracking-[0.15em]
-            text-slate-700
+            tracking-[0.16em]
+            text-white
+            drop-shadow-[0_2px_5px_rgba(0,0,0,0.9)]
             [writing-mode:vertical-rl]
             rotate-180
           "
@@ -159,25 +202,24 @@ function ClosedService({ service }) {
       </div>
 
       {/* Icon */}
-
       <motion.div
         whileHover={{
-          scale: 1.1,
+          scale: 1.12,
           rotate: 5,
         }}
         className="
-          flex
-          h-10
-          w-10
-          items-center
-          justify-center
+          relative z-10
+          flex h-11 w-11
+          items-center justify-center
           rounded-full
-          bg-white
-          text-slate-700
-          shadow-sm
+          border border-white/30
+          bg-white/20
+          text-white
+          shadow-xl
+          backdrop-blur-md
         "
       >
-        <Icon size={17} />
+        <Icon size={19} strokeWidth={2.2} />
       </motion.div>
     </motion.div>
   );

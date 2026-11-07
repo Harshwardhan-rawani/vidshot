@@ -25,7 +25,8 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-9xl bg-white px-4 py-8 sm:px-6 lg:px-8 mt-20">
      
- <Hero/>
+     <Hero/>
+    
       <section className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {metrics.map((item) => (
           <div key={item.label} className="rounded-[26px] border border-slate-200 bg-white/70 p-6 shadow-sm">
@@ -34,8 +35,8 @@ export default function Home() {
           </div>
         ))}
       </section>
+
      <TrustedPartners/>
-   
      <ServicesSection/>
      <Stepper/>
      <OurClients/>

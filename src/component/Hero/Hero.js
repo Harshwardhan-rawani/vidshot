@@ -4,12 +4,251 @@ import AnimatedButton from '../../component/Button/AnimatedButton';
 import TrustedClients from '../../component/Button/TrustedClients';
 
 import AnimatedButton1 from '../../component/Button/AnimatedButton1';
-// Keep your existing imports for:
-// TrustedClients
-// AnimatedButton
-// AnimatedButton1
+
+import videoediting from "../../Images/Services/Video_editing.jpeg"
+import social_media from "../../Images/Services/social media.png"
+import metaads from "../../Images/Services/metaads.png"
+
+
+
+const services = [
+  {
+    id: 1,
+    title: "Video Editing",
+    category: "CREATIVE PRODUCTION",
+    description: "Stories that capture attention.",
+    image:
+      videoediting,
+    size: "large",
+    rotate: -2,
+    badge: null,
+  },
+  {
+    id: 2,
+    title: "Social Media Management",
+    category: "DIGITAL PRESENCE",
+    description: "Build a powerful digital identity.",
+    image:
+      social_media,
+    size: "medium",
+    rotate: 2,
+  },
+  {
+    id: 3,
+    title: "Graphic Design",
+    category: "DESIGN",
+    description: "Creative visuals that stand out.",
+    image:
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=900&q=85",
+    size: "medium",
+    rotate: -1,
+  },
+  {
+    id: 4,
+    title: "Performance Marketing",
+    category: "GROWTH",
+    description: "Turn campaigns into measurable results.",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=85",
+    size: "small",
+    rotate: 2,
+  },
+  {
+    id: 5,
+    title: "Meta Ads",
+    category: "ADVERTISING",
+    description: "Reach the right audience and grow faster.",
+    image:
+      metaads,
+    size: "small",
+    rotate: -2,
+    badge: "GROW YOUR BRAND",
+  },
+];
+
+// Reusable service card
+const ServiceCard = ({ service, index }) => {
+  const isLarge = service.size === "large";
+
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 35,
+        rotate: service.rotate || 0,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        rotate: 0,
+      }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.65,
+        delay: index * 0.1,
+        ease: "easeOut",
+      }}
+      whileHover={{
+        scale: 1.035,
+        rotate: 0,
+        zIndex: 20,
+      }}
+      className={`
+        group relative isolate
+        overflow-hidden
+        rounded-[20px]
+        shadow-md
+        cursor-pointer
+        min-h-[145px]
+        lg:min-h-0
+        ${isLarge
+          ? "col-span-1 row-span-2 min-h-[240px] lg:col-span-3 lg:row-span-2"
+          : "col-span-1 lg:col-span-3"
+        }
+      `}
+    >
+      {/* Background image */}
+      <img
+        src={service.image}
+        alt={service.title}
+        loading="lazy"
+        className="
+          absolute inset-0
+          h-full w-full
+          object-cover
+          transition-transform duration-700
+          group-hover:scale-110
+        "
+      />
+
+      {/* Dark overlay */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-t
+          from-black/90
+          via-black/20
+          to-black/5
+          transition-opacity duration-500
+          group-hover:from-black/95
+        "
+      />
+
+     
+
+      {/* Service information */}
+      <div
+        className={`
+          absolute bottom-0 left-0 right-0
+          p-3 sm:p-4
+          text-white
+          ${isLarge ? "sm:p-5" : ""}
+        `}
+      >
+        <span className="text-[9px] font-semibold tracking-wider text-[#F8CC10]">
+          {String(service.id).padStart(2, "0")} / {service.category}
+        </span>
+
+        <h3
+          className={`
+            mt-1 font-bold
+            ${isLarge ? "text-lg sm:text-2xl" : "text-base sm:text-md"}
+          `}
+        >
+          {service.title}
+        </h3>
+
+   
+      </div>
+
+      {/* Optional badge */}
+      {service.badge && (
+        <span
+          className="
+            absolute right-3 top-3
+            rounded-full
+            bg-[#F8CC10]
+            px-2.5 py-1
+            text-[9px]
+            font-bold
+            text-black
+          "
+        >
+          {service.badge}
+        </span>
+      )}
+
+      {/* Hover arrow */}
+      <motion.div
+        className="
+          absolute right-4 bottom-4
+          flex h-8 w-8
+          items-center justify-center
+          rounded-full
+          bg-white/20
+          text-white
+          backdrop-blur-md
+          opacity-0
+          group-hover:opacity-100
+          transition-opacity duration-300
+        "
+        whileHover={{ scale: 1.15 }}
+      >
+        ↗
+      </motion.div>
+    </motion.div>
+  );
+};
+
+// Main dynamic collage
+const ServiceCollage = ({
+  items = services,
+  className = "",
+  showBackground = true,
+}) => {
+  return (
+    <div className={`relative mx-auto w-full max-w-[560px] ${className}`}>
+
+      <div
+        className="
+          relative grid
+          grid-cols-2
+          gap-3
+          rounded-[28px]
+          p-3
+          sm:gap-4 sm:p-4
+          lg:grid-cols-6
+          lg:grid-rows-[135px_135px_135px]
+          lg:gap-3
+          overflow-hidden
+        "
+      >
+
+        {/* Background decorations */}
+        {showBackground && (
+          <>
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#5428B0]/20 blur-3xl" />
+
+            <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-[#F8CC10]/15 blur-3xl" />
+          </>
+        )}
+
+        {/* Dynamic cards */}
+        {items.map((service, index) => (
+          <ServiceCard
+            key={service.id}
+            service={service}
+            index={index}
+          />
+        ))}
+
+      </div>
+    </div>
+  );
+};
 
 function Hero() {
+    
   return (
     <section className="  relative w-full
   overflow-hidden
@@ -75,12 +314,13 @@ function Hero() {
   lg:text-[clamp(48px,4vw,68px)]
   xl:text-[clamp(54px,4vw,72px)]
 ">
-            We turn ideas into{" "}
+            Ideas That Capture.
+
 
             <span className="relative inline-block">
 
               <span className="relative z-10">
-                cinematic stories
+               Stories That Convert.
               </span>
 
               <span
@@ -93,8 +333,6 @@ function Hero() {
               />
 
             </span>{" "}
-
-            that move people.
           </h1>
 
 
@@ -106,9 +344,8 @@ function Hero() {
   text-gray-500
   sm:text-base sm:leading-7
 ">
-            We help ambitious brands grow through powerful
-            video content, creative storytelling, social media
-            management and performance-driven marketing.
+            We create powerful visuals and digital experiences that make brands stand out. 
+            From content to campaigns, we turn creativity into growth.
           </p>
 
 
@@ -164,314 +401,8 @@ function Hero() {
 
         {/* ================= RIGHT VISUAL ================= */}
 
-
-<div className="relative mx-auto w-full max-w-[560px]">
-
-  {/* Main rectangular canvas */}
-
- <div className="
-  relative
-  grid grid-cols-2
-  gap-3
-  rounded-[28px]
-  bg-[#F9F8FC]
-  p-3
-  sm:gap-4 sm:p-4
-
-  lg:grid-cols-6
-  lg:grid-rows-[145px_145px_120px]
-  lg:gap-3
-
-  overflow-hidden
-">
-
-    {/* Background decoration */}
-
-    <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#F8CC10]/20 blur-3xl" />
-
-    <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-purple-200/50 blur-3xl" />
-
-
-    {/* ================= CARD 1 ================= */}
-
-    <motion.div
-      initial={{ opacity: 0, y: 30, rotate: -4 }}
-      whileInView={{ opacity: 1, y: 0, rotate: -3 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-      whileHover={{ scale: 1.04, rotate: 0, zIndex: 20 }}
-      className="
-        group relative
-        col-span-1 row-span-2
-        lg:col-span-3 lg:row-span-2
-        md:col-span-3
-        overflow-hidden
-        rounded-[24px]
-        shadow-lg
-        min-h-[280px]
-        md:min-h-0
-      "
-    >
-
-      <img
-        src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=900&q=85"
-        alt="Video Editing"
-        className="
-          absolute inset-0
-          h-full w-full
-          object-cover
-          transition-transform duration-700
-          group-hover:scale-110
-        "
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-
-      <div className="absolute bottom-5 left-5 text-white">
-
-        <span className="text-xs font-medium text-[#F8CC10]">
-          01 / CREATIVE PRODUCTION
-        </span>
-
-        <h3 className="mt-2 text-xl font-bold sm:text-2xl">
-          Video Editing
-        </h3>
-
-        <p className="mt-1 text-xs text-white/70">
-          Stories that capture attention.
-        </p>
-
-      </div>
-
-      <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black transition-transform group-hover:rotate-45">
-        ↗
-      </span>
-
-    </motion.div>
-
-
-    {/* ================= CARD 2 ================= */}
-
-    <motion.div
-      initial={{ opacity: 0, y: 30, rotate: 3 }}
-      whileInView={{ opacity: 1, y: 0, rotate: 2 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.1 }}
-      whileHover={{ scale: 1.04, rotate: 0, zIndex: 20 }}
-      className="
-        group relative
-        col-span-1
-        md:col-span-3
-        min-h-[180px]
-        overflow-hidden
-        rounded-[24px]
-        shadow-lg
-      "
-    >
-
-      <img
-        src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=900&q=85"
-        alt="Social Media Management"
-        className="
-          absolute inset-0
-          h-full w-full
-          object-cover
-          transition-transform duration-700
-          group-hover:scale-110
-        "
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-
-      <div className="absolute bottom-4 left-4 text-white">
-
-        <span className="text-[10px] font-medium text-[#F8CC10]">
-          02 / DIGITAL PRESENCE
-        </span>
-
-        <h3 className="mt-1 text-lg font-bold">
-          Social Media Management
-        </h3>
-
-      </div>
-
-      <span className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
-        ↗
-      </span>
-
-    </motion.div>
-
-
-    {/* ================= CARD 3 ================= */}
-
-    <motion.div
-      initial={{ opacity: 0, y: 30, rotate: -2 }}
-      whileInView={{ opacity: 1, y: 0, rotate: -1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.2 }}
-      whileHover={{ scale: 1.04, rotate: 0, zIndex: 20 }}
-      className="
-        group relative
-        col-span-1
-        md:col-span-2
-        min-h-[170px]
-        overflow-hidden
-        rounded-[24px]
-        shadow-lg
-      "
-    >
-
-      <img
-        src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=700&q=85"
-        alt="Graphic Design"
-        className="
-          absolute inset-0
-          h-full w-full
-          object-cover
-          transition-transform duration-700
-          group-hover:scale-110
-        "
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-
-      <div className="absolute bottom-4 left-4 text-white">
-
-        <span className="text-[9px] text-[#F8CC10]">
-          03 / DESIGN
-        </span>
-
-        <h3 className="mt-1 text-base font-bold">
-          Graphic Design
-        </h3>
-
-      </div>
-
-    </motion.div>
-
-
-    {/* ================= CARD 4 ================= */}
-
-    <motion.div
-      initial={{ opacity: 0, y: 30, rotate: 3 }}
-      whileInView={{ opacity: 1, y: 0, rotate: 2 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.3 }}
-      whileHover={{ scale: 1.04, rotate: 0, zIndex: 20 }}
-      className="
-        group relative
-        col-span-1
-        md:col-span-2
-        min-h-[170px]
-        overflow-hidden
-        rounded-[24px]
-        shadow-lg
-      "
-    >
-
-      <img
-        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=85"
-        alt="Performance Marketing"
-        className="
-          absolute inset-0
-          h-full w-full
-          object-cover
-          transition-transform duration-700
-          group-hover:scale-110
-        "
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent" />
-
-      <div className="absolute bottom-4 left-4 text-white">
-
-        <span className="text-[9px] text-[#F8CC10]">
-          04 / GROWTH
-        </span>
-
-        <h3 className="mt-1 text-base font-bold">
-          Performance Marketing
-        </h3>
-
-      </div>
-
-    </motion.div>
-
-
-    {/* ================= CARD 5 ================= */}
-
-    <motion.div
-      initial={{ opacity: 0, y: 30, rotate: -3 }}
-      whileInView={{ opacity: 1, y: 0, rotate: -2 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.4 }}
-      whileHover={{ scale: 1.04, rotate: 0, zIndex: 20 }}
-      className="
-        group relative
-        col-span-2
-        md:col-span-2
-        min-h-[150px]
-        overflow-hidden
-        rounded-[24px]
-        shadow-lg
-      "
-    >
-
-      <img
-        src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=700&q=85"
-        alt="Meta Ads"
-        className="
-          absolute inset-0
-          h-full w-full
-          object-cover
-          transition-transform duration-700
-          group-hover:scale-110
-        "
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent" />
-
-      <div className="absolute bottom-4 left-4 text-white">
-
-        <span className="text-[9px] text-[#F8CC10]">
-          05 / ADVERTISING
-        </span>
-
-        <h3 className="mt-1 text-lg font-bold">
-          Meta Ads
-        </h3>
-
-      </div>
-
-      <span className="absolute right-3 top-3 rounded-full bg-[#F8CC10] px-3 py-1 text-[10px] font-bold text-black">
-        GROW YOUR BRAND
-      </span>
-
-    </motion.div>
-
-  </div>
-
-
-  {/* Bottom floating brand label */}
-
-  <div className="mt-5 flex items-center justify-between px-2">
-
-    <div>
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-        What we do
-      </p>
-
-      <h3 className="mt-1 text-lg font-bold text-gray-900">
-        Ideas into impact.
-      </h3>
-    </div>
-
-    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#5428B0] text-xl text-white shadow-lg">
-      ↗
-    </div>
-
-  </div>
-
+<div className="relative flex items-center justify-center">
+  <ServiceCollage />
 </div>
 
       </div>

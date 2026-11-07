@@ -8,6 +8,7 @@ import Work from './Pages/Work/Work';
 import Contact from './Pages/Contact/Contact';
 import Footer from './component/Footer/Footer';
 import ScrollToTop from './ScrollToTop';
+import FloatingContact from './component/Button/FloatingContact';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     <BrowserRouter>
       <div className="app-shell">
         <Navbar />
-    
+        <FloatingContact/>
         <main className="route-content bg-white">
              <ScrollToTop />
           <Routes>
