@@ -48,7 +48,7 @@ const stagger = {
 
 export default function About() {
   return (
-    <main className="overflow-hidden bg-white text-[#17122a]">
+    <main className="overflow-hidden bg-white text-[#17122a] mt-4">
 
       {/* =====================================================
           HERO

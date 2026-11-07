@@ -19,7 +19,7 @@ import MetricsSection from '../../component/Cards/MetricsSection';
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-9xl bg-white px-4 py-8 sm:px-6 lg:px-8 mt-20">
+    <div className="mx-auto max-w-9xl bg-white px-4 py-8 sm:px-6 lg:px-8 mt-12">
      
      <Hero/>
     <MetricsSection/>

@@ -266,7 +266,49 @@ function LeftContent() {
 
   return (
     <div className="relative z-10 max-w-2xl">
+        {/* Background */}
 
+        <div className="pointer-events-none absolute inset-0">
+
+          <div
+            className="
+              absolute
+              -right-40
+              -top-40
+              h-[600px]
+              w-[600px]
+              rounded-full
+              bg-[#5428B0]/[0.06]
+              blur-[120px]
+            "
+          />
+
+          <div
+            className="
+              absolute
+              -bottom-40
+              -left-40
+              h-[500px]
+              w-[500px]
+              rounded-full
+              bg-[#F8CC10]/[0.08]
+              blur-[120px]
+            "
+          />
+
+          {/* Grid */}
+
+          <div
+            className="
+              absolute
+              inset-0
+              opacity-[0.025]
+              [background-image:linear-gradient(#5428B0_1px,transparent_1px),linear-gradient(90deg,#5428B0_1px,transparent_1px)]
+              [background-size:70px_70px]
+            "
+          />
+
+        </div>
       {/* Badge */}
       <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-xs font-semibold tracking-wide text-gray-700">
         <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
@@ -276,9 +318,9 @@ function LeftContent() {
 
       {/* Heading */}
       <h1 className="
-        font-extrabold leading-[1.05]
+        text-4xl font-extrabold leading-[1.05]
         tracking-[-0.045em] text-gray-950
-        text-5xl md:text-8xl
+        sm:text-5xl md:text-7xl
         lg:text-[clamp(48px,4vw,68px)]
         xl:text-[clamp(54px,4vw,72px)]
       ">
