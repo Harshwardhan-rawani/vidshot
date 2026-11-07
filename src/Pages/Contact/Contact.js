@@ -19,8 +19,8 @@ import nidhi from "../../Images/client/nidhi aneja.png";
 import dhiren from "../../Images/client/dhiren bontra.jpeg";
 import ssalam from "../../Images/client/ssalam.jpeg";
 
-const SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL || "";
-
+const SCRIPT_URL ="https://script.google.com/macros/s/AKfycbwzTGEAXIDYrgEKVOfueHqs31i2_quwVfS_HGQJTDC0f7YrjqbKQFMAF-KHxCzAn7nY/exec";
+console.log("SCRIPT_URL:", SCRIPT_URL) ;
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
