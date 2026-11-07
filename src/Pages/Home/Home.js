@@ -4,7 +4,6 @@ import FeedbackMarquee from '../../component/Cards/FeedbackMarquee';
 import TrustedPartners from '../../component/TrustedPartner/TrustedPartners';
 import ServicesSection from '../../component/Cards/ServicesSection';
 import OurClients from '../../component/ourclient/OurClients';
-import Stepper from '../../component/Stepper/Stepper';
 import OurVision from '../../component/ourvision/OurVision';
 
 import AnimatedButton1 from '../../component/Button/AnimatedButton1';
@@ -27,7 +26,148 @@ export default function Home() {
 
      <TrustedPartners/>
      <ServicesSection/>
-     <Stepper/>
+   
+         <section className="bg-white py-24 sm:py-10">
+   
+           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+   
+             <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
+   
+               <div>
+   
+                 <div className="mb-5 flex items-center gap-3">
+   
+                   <span className="h-2 w-2 rounded-full bg-[#F8CC10]" />
+   
+                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#5428B0]">
+                     Our process
+                   </span>
+   
+                 </div>
+   
+                 <h2
+                   className="
+                     text-4xl
+                     font-black
+                     leading-[0.95]
+                     tracking-[-0.06em]
+   
+                     sm:text-5xl
+                     md:text-6xl
+                   "
+                 >
+                   Simple process.
+   
+                   <br />
+   
+                   <span className="text-[#5428B0]">
+                     Serious output.
+                   </span>
+                 </h2>
+   
+                 <p className="mt-6 max-w-md text-base leading-7 text-[#71697e]">
+                   We keep the process collaborative, transparent and
+                   focused on creating work that actually moves your
+                   brand forward.
+                 </p>
+   
+               </div>
+   
+               <div className="space-y-0">
+   
+                 {[
+                   [
+                     "01",
+                     "Discover",
+                     "We understand your brand, audience, goals and the problem we're solving.",
+                   ],
+                   [
+                     "02",
+                     "Define",
+                     "We turn the initial idea into a clear creative direction and production plan.",
+                   ],
+                   [
+                     "03",
+                     "Create",
+                     "Our team handles production, design, editing, motion and everything in between.",
+                   ],
+                   [
+                     "04",
+                     "Deliver",
+                     "You get polished, platform-ready content built to perform.",
+                   ],
+                 ].map(([number, title, text], index) => (
+   
+                   <motion.div
+                     key={number}
+                     initial={{
+                       opacity: 0,
+                       x: 30,
+                     }}
+                     whileInView={{
+                       opacity: 1,
+                       x: 0,
+                     }}
+                     viewport={{
+                       once: true,
+                     }}
+                     transition={{
+                       delay: index * 0.1,
+                     }}
+                     className="
+                       group
+                       grid
+                       grid-cols-[55px_1fr]
+                       gap-5
+                       border-t
+                       border-[#17122a]/10
+                       py-7
+   
+                       md:grid-cols-[70px_1fr]
+                     "
+                   >
+   
+                     <span
+                       className="
+                         text-sm
+                         font-black
+                         text-[#5428B0]
+                       "
+                     >
+                       {number}
+                     </span>
+   
+                     <div>
+   
+                       <h3
+                         className="
+                           text-xl
+                           font-black
+                           tracking-[-0.04em]
+                           transition-colors
+                           group-hover:text-[#5428B0]
+                         "
+                       >
+                         {title}
+                       </h3>
+   
+                       <p className="mt-2 max-w-xl text-sm leading-6 text-[#71697e]">
+                         {text}
+                       </p>
+   
+                     </div>
+   
+                   </motion.div>
+   
+                 ))}
+   
+               </div>
+   
+             </div>
+   
+           </div>
+   
+         </section>
      <OurClients/>
      <OurVision/>
 
