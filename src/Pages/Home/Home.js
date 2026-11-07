@@ -10,13 +10,9 @@ import OurVision from '../../component/ourvision/OurVision';
 import AnimatedButton1 from '../../component/Button/AnimatedButton1';
 import { motion } from 'framer-motion';
 import Hero from '../../component/Hero/Hero';
+import MetricsSection from '../../component/Cards/MetricsSection';
 
-const metrics = [
-  { value: '120+', label: 'brand stories launched' },
-  { value: '4.9/5', label: 'average client rating' },
-  { value: '8x', label: 'faster campaign turnaround' },
-  { value: '28K', label: 'monthly views generated' },
-];
+
 
 
 
@@ -26,15 +22,8 @@ export default function Home() {
     <div className="mx-auto max-w-9xl bg-white px-4 py-8 sm:px-6 lg:px-8 mt-20">
      
      <Hero/>
-    
-      <section className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {metrics.map((item) => (
-          <div key={item.label} className="rounded-[26px] border border-slate-200 bg-white/70 p-6 shadow-sm">
-            <div className="text-3xl font-black tracking-[-0.06em] text-[#111827]">{item.value}</div>
-            <p className="mt-2 text-sm uppercase tracking-[0.12em] text-slate-500">{item.label}</p>
-          </div>
-        ))}
-      </section>
+    <MetricsSection/>
+
 
      <TrustedPartners/>
      <ServicesSection/>

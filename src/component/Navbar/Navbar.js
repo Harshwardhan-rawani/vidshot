@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import AnimatedButton from "../Button/AnimatedButton";
+import vidshot from "../../icons/vidshot.png";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -52,23 +53,23 @@ export default function Navbar() {
         <div className="flex h-[72px] items-center justify-between gap-6">
 
           {/* LOGO */}
-          <Link
-            to="/"
-            className="group inline-flex shrink-0 items-center gap-2"
-            aria-label="VidShot Media home"
-          >
-            {/* Logo text */}
-
-              <span
-                className="
-                  text-2xl
-                  font-black
-                  tracking-[-0.06em]
-                "
-              >
-                VID<span className="text-[#F8CC10]">SHOT</span>
-              </span>
-          </Link>
+         <Link
+  to="/"
+  className="group inline-flex shrink-0 items-center"
+  aria-label="VidShot Media home"
+>
+  <img
+    src= {vidshot}
+    alt="VidShot Media"
+    className="
+    rounded-lg
+      h-10
+      w-auto
+      object-contain
+      
+    "
+  />
+</Link>
 
           {/* DESKTOP NAVIGATION */}
           <nav
@@ -105,22 +106,7 @@ export default function Navbar() {
           className="md:block hidden"
           text="Let's Talk"
           to = "/contact"/>
-          {/* <Link
-            to="/contact"
-            className="
-              hidden items-center gap-2 rounded-full
-              bg-[#5428B0] px-5 py-2.5
-              text-[13px] font-semibold text-white
-              transition-all duration-300
-              hover:bg-[#43208E] hover:shadow-lg
-              active:scale-95 md:inline-flex
-            "
-          >
-            Let's Talk
-            <span aria-hidden="true" className="text-base">
-              ↗
-            </span>
-          </Link> */}
+      
 
           {/* MOBILE MENU BUTTON */}
           <button

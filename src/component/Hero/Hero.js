@@ -1,5 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+import { useEffect, useState } from "react";
 import AnimatedButton from '../../component/Button/AnimatedButton';
 import TrustedClients from '../../component/Button/TrustedClients';
 
@@ -43,16 +45,16 @@ const services = [
     size: "medium",
     rotate: -1,
   },
-  {
-    id: 4,
-    title: "Performance Marketing",
-    category: "GROWTH",
-    description: "Turn campaigns into measurable results.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=85",
-    size: "small",
-    rotate: 2,
-  },
+ {
+  id: 4,
+  title: "Content Writing",
+  category: "CREATIVE",
+  description: "Craft compelling content that tells your brand story and connects with your audience.",
+  image:
+    "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=85",
+  size: "small",
+  rotate: 2,
+},
   {
     id: 5,
     title: "Meta Ads",
@@ -247,6 +249,116 @@ const ServiceCollage = ({
   );
 };
 
+
+
+const words = ["Impact", "Influence", "Growth"];
+
+function LeftContent() {
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative z-10 max-w-2xl">
+
+      {/* Badge */}
+      <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-xs font-semibold tracking-wide text-gray-700">
+        <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
+        Creative Motion Studio
+        <span className="text-[#F8CC10]">✦</span>
+      </div>
+
+      {/* Heading */}
+      <h1 className="
+        text-4xl font-extrabold leading-[1.05]
+        tracking-[-0.045em] text-gray-950
+        sm:text-5xl md:text-6xl
+        lg:text-[clamp(48px,4vw,68px)]
+        xl:text-[clamp(54px,4vw,72px)]
+      ">
+        Building Brands.
+        <br />
+
+        <span className="inline-flex flex-wrap items-center gap-x-3">
+          Creating
+
+          <span className="relative inline-block min-w-[190px] sm:min-w-[250px]">
+
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={words[wordIndex]}
+                initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -25, filter: "blur(8px)" }}
+                transition={{ duration: 0.45, ease: "easeInOut" }}
+                className="relative z-10 inline-block text-[#5428B0]"
+              >
+                {words[wordIndex]}.
+              </motion.span>
+            </AnimatePresence>
+
+            {/* Yellow underline */}
+            <span className="absolute bottom-0 left-0 -z-0 h-2 w-full rounded-full bg-[#F8CC10]/70 sm:h-3" />
+
+          </span>
+        </span>
+      </h1>
+
+      {/* Two-line Description */}
+      <p className="
+        mt-6 max-w-lg
+        text-sm leading-7 text-gray-500
+        sm:text-base sm:leading-8
+      ">
+     From compelling content to high-impact campaigns, we turn creative ideas into powerful brand experiences. Driven by strategy, backed by creativity, and focused on results.
+      </p>
+
+      {/* Client Trust */}
+      <div className="mt-8">
+        <TrustedClients />
+      </div>
+
+      {/* Buttons */}
+      <div className="mt-9 flex flex-wrap items-center gap-4">
+        <AnimatedButton
+          text="Book a discovery call"
+          to="/contact"
+        />
+
+        <AnimatedButton1
+          text="Explore our work"
+          to="/portfolio"
+        />
+      </div>
+
+      {/* Bottom trust indicator */}
+      <div className="
+        mt-10 flex flex-wrap items-center gap-x-6 gap-y-3
+        border-t border-gray-100 pt-6
+        text-sm text-gray-500
+      ">
+        <span className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
+          Creative Excellence
+        </span>
+
+        <span className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-[#F8CC10]" />
+          Strategic Storytelling
+        </span>
+      </div>
+
+    </div>
+  );
+}
+
+
 function Hero() {
     
   return (
@@ -278,125 +390,7 @@ function Hero() {
 
         {/* ================= LEFT CONTENT ================= */}
 
-        <div className="relative z-10 max-w-2xl">
-
-          {/* Badge */}
-
-          <div
-            className="
-              mb-7 inline-flex items-center gap-2.5
-              rounded-full border border-gray-200
-              bg-gray-50 px-4 py-2
-              text-xs font-semibold
-              tracking-wide text-gray-700
-            "
-          >
-            <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
-
-            Creative Motion Studio
-
-            <span className="text-[#F8CC10]">✦</span>
-          </div>
-
-
-          {/* Heading */}
-
-        <h1 className="
-  text-4xl
-  font-extrabold
-  leading-[0.98]
-  tracking-[-0.045em]
-  text-gray-950
-
-  sm:text-5xl
-  md:text-6xl
-
-  lg:text-[clamp(48px,4vw,68px)]
-  xl:text-[clamp(54px,4vw,72px)]
-">
-            Ideas That Capture.
-
-
-            <span className="relative inline-block">
-
-              <span className="relative z-10">
-               Stories That Convert.
-              </span>
-
-              <span
-                className="
-                  absolute bottom-1 left-0 -z-0
-                  h-2 w-full rounded-full
-                  bg-[#F8CC10]/70
-                  sm:h-3
-                "
-              />
-
-            </span>{" "}
-          </h1>
-
-
-          {/* Description */}
-
-       <p className="
-  mt-4 max-w-lg
-  text-sm leading-6
-  text-gray-500
-  sm:text-base sm:leading-7
-">
-            We create powerful visuals and digital experiences that make brands stand out. 
-            From content to campaigns, we turn creativity into growth.
-          </p>
-
-
-          {/* Client Trust */}
-
-          <div className="mt-8">
-            <TrustedClients />
-          </div>
-
-
-          {/* Buttons */}
-
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-
-            <AnimatedButton
-              text="Book a discovery call"
-              to="/contact"
-            />
-
-            <AnimatedButton1
-              text="Explore our work"
-              to="/portfolio"
-            />
-
-          </div>
-
-
-          {/* Bottom trust indicator */}
-
-          <div
-            className="
-              mt-10 flex flex-wrap items-center
-              gap-x-6 gap-y-3
-              border-t border-gray-100
-              pt-6 text-sm text-gray-500
-            "
-          >
-
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
-              Creative Excellence
-            </span>
-
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#F8CC10]" />
-              Strategic Storytelling
-            </span>
-
-          </div>
-
-        </div>
+     <LeftContent/>
 
 
         {/* ================= RIGHT VISUAL ================= */}

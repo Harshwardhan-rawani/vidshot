@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AnimatedButton1 from "../Button/AnimatedButton1";
 import { motion } from "framer-motion";
+import vidshot from "../../icons/vidshot.png";
 const footerLinks = {
   company: [
     { name: "About", path: "/about" },
@@ -212,50 +213,23 @@ export default function Footer() {
 
             {/* Logo */}
 
-            <Link
-              to="/"
-              className="
-                group
-                inline-flex
-                items-center
-                gap-3
-              "
-            >
-              {/* Logo mark */}
-
-              <span
-                className="
-                  flex
-                  h-12
-                  w-12
-                  items-center
-                  justify-center
-                  rounded-2xl
-                  bg-[#F8CC10]
-                  text-xl
-                  font-black
-                  text-[#5428B0]
-                  shadow-[0_10px_30px_rgba(248,204,16,0.15)]
-                  transition-transform
-                  duration-300
-                  group-hover:rotate-3
-                "
-              >
-                V
-              </span>
-
-              {/* Logo text */}
-
-              <span
-                className="
-                  text-2xl
-                  font-black
-                  tracking-[-0.06em]
-                "
-              >
-                VID<span className="text-[#F8CC10]">SHOT</span>
-              </span>
-            </Link>
+                  <Link
+           to="/"
+           className="group inline-flex shrink-0 items-center"
+           aria-label="VidShot Media home"
+         >
+           <img
+             src= {vidshot}
+             alt="VidShot Media"
+             className="
+             rounded-lg
+               h-10
+               w-auto
+               object-contain
+               
+             "
+           />
+         </Link>
 
             <p
               className="
@@ -359,7 +333,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="tel:+919999999999"
+                href="tel:+918210882863"
                 className="
                   block
                   text-sm
@@ -369,7 +343,7 @@ export default function Footer() {
                   hover:text-white
                 "
               >
-                +91 821 088 2863
+                +91 821-088-2863
               </a>
 
               <p

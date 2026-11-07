@@ -295,7 +295,7 @@ export default function OurVision() {
               RIGHT — LIGHT ORBIT VISUAL
           ================================================= */}
 
-          <div className="relative mx-auto w-full max-w-[540px]">
+          <div className="relative mx-auto w-full max-w-[540px] hidden lg:block">
             <motion.div
               style={{
                 y: visualY,

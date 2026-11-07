@@ -6,7 +6,6 @@ import {
   X,
   Mail,
   Phone,
-  ArrowUpRight,
 } from "lucide-react";
 import AnimatedButton1 from "./AnimatedButton1";
 
@@ -15,13 +14,13 @@ const FloatingContact = () => {
 
   const contactLinks = [
     {
-      label: "hello@vidshotmedia.com",
-      href: "mailto:hello@vidshotmedia.com",
+      label: " vidshotmediaproduction@gmail.com",
+      href: "mailto: vidshotmediaproduction@gmail.com",
       icon: Mail,
     },
     {
-      label: "+91 12345 67890",
-      href: "tel:+911234567890",
+      label: "+91 821-088-2863",
+      href: "tel:+918210882863",
       icon: Phone,
     },
  
@@ -160,7 +159,7 @@ const FloatingContact = () => {
                         group/link
                         flex items-center
                         gap-3
-                        text-sm
+                        text-xs
                         text-white/90
                         transition-colors
                         hover:text-[#F8CC10]
@@ -173,17 +172,6 @@ const FloatingContact = () => {
 
                       <span>{item.label}</span>
 
-                      <ArrowUpRight
-                        size={14}
-                        className="
-                          ml-auto
-                          opacity-50
-                          transition-all
-                          group-hover/link:-translate-y-1
-                          group-hover/link:translate-x-1
-                          group-hover/link:opacity-100
-                        "
-                      />
                     </a>
                   );
                 })}

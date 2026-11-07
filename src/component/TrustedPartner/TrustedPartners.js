@@ -30,47 +30,60 @@ const brands = [
 
 export default function TrustedPartners() {
   return (
-    <section className="relative w-full overflow-hidden bg-white my-3">
+    <section className="relative my-3 w-full overflow-hidden bg-[#5428B0] py-7 sm:py-9">
 
+      {/* Background glow */}
+      <div className="pointer-events-none absolute -left-20 top-0 h-40 w-40 rounded-full bg-[#F8CC10]/10 blur-[80px]" />
+      <div className="pointer-events-none absolute -right-20 bottom-0 h-40 w-40 rounded-full bg-purple-300/20 blur-[80px]" />
 
-      {/* Header Divider */}
-      <div className="relative z-10 flex items-center">
+      {/* Top Divider */}
+      <div className="relative z-10 flex items-center gap-4 px-5 sm:px-10">
 
-        <div className="h-px flex-1 bg-[var(--primary)]" />
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/30 to-white/50" />
 
+        <span className="whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.25em] text-[#F8CC10] sm:text-[10px]">
+          Trusted Partners
+        </span>
 
-        <div className="h-px flex-1 bg-[#d8d8d8]" />
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent via-white/30 to-white/50" />
 
       </div>
 
       {/* Marquee */}
-      <div className="relative z-10 mt-5 ">
+      <div className="relative z-10 mt-7">
+
+        {/* Left Gradient */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-12 bg-gradient-to-r from-[#5428B0] to-transparent sm:w-24 lg:w-36" />
+
+        {/* Right Gradient */}
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-12 bg-gradient-to-l from-[#5428B0] to-transparent sm:w-24 lg:w-36" />
 
         <Marquee
-        className="overflow-hidden"
           direction="right"
-          speed={45}
+          speed={40}
           delay={0}
-          pauseOnHover={false}
-          gradient={true}
-          gradientColor="#ffffff"
-          gradientWidth={120}
+          pauseOnHover={true}
+          gradient={false}
           loop={0}
+          autoFill={true}
         >
-
           {brands.map((brand, index) => (
             <React.Fragment key={brand.name}>
 
-              {/* Brand */}
-              <div className="flex items-center px-8 md:px-10">
+              {/* Partner Name */}
+              <div className="group flex items-center px-6 sm:px-10 lg:px-12">
 
                 <span
                   className={`
                     whitespace-nowrap
-                    text-[18px]
+                    text-lg
                     leading-none
-                    text-[#111111]
-                    md:text-[25px]
+                    text-white/90
+                    transition-all
+                    duration-300
+                    group-hover:text-[#F8CC10]
+                    sm:text-xl
+                    md:text-2xl
                     ${brand.className}
                   `}
                 >
@@ -79,24 +92,20 @@ export default function TrustedPartners() {
 
               </div>
 
-              {/* Separator */}
-              {index !== brands.length - 1 && (
-                <span
-                  className="
-                    h-1.5
-                    w-1.5
-                    shrink-0
-                    rounded-full
-                    bg-[#555]
-                  "
-                />
-              )}
+              {/* Yellow Separator */}
+              <div className="flex items-center justify-center">
+                <span className="h-2 w-2 rounded-full bg-[#F8CC10] shadow-[0_0_12px_rgba(248,204,16,0.5)]" />
+              </div>
 
             </React.Fragment>
           ))}
-
         </Marquee>
 
+      </div>
+
+      {/* Bottom Divider */}
+      <div className="relative z-10 mt-7 px-5 sm:px-10">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       </div>
 
     </section>

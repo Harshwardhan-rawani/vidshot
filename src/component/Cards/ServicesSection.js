@@ -4,7 +4,7 @@ import {
   Play,
   Smartphone,
   Palette,
-  Megaphone,
+  PenTool,
   ArrowUpRight,
   Target,
 } from "lucide-react";
@@ -12,6 +12,9 @@ import {
 import videoediting from "../../Images/Services/Video_editing.jpeg"
 import social_media from "../../Images/Services/social media.png"
 import metaads from "../../Images/Services/metaads.png"
+import graphic from "../../Images/Services/Graphic.jpeg"
+import content from "../../Images/Services/content.jpeg"
+
 /* =========================================================
    SERVICES DATA
 ========================================================= */
@@ -68,26 +71,26 @@ const services = [
     ],
     icon: Palette,
     image:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=900&q=85"
+      graphic
   },
-
-  {
-    id: 4,
-    number: "04",
-    title: "Performance Marketing",
-    shortTitle: "Marketing",
-    description:
-      "Creative campaigns built around performance, helping brands turn attention into measurable business growth.",
-    tags: [
-      "Paid Ads",
-      "Campaigns",
-      "Performance Creative",
-      "Analytics",
-    ],
-    icon: Megaphone,
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=85"
-  },
+{
+  id: 4,
+  number: "04",
+  title: "Content Writing",
+  shortTitle: "Content",
+  description:
+    "Create engaging, compelling, and SEO-friendly content that communicates your brand message, connects with your audience, and turns ideas into meaningful engagement.",
+  tags: [
+    "Website Content",
+    "SEO Writing",
+    "Social Media Copy",
+    "Blog Writing",
+    "Brand Storytelling",
+  ],
+  icon: PenTool,
+  image:
+    content
+},
 
 {
   id: 5,
@@ -525,227 +528,284 @@ function ActiveService({ service }) {
 function MobileServiceCard({
   service,
   index,
+  isActive,
+  onClick,
 }) {
   const Icon = service.icon;
 
   return (
-    <motion.article
-      initial={{
-        opacity: 0,
-        y: 35,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.15,
-      }}
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{
-        duration: 0.65,
-        delay: index * 0.08,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.45,
+        delay: index * 0.06,
       }}
-      whileTap={{
-        scale: 0.985,
-      }}
-      className="
-        group
+      onClick={onClick}
+      className={`
         relative
+        w-full
         overflow-hidden
-        rounded-[26px]
+        rounded-[24px]
         border
-        border-slate-200
-        bg-white
-        shadow-[0_10px_35px_rgba(15,23,42,0.05)]
-      "
+        cursor-pointer
+        transition-colors duration-300
+        ${
+          isActive
+            ? "border-[#5428B0]/30 bg-[#121821]"
+            : "border-slate-200 bg-white"
+        }
+      `}
     >
 
-      {/* =================================================
-          IMAGE
-      ================================================= */}
+      {/* =================================
+          BACKGROUND IMAGE
+      ================================= */}
 
-      <div className="relative h-[220px] overflow-hidden">
+      <div className="absolute inset-0">
 
         <motion.img
           src={service.image}
           alt={service.title}
-          className="
-            h-full
-            w-full
+          animate={{
+            scale: isActive ? 1.05 : 1,
+          }}
+          transition={{ duration: 0.8 }}
+          className={`
+            h-full w-full
             object-cover
-          "
-          whileHover={{
-            scale: 1.06,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
+            transition-opacity duration-500
+            ${isActive ? "opacity-40" : "opacity-25"}
+          `}
         />
 
-        {/* Gradient */}
-
         <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-t
-            from-[#121821]/80
-            via-[#121821]/20
-            to-transparent
-          "
+          className={`
+            absolute inset-0
+            ${
+             isActive
+  ? "bg-gradient-to-r from-[#121821]/90 via-[#121821]/50 to-[#121821]/10"
+  : "bg-gradient-to-r from-[#121821]/75 via-[#121821]/30 to-transparent"
+            }
+          `}
         />
-
-        {/* Number */}
-
-        <div
-          className="
-            absolute
-            left-5
-            top-5
-            flex
-            h-10
-            w-10
-            items-center
-            justify-center
-            rounded-full
-            bg-white/90
-            text-xs
-            font-bold
-            text-[#121821]
-            backdrop-blur-sm
-          "
-        >
-          {service.number}
-        </div>
-
-        {/* Icon */}
-
-        <div
-          className="
-            absolute
-            right-5
-            top-5
-            flex
-            h-11
-            w-11
-            items-center
-            justify-center
-            rounded-full
-            bg-white
-            text-[#121821]
-            shadow-lg
-          "
-        >
-          <Icon size={18} />
-        </div>
 
       </div>
 
-      {/* =================================================
-          CONTENT
-      ================================================= */}
 
-      <div className="p-6">
+      {/* =================================
+          CARD HEADER
+      ================================= */}
 
-        <h3
-          className="
-            text-2xl
-            font-black
-            tracking-[-0.04em]
-            text-[#121821]
-          "
-        >
-          {service.title}
-        </h3>
+      <div
+        className="
+          relative z-10
+          flex items-center
+          justify-between
+          gap-3
+          px-5 py-5
+        "
+      >
 
-        <p
-          className="
-            mt-3
-            text-sm
-            leading-6
-            text-slate-500
-          "
-        >
-          {service.description}
-        </p>
+        {/* Number + Title */}
 
-        {/* Tags */}
+        <div className="flex min-w-0 items-center gap-4">
 
-        <div className="mt-5 flex flex-wrap gap-2">
+          <span className="
+            text-xs
+            font-bold
+            tracking-widest
+            text-[#F8CC10]
+          ">
+            {service.number}
+          </span>
 
-          {service.tags.map((tag) => (
-            <span
-              key={tag}
-              className="
-                rounded-full
-                border
-                border-slate-200
-                bg-slate-50
-                px-3
-                py-1.5
-                text-xs
-                font-medium
-                text-slate-600
-              "
-            >
-              {tag}
-            </span>
-          ))}
+          <div className="h-7 w-px bg-white/25" />
+
+          <h3 className="
+            truncate
+            text-base
+            font-bold
+            tracking-tight
+            text-white
+            sm:text-lg
+          ">
+            {service.shortTitle || service.title}
+          </h3>
 
         </div>
 
-        {/* CTA */}
 
-        <div
-          className="
-            mt-6
-            flex
-            items-center
-            justify-between
-            border-t
-            border-slate-100
-            pt-5
-          "
-        >
+        {/* Icon + Expand Indicator */}
 
-          <span
-            className="
-              text-sm
-              font-semibold
-              text-[#121821]
-            "
-          >
-            Explore service
-          </span>
+        <div className="flex shrink-0 items-center gap-3">
 
-          <motion.span
-            whileHover={{
-              rotate: 45,
+          <div className="
+            flex h-10 w-10
+            items-center justify-center
+            rounded-full
+            border border-white/20
+            bg-white/10
+            text-white
+            backdrop-blur-md
+          ">
+            <Icon size={19} />
+          </div>
+
+          <motion.div
+            animate={{
+              rotate: isActive ? 45 : 0,
             }}
+            transition={{ duration: 0.3 }}
             className="
-              flex
-              h-9
-              w-9
-              items-center
-              justify-center
+              flex h-7 w-7
+              items-center justify-center
               rounded-full
-              bg-[#121821]
-              text-white
-              transition-colors
-              duration-300
-              group-hover:bg-[#f15b38]
+              bg-[#F8CC10]
+              text-[#5428B0]
             "
           >
             <ArrowUpRight size={16} />
-          </motion.span>
+          </motion.div>
 
         </div>
 
       </div>
 
-    </motion.article>
+
+      {/* =================================
+          EXPANDED CONTENT
+      ================================= */}
+
+      <AnimatePresence initial={false}>
+
+        {isActive && (
+
+          <motion.div
+            initial={{
+              height: 0,
+              opacity: 0,
+            }}
+            animate={{
+              height: "auto",
+              opacity: 1,
+            }}
+            exit={{
+              height: 0,
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.45,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative z-10 overflow-hidden"
+          >
+
+            <div className="px-5 pb-6 pt-2">
+
+              {/* Divider */}
+
+              <div className="mb-5 h-px w-full bg-white/15" />
+
+
+              {/* Category */}
+
+              <p className="
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.2em]
+                text-[#F8CC10]
+              ">
+                Our Expertise
+              </p>
+
+
+              {/* Description */}
+
+              <p className="
+                mt-3
+                max-w-xl
+                text-sm
+                leading-7
+                text-white/75
+              ">
+                {service.description}
+              </p>
+
+
+              {/* Tags */}
+
+              <div className="mt-5 flex flex-wrap gap-2">
+
+                {service.tags.map((tag) => (
+
+                  <span
+                    key={tag}
+                    className="
+                      rounded-full
+                      border border-white/15
+                      bg-white/10
+                      px-3 py-2
+                      text-[10px]
+                      font-medium
+                      text-white/85
+                      backdrop-blur-sm
+                    "
+                  >
+                    {tag}
+                  </span>
+
+                ))}
+
+              </div>
+
+
+              {/* CTA */}
+
+              <a
+                href="/contact"
+                onClick={(e) => e.stopPropagation()}
+                className="
+                  mt-6
+                  inline-flex
+                  items-center
+                  gap-3
+                  rounded-full
+                  bg-[#F8CC10]
+                  px-5 py-3
+                  text-xs
+                  font-bold
+                  text-[#5428B0]
+                  transition-all
+                  hover:bg-white
+                "
+              >
+                Explore Service
+
+                <span className="
+                  flex h-6 w-6
+                  items-center justify-center
+                  rounded-full
+                  bg-[#5428B0]
+                  text-white
+                ">
+                  <ArrowUpRight size={14} />
+                </span>
+
+              </a>
+
+            </div>
+
+          </motion.div>
+
+        )}
+
+      </AnimatePresence>
+
+    </motion.div>
   );
 }
 
@@ -1053,24 +1113,25 @@ export default function ServicesSection() {
             Visible below lg
         ================================================= */}
 
-        <div
-          className="
-            flex
-            flex-col
-            gap-4
-            lg:hidden
-          "
-        >
+     <div className="flex flex-col gap-3 lg:hidden">
 
-          {services.map((service, index) => (
-            <MobileServiceCard
-              key={service.id}
-              service={service}
-              index={index}
-            />
-          ))}
+  {services.map((service, index) => {
+    const isActive = activeService === index;
 
-        </div>
+    return (
+      <MobileServiceCard
+        key={service.id}
+        service={service}
+        index={index}
+        isActive={isActive}
+        onClick={() =>
+          setActiveService(isActive ? -1 : index)
+        }
+      />
+    );
+  })}
+
+</div>
 
 
         {/* =================================================

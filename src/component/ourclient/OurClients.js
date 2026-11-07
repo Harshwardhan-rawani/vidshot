@@ -173,35 +173,35 @@ const orbitIcons = [
     name: "YouTube",
     icon: YoutubeIcon,
     angle: 60,
-    distance: 145,
+    distance: 150,
     orbit: "outer",
   },
   {
     name: "Facebook",
     icon: FacebookIcon,
     angle: 120,
-    distance: 145,
+    distance: 200,
     orbit: "outer",
   },
   {
     name: "Meta Ads",
     icon: MetaIcon,
     angle: 180,
-    distance: 145,
+    distance: 150,
     orbit: "outer",
   },
   {
     name: "Design",
     icon: PodcastIcon,
     angle: 240,
-    distance: 100,
+    distance: 200,
     orbit: "inner",
   },
   {
     name: "Video",
     icon: Videoediting,
     angle: 300,
-    distance: 100,
+    distance: 150,
     orbit: "inner",
   },
 ];
@@ -1112,9 +1112,11 @@ export default function OurClients() {
               ease: [0.22, 1, 0.36, 1],
             }}
             className="
+            
               relative
               mx-auto
-              flex
+              hidden
+              lg:flex
               aspect-square
               w-full
               max-w-[540px]
@@ -1161,8 +1163,8 @@ export default function OurClients() {
               }}
               className="
                 absolute
-                h-[88%]
-                w-[88%]
+                h-[80%]
+                w-[80%]
                 rounded-full
                 border
                 border-[#17122a]/10
@@ -1187,25 +1189,14 @@ export default function OurClients() {
               }}
               className="
                 absolute
-                h-[66%]
-                w-[66%]
+                h-[60%]
+                w-[60%]
                 rounded-full
                 border
                 border-[#17122a]/10
               "
             >
-              <span
-                className="
-                  absolute
-                  bottom-[-3px]
-                  left-1/2
-                  h-1.5
-                  w-1.5
-                  -translate-x-1/2
-                  rounded-full
-                  bg-[#5428B0]/50
-                "
-              />
+              
             </motion.div>
 
             {/* =================================================
@@ -1215,8 +1206,8 @@ export default function OurClients() {
             <div
               className="
                 absolute
-                h-[47%]
-                w-[47%]
+                h-[40%]
+                w-[40%]
                 rounded-full
                 border
                 border-[#17122a]/10
@@ -1251,14 +1242,7 @@ export default function OurClients() {
             ================================================== */}
 
             <motion.div
-              animate={{
-                scale: [1, 1.04, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            
               className="
                 relative
                 z-40
@@ -1276,16 +1260,7 @@ export default function OurClients() {
             >
               {/* Purple ring */}
 
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-[-12px]
-                  rounded-full
-                  border
-                  border-[#5428B0]/20
-                "
-              />
+            
 
               {/* Yellow ring */}
 
