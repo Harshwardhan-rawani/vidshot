@@ -7,7 +7,6 @@ import {
   Mail,
   Phone,
   ArrowUpRight,
-  Target,
 } from "lucide-react";
 import AnimatedButton1 from "./AnimatedButton1";
 
