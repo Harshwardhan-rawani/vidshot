@@ -316,7 +316,7 @@ function LeftContent() {
         text-sm leading-7 text-gray-500
         sm:text-base sm:leading-8
       ">
-     From compelling content to high-impact campaigns, we turn creative ideas into powerful brand experiences. Driven by strategy, backed by creativity, and focused on results.
+     From compelling content to high-impact campaigns, we turn creative idea into powerful brand experiences. Driven by strategy, backed by creativity, and focused on results.
       </p>
 
       {/* Client Trust */}
