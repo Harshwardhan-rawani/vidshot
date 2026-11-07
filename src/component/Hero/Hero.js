@@ -278,7 +278,7 @@ function LeftContent() {
       <h1 className="
         text-4xl font-extrabold leading-[1.05]
         tracking-[-0.045em] text-gray-950
-        sm:text-5xl md:text-6xl
+        sm:text-6xl md:text-7xl
         lg:text-[clamp(48px,4vw,68px)]
         xl:text-[clamp(54px,4vw,72px)]
       ">

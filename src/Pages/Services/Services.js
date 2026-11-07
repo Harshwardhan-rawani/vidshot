@@ -113,7 +113,7 @@ const cardPositions = [
 
           {/* LEFT SIDE - ACTIVE SERVICE PREVIEW */}
 
-          <div className="relative min-h-[440px] overflow-hidden rounded-[28px] bg-[#121821] shadow-xl sm:min-h-[500px] lg:min-h-[620px]">
+          <div className="relative min-h-[600px] overflow-hidden rounded-[28px] bg-[#121821] shadow-xl sm:min-h-[600px] lg:min-h-[620px]">
 
             <AnimatePresence mode="wait">
 
