@@ -577,7 +577,7 @@ function MobileServiceCard({
             h-full w-full
             object-cover
             transition-opacity duration-500
-            ${isActive ? "opacity-40" : "opacity-25"}
+           
           `}
         />
 
@@ -587,7 +587,7 @@ function MobileServiceCard({
             ${
              isActive
   ? "bg-gradient-to-r from-[#121821]/90 via-[#121821]/50 to-[#121821]/10"
-  : "bg-gradient-to-r from-[#121821]/75 via-[#121821]/30 to-transparent"
+  : "bg-gradient-to-r from-[#121821]/75 to-[#121821]/75"
             }
           `}
         />
@@ -766,7 +766,7 @@ function MobileServiceCard({
               {/* CTA */}
 
               <a
-                href="/contact"
+                href="/services"
                 onClick={(e) => e.stopPropagation()}
                 className="
                   mt-6
