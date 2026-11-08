@@ -1,11 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AnimatedButton1 from "../Button/AnimatedButton1";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import {
+  FiInstagram,
+  FiLinkedin,
+  FiYoutube,
+  FiFacebook,
+  FiMail,
+  FiPhone,
+  FiMapPin,
+} from "react-icons/fi";
+
 import vidshot from "../../icons/vidshot.png";
+
+// Client Images
+import deepak from "../../Images/client/deepak pandey.jpeg";
+import mohit from "../../Images/client/mohit Beriwala.jpeg";
+import deven from "../../Images/client/deven u pandey.jpeg";
+import nidhi from "../../Images/client/nidhi aneja.png";
+import dhiren from "../../Images/client/dhiren bontra.jpeg";
+import AnimatedButton from "../Button/AnimatedButton";
+
 const footerLinks = {
   company: [
-    { name: "About", path: "/about" },
+    { name: "About Us", path: "/about" },
     { name: "Our Work", path: "/portfolio" },
     { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" },
@@ -19,512 +38,470 @@ const footerLinks = {
   ],
 };
 
+const clients = [
+  { image: deepak, name: "Deepak Pandey" },
+  { image: mohit, name: "Mohit Beriwala" },
+  { image: deven, name: "Deven Pandey" },
+  { image: nidhi, name: "Nidhi Aneja" },
+  { image: dhiren, name: "Dhiren Bontra" },
+];
+
 export default function Footer() {
   return (
-    <footer className="relative mt-20 overflow-hidden bg-[#5428B0] text-white">
+    <footer className="relative bg-[#f8f8f8] text-[#171717] overflow-hidden pt-16">
 
-      {/* =========================================
-          BACKGROUND DECORATION
-      ========================================= */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-40
-          -top-40
-          h-[500px]
-          w-[500px]
-          rounded-full
-          bg-[#F8CC10]/10
-          blur-3xl
-        "
-      />
+        {/* ===================================
+            TOP CTA CARD
+        =================================== */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -bottom-40
-          -left-40
-          h-[450px]
-          w-[450px]
-          rounded-full
-          bg-[#351477]/40
-          blur-3xl
-        "
-      />
+        <div className="
+          relative overflow-hidden
+          min-h-[270px]
+          bg-white
+          rounded-[28px]
+          border border-gray-100
+          shadow-[0_15px_45px_rgba(0,0,0,0.06)]
+          grid grid-cols-1 lg:grid-cols-2
+        ">
 
-      {/* =========================================
-          MAIN CONTAINER
-      ========================================= */}
+          {/* Left Content */}
+          <div className="
+            relative z-10
+            flex flex-col justify-center
+            p-7 sm:p-10 lg:p-12
+          ">
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+            <div className="flex items-center gap-2 mb-5">
 
-        {/* =========================================
-            CTA SECTION
-        ========================================= */}
+              <span className="w-2 h-2 rounded-full bg-[#F8CC10]" />
 
-        <div
-          className="
-            relative
-            overflow-hidden
-            border-b
-            border-white/15
-            py-16
-            sm:py-20
-            lg:py-24
-          "
-        >
-          <div
-            className="
-              absolute
-              right-0
-              top-1/2
-              hidden
-              h-48
-              w-48
-              -translate-y-1/2
-              rounded-full
-              bg-[#F8CC10]
-              opacity-10
-              blur-3xl
-              lg:block
-            "
-          />
-
-          <div
-            className="
-              relative
-              flex
-              flex-col
-              gap-8
-              lg:flex-row
-              lg:items-end
-              lg:justify-between
-            "
-          >
-            {/* Heading */}
-
-            <div className="max-w-3xl">
-
-              <motion.div
-                    initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-                className="
-                  mb-5
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  border
-                  border-white/15
-                  bg-white/10
-                  px-4
-                  py-2
-                  text-xs
-                  font-semibold
-                  uppercase
-                  tracking-[0.18em]
-                  text-white/80
-                  backdrop-blur-md
-                "
-              >
-                <span className="h-2 w-2 rounded-full bg-[#F8CC10]" />
-
-                Let's create something
-              </motion.div>
-
-              <motion.h2
-                    initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 1,
-          }}
-                className="
-                  max-w-3xl
-                  text-4xl
-                  font-black
-                  leading-[0.95]
-                  tracking-[-0.06em]
-                  sm:text-5xl
-                  lg:text-7xl
-                "
-              >
-                Your next story
-                <span className="text-[#F8CC10]"> starts here.</span>
-              </motion.h2>
-
-              <p
-                className="
-                  mt-5
-                  max-w-xl
-                  text-base
-                  leading-7
-                  text-white/65
-                  sm:text-lg
-                "
-              >
-                Have an idea, campaign, or story in mind?
-                Let's turn it into something people remember.
+              <p className="text-[10px] font-semibold uppercase tracking-[3px] text-[#5428B0]">
+                Let's work together
               </p>
+
             </div>
 
-            {/* CTA Button */}
+            <h2 className="
+              text-3xl sm:text-4xl
+              font-bold tracking-tight
+              leading-tight
+              max-w-lg
+            ">
+              Your next big idea
+              <span className="text-[#5428B0]"> starts here.</span>
+            </h2>
 
-            <AnimatedButton1
-            text = "Start a Project"
-            to = "/contact" />
-          </div>
-        </div>
-
-        {/* =========================================
-            FOOTER CONTENT
-        ========================================= */}
-
-        <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] lg:gap-10 lg:py-16">
-
-          {/* =====================================
-              BRAND
-          ===================================== */}
-
-          <div className="max-w-sm">
-
-            {/* Logo */}
-
-                  <Link
-           to="/"
-           className="group inline-flex shrink-0 items-center"
-           aria-label="VidShot Media home"
-         >
-           <img
-             src= {vidshot}
-             alt="VidShot Media"
-             className="
-             rounded-lg
-               h-10
-               w-auto
-               object-contain
-               
-             "
-           />
-         </Link>
-
-            <p
-              className="
-                mt-6
-                text-sm
-                leading-6
-                text-white/60
-              "
-            >
-              A creative production studio helping brands,
-              founders, and creators turn ideas into cinematic
-              stories that move people.
+            <p className="my-3 text-sm text-gray-500 leading-relaxed max-w-md">
+              From creative storytelling to powerful digital campaigns,
+              let's build something people remember.
             </p>
 
-            {/* Social icons */}
-
-            <div className="mt-7 flex items-center gap-3">
-
-              <SocialLink
-                href="#"
-                label="Instagram"
-              >
-                ◎
-              </SocialLink>
-
-              <SocialLink
-                href="#"
-                label="LinkedIn"
-              >
-                in
-              </SocialLink>
-
-              <SocialLink
-                href="#"
-                label="YouTube"
-              >
-                ▶
-              </SocialLink>
-
-              <SocialLink
-                href="#"
-                label="X"
-              >
-                𝕏
-              </SocialLink>
-
-            </div>
+         
+             <AnimatedButton
+              text="Start Your Project"
+              to="/contact"/>
           </div>
 
-          {/* =====================================
-              COMPANY
-          ===================================== */}
 
+          {/* Right: Client Orbit Design */}
+          <div className="
+            relative
+            min-h-[260px]
+            lg:min-h-full
+            flex items-center justify-center
+            overflow-hidden
+          ">
+
+            {/* Background Circle */}
+            <div className="
+              absolute
+              w-[340px] h-[340px]
+              sm:w-[420px] sm:h-[420px]
+              rounded-full
+              border border-[#5428B0]/[0.07]
+            " />
+
+            {/* Orbit 1 */}
+            <div className="
+              absolute
+              w-[260px] h-[260px]
+              sm:w-[320px] sm:h-[320px]
+              rounded-full
+              border border-dashed border-[#5428B0]/15
+            " />
+
+            {/* Orbit 2 */}
+            <div className="
+              absolute
+              w-[165px] h-[165px]
+              sm:w-[210px] sm:h-[210px]
+              rounded-full
+              border border-[#5428B0]/15
+            " />
+
+            {/* Center Logo */}
+            <div className="
+              relative z-10
+              w-24 h-24
+              rounded-full
+              bg-[#5503b0]
+              border border-[#5503b0]
+              shadow-[0_5px_25px_rgba(0,0,0,0.08)]
+              flex items-center justify-center
+            ">
+              <img
+                src={vidshot}
+                alt="VidShot Media"
+                className="w-20 h-20 object-contain"
+              />
+            </div>
+
+            {/* Client Avatars */}
+            {clients.map((client, index) => {
+              const positions = [
+                "top-[8%] left-[49%] -translate-x-1/2",
+                "top-[28%] right-[15%]",
+                "bottom-[20%] right-[20%]",
+                "bottom-[20%] left-[18%]",
+                "top-[28%] left-[15%]",
+              ];
+
+              return (
+                <motion.div
+                  key={client.name}
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.12,
+                  }}
+                  whileHover={{ scale: 1.15 }}
+                  className={`
+                    absolute z-20
+                    ${positions[index]}
+                    group
+                  `}
+                >
+                  <div className="
+                    relative
+                    w-11 h-11 sm:w-12 sm:h-12
+                    rounded-full
+                    border-[3px] border-white
+                    shadow-md
+                    overflow-hidden
+                    bg-[#F8CC10]
+                  ">
+                    <img
+                      src={client.image}
+                      alt={client.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Tooltip */}
+                  <span className="
+                    absolute left-1/2 -translate-x-1/2
+                    top-full mt-2
+                    whitespace-nowrap
+                    rounded-md
+                    bg-[#171717]
+                    text-white
+                    text-[9px]
+                    px-2 py-1
+                    opacity-0
+                    group-hover:opacity-100
+                    transition-opacity
+                    pointer-events-none
+                  ">
+                    {client.name}
+                  </span>
+                </motion.div>
+              );
+            })}
+
+            {/* Yellow Decorative Dot */}
+            <div className="
+              absolute top-[18%] right-[27%]
+              w-3 h-3 rounded-full
+              bg-[#F8CC10]
+            " />
+
+            <div className="
+              absolute bottom-[13%] right-[43%]
+              w-2 h-2 rounded-full
+              bg-[#5428B0]
+            " />
+
+          </div>
+
+        </div>
+
+
+        {/* ===================================
+            FOOTER CONTENT
+        =================================== */}
+
+        <div className="
+          grid grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-[1.5fr_0.8fr_1fr_1.2fr]
+          gap-10 lg:gap-12
+          py-16
+        ">
+
+          {/* Brand */}
+          <div className="max-w-xs">
+
+                  <Link
+            to="/"
+            className="group inline-flex shrink-0 items-center"
+            aria-label="VidShot Media home"
+          >
+            <img
+              src= {vidshot}
+              alt="VidShot Media"
+              className="
+              rounded-lg
+                h-10
+                w-auto
+                object-contain
+                
+              "
+            />
+          </Link>
+
+            <p className="
+              mt-5
+              text-xs
+              leading-6
+              text-gray-500
+            ">
+              A creative production studio helping brands, founders,
+              and creators turn ideas into cinematic stories that
+              move people.
+            </p>
+
+            {/* Social Links */}
+          <div className="flex items-center gap-2 mt-6">
+
+  <SocialLink href="#" label="Instagram">
+    <FiInstagram size={17} />
+  </SocialLink>
+
+  <SocialLink href="#" label="LinkedIn">
+    <FiLinkedin size={17} />
+  </SocialLink>
+
+  <SocialLink href="#" label="YouTube">
+    <FiYoutube size={17} />
+  </SocialLink>
+
+  <SocialLink href="#" label="Facebook">
+    <FiFacebook size={17} />
+  </SocialLink>
+
+</div>
+
+          </div>
+
+
+          {/* Company */}
           <FooterColumn
             title="Company"
             links={footerLinks.company}
           />
 
-          {/* =====================================
-              SERVICES
-          ===================================== */}
 
+          {/* Services */}
           <FooterColumn
             title="Services"
             links={footerLinks.services}
           />
 
-          {/* =====================================
-              CONTACT
-          ===================================== */}
 
+          {/* Contact */}
           <div>
 
-            <p
-              className="
-                text-xs
-                font-bold
-                uppercase
-                tracking-[0.18em]
-                text-[#F8CC10]
-              "
-            >
-              Get in touch
-            </p>
+            <FooterHeading>Get in touch</FooterHeading>
 
             <div className="mt-5 space-y-4">
 
-              <a
-                href="mailto:vidshotmediaproduction@gmail.com"
-                className="
-                  block
-                  text-lg
-                  font-semibold
-                  text-white
-                  transition-colors
-                  duration-300
-                  hover:text-[#F8CC10]
-                "
-              >
-              vidshotmediaproduction@gmail.com
-              </a>
+           <a href="mailto:vidshotmediaproduction@gmail.com" className="flex items-start gap-2 text-xs text-gray-600 hover:text-[#5428B0]">
+  <FiMail size={15} className="shrink-0 mt-0.5 text-[#5428B0]" />
+  vidshotmediaproduction@gmail.com
+</a>
 
-              <a
-                href="tel:+918210882863"
-                className="
-                  block
-                  text-sm
-                  text-white/60
-                  transition-colors
-                  duration-300
-                  hover:text-white
-                "
-              >
-                +91 821-088-2863
-              </a>
+<a href="tel:+918210882863" className="flex items-center gap-2 text-xs text-gray-600 hover:text-[#5428B0]">
+  <FiPhone size={15} className="text-[#5428B0]" />
+  +91 821-088-2863
+</a>
 
-              <p
-                className="
-                  max-w-xs
-                  text-sm
-                  leading-6
-                  text-white/50
-                "
-              >
-                India · Working globally
-              </p>
+<div className="flex items-center gap-2 text-xs text-gray-500">
+  <FiMapPin size={15} className="text-[#5428B0]" />
+  India · Working globally
+</div>
 
             </div>
 
-            {/* Availability */}
-
-            <div
-              className="
-                mt-7
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                border
-                border-white/10
-                bg-white/[0.07]
-                px-3
-                py-2
-                text-xs
-                text-white/70
-                backdrop-blur-md
-              "
-            >
+            {/* Availability Badge */}
+            <div className="
+              mt-6 inline-flex items-center gap-2
+              rounded-full
+              bg-white
+              border border-gray-200
+              px-3 py-2
+            ">
               <span className="relative flex h-2 w-2">
-                <span
-                  className="
-                    absolute
-                    inline-flex
-                    h-full
-                    w-full
-                    animate-ping
-                    rounded-full
-                    bg-[#F8CC10]
-                    opacity-50
-                  "
-                />
-
-                <span
-                  className="
-                    relative
-                    inline-flex
-                    h-2
-                    w-2
-                    rounded-full
-                    bg-[#F8CC10]
-                  "
-                />
+                <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-50 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
               </span>
 
-              Available for new projects
+              <span className="text-[10px] font-medium text-gray-600">
+                Available for new projects
+              </span>
             </div>
+
           </div>
+
         </div>
 
-        {/* =========================================
+
+        {/* ===================================
             BOTTOM BAR
-        ========================================= */}
+        =================================== */}
 
-        <div
-          className="
-            flex
-            flex-col
-            gap-4
-            border-t
-            border-white/10
-            py-6
-            text-xs
-            text-white/45
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
-          "
-        >
+        <div className="
+          border-t border-gray-200
+          py-6
+          flex flex-col
+          sm:flex-row
+          items-start sm:items-center
+          justify-between
+          gap-4
+        ">
 
-          <p>
-            © {new Date().getFullYear()} VidShot. All rights reserved.
+          <p className="text-[11px] text-gray-400">
+            © {new Date().getFullYear()} VidShot Media. All rights reserved.
           </p>
 
-          <div className="flex flex-wrap items-center gap-5">
+          <div className="flex flex-wrap items-center gap-6">
 
             <Link
               to="/privacy"
-              className="transition-colors hover:text-white"
+              className="text-[11px] text-gray-500 hover:text-[#5428B0] transition-colors"
             >
-              Privacy
+              Privacy Policy
             </Link>
 
             <Link
               to="/terms"
-              className="transition-colors hover:text-white"
+              className="text-[11px] text-gray-500 hover:text-[#5428B0] transition-colors"
             >
-              Terms
+              Terms of Service
             </Link>
 
-            <Link
-              to="/cookies"
-              className="transition-colors hover:text-white"
+            <a
+              href="#top"
+              className="
+                flex items-center gap-1
+                text-[11px] font-semibold
+                text-[#5428B0]
+                hover:text-black
+                transition-colors
+              "
             >
-              Cookies
-            </Link>
+              Back to top
+              <ArrowUpRight size={13} />
+            </a>
 
           </div>
 
         </div>
+
       </div>
+
     </footer>
   );
 }
 
 
-/* =====================================================
-   FOOTER COLUMN
-===================================================== */
+// ===================================
+// FOOTER COLUMN
+// ===================================
 
 function FooterColumn({ title, links }) {
   return (
     <div>
-      <p
-        className="
-          text-xs
-          font-bold
-          uppercase
-          tracking-[0.18em]
-          text-[#F8CC10]
-        "
-      >
-        {title}
-      </p>
 
-      <ul className="mt-5 space-y-3.5">
+      <FooterHeading>{title}</FooterHeading>
+
+      <ul className="mt-5 space-y-4">
+
         {links.map((link) => (
           <li key={link.name}>
             <Link
               to={link.path}
               className="
-                group
-                inline-flex
-                items-center
-                gap-2
-                text-sm
-                text-white/60
-                transition-colors
-                duration-300
-                hover:text-white
+                group inline-flex items-center gap-2
+                text-xs text-gray-500
+                transition-colors duration-300
+                hover:text-[#5428B0]
               "
             >
-              <span
-                className="
-                  h-px
-                  w-0
-                  bg-[#F8CC10]
-                  transition-all
-                  duration-300
-                  group-hover:w-3
-                "
-              />
+              <span className="
+                w-0 h-px
+                bg-[#F8CC10]
+                transition-all duration-300
+                group-hover:w-3
+              " />
 
               {link.name}
+
+              <ArrowUpRight
+                size={11}
+                className="
+                  opacity-0 -translate-y-1
+                  transition-all duration-300
+                  group-hover:opacity-100
+                  group-hover:translate-y-0
+                "
+              />
             </Link>
           </li>
         ))}
+
       </ul>
+
     </div>
   );
 }
 
 
-/* =====================================================
-   SOCIAL LINK
-===================================================== */
+// ===================================
+// FOOTER HEADING
+// ===================================
+
+function FooterHeading({ children }) {
+  return (
+    <h3 className="
+      text-[11px]
+      font-bold
+      uppercase
+      tracking-[2px]
+      text-[#5428B0]
+    ">
+      {children}
+    </h3>
+  );
+}
+
+
+// ===================================
+// SOCIAL LINK
+// ===================================
 
 function SocialLink({ href, label, children }) {
   return (
@@ -532,26 +509,17 @@ function SocialLink({ href, label, children }) {
       href={href}
       aria-label={label}
       className="
-        flex
-        h-10
-        w-10
-        items-center
-        justify-center
+        w-9 h-9
+        flex items-center justify-center
         rounded-full
-        border
-        border-white/10
-        bg-white/[0.07]
-        text-sm
-        font-bold
-        text-white/70
-        backdrop-blur-md
-        transition-all
-        duration-300
+        border border-gray-200
+        bg-white
+        text-gray-500
+        transition-all duration-300
+        hover:bg-[#5428B0]
+        hover:border-[#5428B0]
+        hover:text-white
         hover:-translate-y-1
-        hover:border-[#F8CC10]/40
-        hover:bg-[#F8CC10]
-        hover:text-[#5428B0]
-        active:scale-95
       "
     >
       {children}

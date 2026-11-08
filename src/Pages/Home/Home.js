@@ -16,16 +16,16 @@ import MetricsSection from '../../component/Cards/MetricsSection';
 
 
 
-export default function Home() {
+export default function Home({services}) {
   return (
     <div className="mx-auto max-w-9xl bg-white px-4 py-8 sm:px-6 lg:px-8 mt-12">
      
-     <Hero/>
+     <Hero services={services}/>
     <MetricsSection/>
 
 
      <TrustedPartners/>
-     <ServicesSection/>
+     <ServicesSection services = {services} />
    
          <section className="bg-white py-24 sm:py-10">
    

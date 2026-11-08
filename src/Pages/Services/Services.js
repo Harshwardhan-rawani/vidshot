@@ -3,92 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import {
   ArrowUpRight,
-  Video,
-  Palette,
-  Smartphone,
-  PenTool,
-  Target,
 } from "lucide-react";
 
-import videoediting from "../../Images/Services/Video_editing.jpeg"
-import social_media from "../../Images/Services/social media.png"
-import metaads from "../../Images/Services/metaads.png"
-import graphic from "../../Images/Services/Graphic.jpeg"
-import content from "../../Images/Services/content.jpeg"
-
-const services = [
-  {
-    id: 1,
-    number: "01",
-    title: "Video Production",
-    shortTitle: "Video Production",
-    description:
-      "Bring your brand story to life with cinematic visuals, engaging storytelling, and professional video production that captures attention.",
-    tags: ["Video Editing", "Reels", "Commercials", "Promotional Videos"],
-    icon: Video,
-    image:
-      videoediting,
-  },
-  {
-    id: 2,
-    number: "02",
-    title: "Creative & Design",
-    shortTitle: "Creative Design",
-    description:
-      "Build a memorable visual identity with creative designs that communicate your brand personality and make your business stand out.",
-    tags: ["Brand Identity", "Graphic Design", "Thumbnails", "Creatives"],
-    icon: Palette,
-    image:
-      graphic,
-  },
-  {
-    id: 3,
-    number: "03",
-    title: "Social Media Management",
-    shortTitle: "Social Media",
-    description:
-      "Grow your digital presence through strategic content planning, consistent publishing, community engagement, and platform management.",
-    tags: ["Content Strategy", "Instagram", "Content Calendar", "Growth"],
-    icon: Smartphone,
-    image:
-      social_media,
-  },
-  
-  {
-    id: 4,
-    number: "04",
-    title: "Content Writing",
-    shortTitle: "Content Writing",
-    description:
-      "Communicate your brand message with powerful words, compelling storytelling, and content designed to connect with your audience.",
-    tags: ["Copywriting", "Social Captions", "Blogs", "Brand Messaging"],
-    icon: PenTool,
-    image:
-      content,
-  },
-{
-  id: 5,
-  number: "05",
-  title: "Meta Ads",
-  shortTitle: "Meta Ads",
-  description:
-    "Grow your business with result-driven advertising campaigns across Facebook and Instagram. Reach the right audience, generate quality leads, increase conversions, and maximize your return on ad spend.",
-  tags: [
-    "Facebook Ads",
-    "Instagram Ads",
-    "Audience Targeting",
-    "Lead Generation",
-    "ROAS",
-  ],
-  icon: Target,
-  image:
-    metaads,
-},
-];
 
 
 
-function ServiceCollage() {
+
+function ServiceCollage({services}) {
   const [activeService, setActiveService] = useState(services[0]);
 
 const cardPositions = [
@@ -101,20 +22,16 @@ const cardPositions = [
 ];
 
   return (
-    <section className="relative overflow-hidden bg-white px-4 lg:px-12">
+  <section className="relative w-full overflow-hidden bg-white px-4 lg:px-8">
 
-      <div className="mx-auto max-w-[1450px]">
+  <div className="w-full mx-auto">
 
-     
+    {/* TWO-SIDED LAYOUT */}
 
-        {/* TWO-SIDED LAYOUT */}
+    <div className="grid w-full grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-6">
 
-        <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
-
-          {/* LEFT SIDE - ACTIVE SERVICE PREVIEW */}
-
-          <div className="relative min-h-[600px] overflow-hidden rounded-[28px] bg-[#121821] shadow-xl sm:min-h-[600px] lg:min-h-[620px]">
-
+      {/* LEFT SIDE */}
+      <div className="relative min-h-[600px] overflow-hidden rounded-[28px] bg-[#121821] shadow-xl">
             <AnimatePresence mode="wait">
 
               <motion.div
@@ -376,26 +293,17 @@ const cardPositions = [
   );
 }
 
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-  },
 
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
-  },
-};
+/* =========================================
+   ANIMATION VARIANTS
+========================================= */
 
-const itemVariants = {
+
+const fadeUp = {
   hidden: {
     opacity: 0,
     y: 30,
   },
-
   visible: {
     opacity: 1,
     y: 0,
@@ -406,16 +314,25 @@ const itemVariants = {
   },
 };
 
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
 
 
 
-export default function Services() {
+
+export default function Services({services}) {
   
 
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-white py-24 sm:py-28 lg:py-36"
+      className="relative overflow-hidden bg-white py-24 md:py-24"
     >
       {/* =========================================================
           BACKGROUND
@@ -444,109 +361,39 @@ export default function Services() {
         {/* =========================================================
             HEADER
         ========================================================= */}
-     <motion.header
-  className="mb-14 max-w-5xl lg:mb-20"
-  variants={containerVariants}
-  initial="hidden"
-  animate="visible"
->
-  {/* Label */}
-  <motion.div
-    variants={itemVariants}
-    className="
-      mb-6
-      inline-flex
-      items-center
-      gap-2.5
-      rounded-full
-      border
-      border-[#5428B0]/15
-      bg-[#5428B0]/[0.04]
-      px-4
-      py-2
-      text-[10px]
-      font-bold
-      uppercase
-      tracking-[0.22em]
-      text-[#5428B0]
-    "
-  >
-    <span className="relative flex h-2 w-2">
-      <span
-        className="
-          absolute
-          h-full
-          w-full
-          animate-ping
-          rounded-full
-          bg-[#F8CC10]
-          opacity-70
-        "
-      />
-      <span className="relative h-2 w-2 rounded-full bg-[#F8CC10]" />
-    </span>
 
-    What We Do
-  </motion.div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+            className="text-center mb-12"
+          >
 
-  {/* Heading */}
-  <motion.h1
-    variants={itemVariants}
-    className="
-      max-w-4xl
-      text-5xl
-      font-black
-      leading-[0.95]
-      
-      text-[#17122a]
-      sm:text-5xl
-      md:text-6xl
-      lg:text-[4rem]
-    "
-  >
-    Creative Work{" "}
+            <motion.p
+              variants={fadeUp}
+              className="text-[10px] font-bold uppercase tracking-[3px] text-[#5428B0] mb-3"
+            >
+              The Story Behind VidShot
+            </motion.p>
 
-    <span className="relative inline-block text-[#5428B0]">
-      Built to Matter
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.06em]"
+            >
+              Our <span className="text-[#5428B0]">Services.</span>
+            </motion.h1>
 
-      <span
-        className="
-          absolute
-          -bottom-2
-          left-0
-          h-2
-          w-[75%]
-          rounded-full
-          bg-[#F8CC10]
-          sm:-bottom-3
-          sm:h-3
-        "
-      />
-    </span>
-  </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              className="text-sm text-gray-500 mt-4 max-w-md mx-auto leading-relaxed"
+            >
+              A creative team turning ideas into stories, experiences and
+              meaningful brand connections.
+            </motion.p>
 
-  {/* Description */}
-  <motion.p
-    variants={itemVariants}
-    className="
-      mt-7
-      max-w-2xl
-      text-base
-      leading-7
-      text-[#71697e]
-      sm:text-lg
-      sm:leading-8
-    "
-  >
-    We combine strategy, storytelling, design and technology to create
-    content that doesn't just look good — it gives brands something worth
-    remembering.
-  </motion.p>
-
- 
-</motion.header>
+          </motion.div>
      
-  <ServiceCollage/>
+  <ServiceCollage services={services}/>
       
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion} from "framer-motion";
 
+import vidshot from "../../icons/vidshot.png";
 import {
   ChevronLeft,
   ChevronRight,
@@ -1241,78 +1242,21 @@ export default function OurClients() {
                 CENTER PLANET
             ================================================== */}
 
-            <motion.div
-            
-              className="
-                relative
-                z-40
-                flex
-                h-[30%]
-                w-[30%]
-                flex-col
-                items-center
-                justify-center
-                rounded-full
-                bg-[#17122a]
-                text-center
-                shadow-[0_30px_80px_rgba(23,18,42,.20)]
-              "
-            >
-              {/* Purple ring */}
-
-            
-
-              {/* Yellow ring */}
-
-              <div
-                className="
-                  absolute
-                  inset-[-25px]
-                  rounded-full
-                  border
-                  border-[#F8CC10]/10
-                "
-              />
-
-              <span
-                className="
-                  text-[8px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.25em]
-                  text-white/40
-                  sm:text-[10px]
-                  md:text-xs
-                "
-              >
-                We create
-              </span>
-
-              <span
-                className="
-                  mt-1
-                  text-lg
-                  font-black
-                  tracking-[-0.05em]
-                  text-white
-                  sm:text-xl
-                  md:text-2xl
-                "
-              >
-                Impact
-              </span>
-
-              <div
-                className="
-                  mt-2
-                  h-1
-                  w-7
-                  rounded-full
-                  bg-[#F8CC10]
-                  sm:w-9
-                "
-              />
-            </motion.div>
+          <div className="
+                     relative z-10
+                     w-36 h-36
+                     rounded-full
+                     bg-[#5503b0]
+                     border border-[#5503b0]
+                     shadow-[0_5px_25px_rgba(0,0,0,0.08)]
+                     flex items-center justify-center
+                   ">
+                     <img
+                       src={vidshot}
+                       alt="VidShot Media"
+                       className="w-28 h-28 object-contain"
+                     />
+                   </div>
 
             {/* =================================================
                 FLOATING DOTS

@@ -1,76 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { useEffect, useState } from "react";
-import AnimatedButton from '../../component/Button/AnimatedButton';
-import TrustedClients from '../../component/Button/TrustedClients';
+import AnimatedButton from "../../component/Button/AnimatedButton";
+import AnimatedButton1 from "../../component/Button/AnimatedButton1";
+import { Star } from "lucide-react";
+import deepak from "../../Images/client/deepak pandey.jpeg"
+import mohit from "../../Images/client/mohit Beriwala.jpeg"
+import deven from "../../Images/client/deven u pandey.jpeg"
+import nidhi from "../../Images/client/nidhi aneja.png"
+import dhiren from "../../Images/client/dhiren bontra.jpeg" 
 
-import AnimatedButton1 from '../../component/Button/AnimatedButton1';
+// ========================================
+// GRID CONFIGURATION
+// ========================================
 
-import videoediting from "../../Images/Services/Video_editing.jpeg"
-import social_media from "../../Images/Services/social media.png"
-import metaads from "../../Images/Services/metaads.png"
+const gridSpans = [
+  // Card 1 - Large
+  "col-span-1 row-span-2 lg:col-span-3 lg:row-span-2",
 
+  // Card 2
+  "col-span-1 row-span-1 lg:col-span-3 lg:row-span-1",
 
+  // Card 3
+  "col-span-1 row-span-1 lg:col-span-3 lg:row-span-1",
 
-const services = [
-  {
-    id: 1,
-    title: "Video Editing",
-    category: "CREATIVE PRODUCTION",
-    description: "Stories that capture attention.",
-    image:
-      videoediting,
-    size: "large",
-    rotate: -2,
-    badge: null,
-  },
-  {
-    id: 2,
-    title: "Social Media Management",
-    category: "DIGITAL PRESENCE",
-    description: "Build a powerful digital identity.",
-    image:
-      social_media,
-    size: "medium",
-    rotate: 2,
-  },
-  {
-    id: 3,
-    title: "Graphic Design",
-    category: "DESIGN",
-    description: "Creative visuals that stand out.",
-    image:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=900&q=85",
-    size: "medium",
-    rotate: -1,
-  },
- {
-  id: 4,
-  title: "Content Writing",
-  category: "CREATIVE",
-  description: "Craft compelling content that tells your brand story and connects with your audience.",
-  image:
-    "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=85",
-  size: "small",
-  rotate: 2,
-},
-  {
-    id: 5,
-    title: "Meta Ads",
-    category: "ADVERTISING",
-    description: "Reach the right audience and grow faster.",
-    image:
-      metaads,
-    size: "small",
-    rotate: -2,
-    badge: "GROW YOUR BRAND",
-  },
+  // Card 4
+  "col-span-1 row-span-1 lg:col-span-3 lg:row-span-1",
+
+  // Card 5
+  "col-span-1 row-span-1 lg:col-span-3 lg:row-span-1",
 ];
 
-// Reusable service card
-const ServiceCard = ({ service, index }) => {
-  const isLarge = service.size === "large";
+
+// ========================================
+// SERVICE CARD
+// ========================================
+
+const ServiceCard = ({ service, index, gridSpan }) => {
 
   return (
     <motion.div
@@ -79,22 +45,27 @@ const ServiceCard = ({ service, index }) => {
         y: 35,
         rotate: service.rotate || 0,
       }}
+
       whileInView={{
         opacity: 1,
         y: 0,
         rotate: 0,
       }}
+
       viewport={{ once: true, amount: 0.2 }}
+
       transition={{
         duration: 0.65,
         delay: index * 0.1,
         ease: "easeOut",
       }}
+
       whileHover={{
         scale: 1.035,
         rotate: 0,
         zIndex: 20,
       }}
+
       className={`
         group relative isolate
         overflow-hidden
@@ -103,13 +74,12 @@ const ServiceCard = ({ service, index }) => {
         cursor-pointer
         min-h-[145px]
         lg:min-h-0
-        ${isLarge
-          ? "col-span-1 row-span-2 min-h-[240px] lg:col-span-3 lg:row-span-2"
-          : "col-span-1 lg:col-span-3"
-        }
+        ${gridSpan}
       `}
     >
-      {/* Background image */}
+
+      {/* Background Image */}
+
       <img
         src={service.image}
         alt={service.title}
@@ -123,7 +93,9 @@ const ServiceCard = ({ service, index }) => {
         "
       />
 
-      {/* Dark overlay */}
+
+      {/* Dark Overlay */}
+
       <div
         className="
           absolute inset-0
@@ -136,51 +108,61 @@ const ServiceCard = ({ service, index }) => {
         "
       />
 
-     
 
-      {/* Service information */}
+      {/* Service Information */}
+
       <div
-        className={`
+        className="
           absolute bottom-0 left-0 right-0
           p-3 sm:p-4
           text-white
-          ${isLarge ? "sm:p-5" : ""}
-        `}
+        "
       >
-        <span className="text-[9px] font-semibold tracking-wider text-[#F8CC10]">
-          {String(service.id).padStart(2, "0")} / {service.category}
+
+        <span className="
+          text-[9px]
+          font-semibold
+          tracking-wider
+          text-[#F8CC10]
+        ">
+          {String(service.id).padStart(2, "0")}
+          {service.category ? ` / ${service.category}` : ""}
         </span>
 
-        <h3
-          className={`
-            mt-1 font-bold
-            ${isLarge ? "text-lg sm:text-2xl" : "text-base sm:text-md"}
-          `}
-        >
+
+        <h3 className="
+          mt-1
+          font-bold
+          text-base
+          sm:text-xl
+        ">
           {service.title}
         </h3>
 
-   
       </div>
 
-      {/* Optional badge */}
+
+      {/* Optional Badge */}
+
       {service.badge && (
-        <span
-          className="
-            absolute right-3 top-3
-            rounded-full
-            bg-[#F8CC10]
-            px-2.5 py-1
-            text-[9px]
-            font-bold
-            text-black
-          "
-        >
+
+        <span className="
+          absolute right-3 top-3
+          rounded-full
+          bg-[#F8CC10]
+          px-2.5 py-1
+          text-[9px]
+          font-bold
+          text-black
+        ">
           {service.badge}
         </span>
+
       )}
 
-      {/* Hover arrow */}
+
+      {/* Hover Arrow */}
+
       <motion.div
         className="
           absolute right-4 bottom-4
@@ -198,176 +180,307 @@ const ServiceCard = ({ service, index }) => {
       >
         ↗
       </motion.div>
+
     </motion.div>
   );
 };
 
-// Main dynamic collage
+
+// ========================================
+// SERVICE COLLAGE
+// ========================================
+
 const ServiceCollage = ({
-  items = services,
+  services = [],
   className = "",
   showBackground = true,
 }) => {
+
+  if (!services.length) {
+    return (
+      <div className="w-full min-h-[300px] flex items-center justify-center">
+        <p className="text-gray-400 text-sm">
+          No services available.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className={`relative mx-auto w-full max-w-[560px] ${className}`}>
 
-      <div
-        className="
-          relative grid
-          grid-cols-2
-          gap-3
-          rounded-[28px]
-          p-3
-          sm:gap-4 sm:p-4
-          lg:grid-cols-6
-          lg:grid-rows-[135px_135px_135px]
-          lg:gap-3
-          overflow-hidden
-        "
-      >
+    <div className={`
+      relative mx-auto
+      w-full max-w-[620px]
+      ${className}
+    `}>
 
-        {/* Background decorations */}
+      <div className="
+        relative grid
+        grid-cols-2
+        gap-3
+        rounded-[28px]
+        p-3
+        sm:gap-4 sm:p-4
+
+        lg:grid-cols-6
+        lg:grid-rows-[135px_135px_135px]
+        lg:gap-3
+
+        overflow-hidden
+      ">
+
+
+        {/* Background Decorations */}
+
         {showBackground && (
           <>
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#5428B0]/20 blur-3xl" />
 
-            <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-[#F8CC10]/15 blur-3xl" />
+            <div className="
+              pointer-events-none
+              absolute -right-10 -top-10
+              h-40 w-40
+              rounded-full
+              bg-[#5428B0]/20
+              blur-3xl
+            " />
+
+            <div className="
+              pointer-events-none
+              absolute -bottom-10 -left-10
+              h-40 w-40
+              rounded-full
+              bg-[#F8CC10]/15
+              blur-3xl
+            " />
+
           </>
         )}
 
-        {/* Dynamic cards */}
-        {items.map((service, index) => (
+
+        {/* Service Cards */}
+
+        {services.map((service, index) => (
+
           <ServiceCard
-            key={service.id}
+            key={service.id ?? index}
             service={service}
             index={index}
+            gridSpan={gridSpans[index % gridSpans.length]}
           />
+
         ))}
 
       </div>
+
     </div>
+
   );
 };
 
 
+// ========================================
+// ROTATING WORDS
+// ========================================
 
 const words = ["Impact", "Influence", "Growth"];
 
+
+// ========================================
+// LEFT CONTENT
+// ========================================
+
 function LeftContent() {
+
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
+
     const interval = setInterval(() => {
+
       setWordIndex((prev) => (prev + 1) % words.length);
+
     }, 2500);
 
     return () => clearInterval(interval);
+
   }, []);
 
+
   return (
-    <div className="relative z-10 max-w-2xl">
-        {/* Background */}
 
-        <div className="pointer-events-none absolute inset-0">
+    <div className="relative z-10 w-full max-w-2xl">
 
-          <div
-            className="
-              absolute
-              -right-40
-              -top-40
-              h-[600px]
-              w-[600px]
-              rounded-full
-              bg-[#5428B0]/[0.06]
-              blur-[120px]
-            "
-          />
 
-          <div
-            className="
-              absolute
-              -bottom-40
-              -left-40
-              h-[500px]
-              w-[500px]
-              rounded-full
-              bg-[#F8CC10]/[0.08]
-              blur-[120px]
-            "
-          />
+      {/* Background */}
 
-          {/* Grid */}
+      <div className="pointer-events-none absolute inset-0">
 
-          <div
-            className="
-              absolute
-              inset-0
-              opacity-[0.025]
-              [background-image:linear-gradient(#5428B0_1px,transparent_1px),linear-gradient(90deg,#5428B0_1px,transparent_1px)]
-              [background-size:70px_70px]
-            "
-          />
+        <div className="
+          absolute -right-40 -top-40
+          h-[600px] w-[600px]
+          rounded-full
+          bg-[#5428B0]/[0.06]
+          blur-[120px]
+        " />
 
-        </div>
-      {/* Badge */}
-      <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-xs font-semibold tracking-wide text-gray-700">
-        <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
-        Creative Motion Studio
-        <span className="text-[#F8CC10]">✦</span>
+        <div className="
+          absolute -bottom-40 -left-40
+          h-[500px] w-[500px]
+          rounded-full
+          bg-[#F8CC10]/[0.08]
+          blur-[120px]
+        " />
+
+        <div className="
+          absolute inset-0
+          opacity-[0.025]
+          [background-image:linear-gradient(#5428B0_1px,transparent_1px),linear-gradient(90deg,#5428B0_1px,transparent_1px)]
+          [background-size:70px_70px]
+        " />
+
       </div>
 
+
+      {/* Badge */}
+
+      <div className="
+        mb-5 inline-flex
+        items-center gap-2.5
+        rounded-full
+        border border-gray-200
+        bg-gray-50
+        px-4 py-2
+        text-xs font-semibold
+        tracking-wide text-gray-700
+      ">
+
+        <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
+
+        Creative Motion Studio
+
+        <span className="text-[#F8CC10]">✦</span>
+
+      </div>
+
+
       {/* Heading */}
+
       <h1 className="
-        text-4xl font-extrabold leading-[1.05]
-        tracking-[-0.045em] text-gray-950
-        sm:text-5xl md:text-7xl
+        text-4xl font-extrabold
+        leading-[1.05]
+        tracking-[-0.045em]
+        text-gray-950
+
+        sm:text-5xl
+        md:text-7xl
+
         lg:text-[clamp(48px,4vw,68px)]
         xl:text-[clamp(54px,4vw,72px)]
       ">
+
         Building Brands.
+
         <br />
 
-        <span className="inline-flex flex-wrap items-center gap-x-3">
+        <span className="
+          inline-flex
+          flex-wrap
+          items-center
+          gap-x-3
+        ">
+
           Creating
 
-          <span className="relative inline-block min-w-[190px] sm:min-w-[250px]">
+          <span className="
+            relative inline-block
+            min-w-[190px]
+            sm:min-w-[250px]
+          ">
 
             <AnimatePresence mode="wait">
+
               <motion.span
                 key={words[wordIndex]}
-                initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -25, filter: "blur(8px)" }}
-                transition={{ duration: 0.45, ease: "easeInOut" }}
-                className="relative z-10 inline-block text-[#5428B0]"
+
+                initial={{
+                  opacity: 0,
+                  y: 25,
+                  filter: "blur(8px)",
+                }}
+
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                }}
+
+                exit={{
+                  opacity: 0,
+                  y: -25,
+                  filter: "blur(8px)",
+                }}
+
+                transition={{
+                  duration: 0.45,
+                  ease: "easeInOut",
+                }}
+
+                className="
+                  relative z-10
+                  inline-block
+                  text-[#5428B0]
+                "
               >
                 {words[wordIndex]}.
+
               </motion.span>
+
             </AnimatePresence>
 
-            {/* Yellow underline */}
-            <span className="absolute bottom-0 left-0 -z-0 h-2 w-full rounded-full bg-[#F8CC10]/70 sm:h-3" />
+
+            {/* Yellow Underline */}
+
+            <span className="
+              absolute bottom-0 left-0
+              -z-0
+              h-2 sm:h-3
+              w-full
+              rounded-full
+              bg-[#F8CC10]/70
+            " />
 
           </span>
+
         </span>
+
       </h1>
 
-      {/* Two-line Description */}
+
+      {/* Description */}
+
       <p className="
         mt-6 max-w-lg
-        text-sm leading-7 text-gray-500
+        text-sm leading-7
+        text-gray-500
         sm:text-base sm:leading-8
       ">
-     From compelling content to high-impact campaigns, we turn creative idea into powerful brand experiences. Driven by strategy, backed by creativity, and focused on results.
+
+        From compelling content to high-impact campaigns, we turn
+        creative ideas into powerful brand experiences. Driven by
+        strategy, backed by creativity, and focused on results.
+
       </p>
 
-      {/* Client Trust */}
-      <div className="mt-8">
-        <TrustedClients />
-      </div>
+
+
 
       {/* Buttons */}
-      <div className="mt-9 flex flex-wrap items-center gap-4">
+
+      <div className="
+        mt-9 flex flex-wrap
+        items-center gap-4
+      ">
+
         <AnimatedButton
           text="Book a discovery call"
           to="/contact"
@@ -377,74 +490,137 @@ function LeftContent() {
           text="Explore our work"
           to="/portfolio"
         />
+
       </div>
 
-      {/* Bottom trust indicator */}
-      <div className="
-        mt-10 flex flex-wrap items-center gap-x-6 gap-y-3
-        border-t border-gray-100 pt-6
-        text-sm text-gray-500
-      ">
-        <span className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
-          Creative Excellence
-        </span>
 
-        <span className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#F8CC10]" />
-          Strategic Storytelling
-        </span>
-      </div>
+{/* Trusted Clients */}
+<div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between gap-4 w-full">
+
+  {/* Left: Text */}
+  <div className="flex flex-col items-start">
+    <p className="text-sm font-bold text-[#171717]">
+      Trusted by our clients
+    </p>
+
+{/* Rating */}
+<div className="flex flex-col items-start gap-1">
+
+  <div className="flex items-center gap-1">
+    {[1, 2, 3, 4, 5].map((star) => (
+      <Star
+        key={star}
+        size={15}
+        fill="#F8CC10"
+        stroke="#F8CC10"
+      />
+    ))}
+
+    <span className="text-sm text-[#171717] ml-1">
+      4.7/5
+    </span>
+  </div>
+
+</div>
+  </div>
+
+  {/* Right: Client Images */}
+  <div className="flex items-center -space-x-3 shrink-0">
+
+    {[deepak, mohit, deven, nidhi, dhiren].map((image, index) => (
+      <img
+        key={index}
+        src={image}
+        alt={`Trusted client ${index + 1}`}
+        className="w-10 h-10 rounded-full object-cover border-[3px] border-white shadow-sm"
+        style={{ zIndex: 10 - index }}
+      />
+    ))}
+
+    {/* Plus Badge */}
+    <div className="w-10 h-10 rounded-full bg-[#5428b0] border-[3px] border-white flex items-center justify-center text-white text-xs font-bold shadow-sm">
+      +6
+    </div>
+
+  </div>
+
+</div>
 
     </div>
+
   );
 }
 
+function RightVisual({ services}) {
 
-function Hero() {
-    
   return (
-    <section className="  relative w-full
-  overflow-hidden
-  bg-white">
+           <div className="
+          relative flex
+          w-full
+          items-center
+          justify-center
+        ">
 
-    <div
-    className="
-      mx-auto
-      grid w-full max-w-[1600px]
-      min-h-[calc(100svh-80px)]
-      grid-cols-1
-      items-center
-      gap-6
-      px-5 py-8
+          <ServiceCollage
+            services={services}
+            className="w-full"
+          />
 
-      sm:px-8
+        </div>
+  );
+}
 
-      lg:grid-cols-[1.05fr_0.95fr]
-      lg:gap-8
-      lg:px-12
-      lg:py-6
+// ========================================
+// MAIN HERO COMPONENT
+// ========================================
 
-      xl:px-16
-      2xl:px-20
-    "
-  >
+function Hero({ services = [] }) {
 
-        {/* ================= LEFT CONTENT ================= */}
+  return (
 
-     <LeftContent/>
+    <section className="
+      relative w-full
+      overflow-hidden
+      bg-white
+    ">
+
+      <div className="
+        mx-auto
+        grid w-full max-w-[1600px]
+        min-h-[calc(100svh-80px)]
+
+        grid-cols-1
+        items-center
+        gap-6
+
+        px-5 py-8
+        sm:px-8
+
+        lg:grid-cols-[1.05fr_0.95fr]
+        lg:gap-8
+        lg:px-12
+        lg:py-6
+
+        xl:px-16
+        2xl:px-20
+      ">
 
 
-        {/* ================= RIGHT VISUAL ================= */}
+        {/* LEFT CONTENT */}
 
-<div className="relative flex items-center justify-center">
-  <ServiceCollage />
-</div>
+        <LeftContent />
+
+
+        {/* RIGHT VISUAL */}
+        <RightVisual services={services} />
+ 
 
       </div>
 
     </section>
+
   );
+
 }
 
 export default Hero;

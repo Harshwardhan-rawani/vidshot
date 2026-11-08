@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
-  MessageCircle,
+
   X,
   Mail,
   Phone,
@@ -83,7 +83,7 @@ const FloatingContact = () => {
               {isOpen ? (
                 <X size={30} className="m-5"/>
               ) : (
-                <MessageCircle size={25} />
+                <Phone size={25} />
               )}
             </motion.span>
           </AnimatePresence>

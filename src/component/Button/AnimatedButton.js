@@ -20,6 +20,7 @@ export default function AnimatedButton({
 
       <span
         className="
+        w-fit
           pointer-events-none
           absolute
           -inset-[1px]
