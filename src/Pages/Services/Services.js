@@ -5,8 +5,9 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-
-
+import {
+  fadeUp,
+  stagger, } from "../../Animation/Fadeup";
 
 
 function ServiceCollage({services}) {
@@ -22,13 +23,17 @@ const cardPositions = [
 ];
 
   return (
-  <section className="relative w-full overflow-hidden bg-white px-4 lg:px-8">
+  <section className="relative w-full overflow-hidden bg-transparent px-4 lg:px-8">
 
-  <div className="w-full mx-auto">
+  <motion.div
+  variants={stagger}
+  className="w-full mx-auto">
 
     {/* TWO-SIDED LAYOUT */}
 
-    <div className="grid w-full grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-6">
+    <motion.div 
+    variants={fadeUp}
+    className="grid w-full grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-6">
 
       {/* LEFT SIDE */}
       <div className="relative min-h-[600px] overflow-hidden rounded-[28px] bg-[#121821] shadow-xl">
@@ -285,44 +290,13 @@ const cardPositions = [
 
           </div>
 
-        </div>
+        </motion.div>
 
-      </div>
+      </motion.div>
 
     </section>
   );
 }
-
-
-/* =========================================
-   ANIMATION VARIANTS
-========================================= */
-
-
-const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
 
 
 

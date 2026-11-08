@@ -193,11 +193,7 @@ export default function Navbar() {
             </NavLink>
           ))}
           
-          <AnimatedButton
-          className=""
-          text =  "Let's Talk"
-          to="/contact"
-          />
+     
         
         </nav>
       </div>

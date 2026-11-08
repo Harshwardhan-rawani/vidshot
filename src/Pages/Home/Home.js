@@ -3,13 +3,13 @@
 import FeedbackMarquee from '../../component/Cards/FeedbackMarquee';
 import TrustedPartners from '../../component/TrustedPartner/TrustedPartners';
 import ServicesSection from '../../component/Cards/ServicesSection';
-import OurClients from '../../component/ourclient/OurClients';
 import OurVision from '../../component/ourvision/OurVision';
 
 import AnimatedButton1 from '../../component/Button/AnimatedButton1';
 import { motion } from 'framer-motion';
 import Hero from '../../component/Hero/Hero';
 import MetricsSection from '../../component/Cards/MetricsSection';
+import TestimonialCarousel from '../../component/Cards/TestimonialCarousel';
 
 
 
@@ -27,7 +27,7 @@ export default function Home({services}) {
      <TrustedPartners/>
      <ServicesSection services = {services} />
    
-         <section className="bg-white py-24 sm:py-10">
+         <section className="bg-white py-5 sm:py-10">
    
            <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
    
@@ -168,7 +168,7 @@ export default function Home({services}) {
            </div>
    
          </section>
-     <OurClients/>
+         <TestimonialCarousel/>
      <OurVision/>
 
    

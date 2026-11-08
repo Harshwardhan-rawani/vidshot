@@ -30,7 +30,7 @@ const brands = [
 
 export default function TrustedPartners() {
   return (
-    <section className="relative my-3 w-full overflow-hidden bg-[#5428B0] py-7 sm:py-9">
+    <section className="relative my-3 w-full overflow-hidden bg-[#5428B0] py-5 sm:py-10">
 
       {/* Background glow */}
       <div className="pointer-events-none absolute -left-20 top-0 h-40 w-40 rounded-full bg-[#F8CC10]/10 blur-[80px]" />

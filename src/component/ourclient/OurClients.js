@@ -864,11 +864,11 @@ export default function OurClients() {
         via-[#5428B0]/5
         to-white
         px-5
-        py-20
+        py-14
         sm:px-8
-        sm:py-24
+        sm:py-16
         lg:px-12
-        lg:py-28
+        lg:py-16
       "
     >
       {/* =====================================================

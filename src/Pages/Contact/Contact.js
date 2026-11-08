@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import {
+  fadeUp,
+  stagger, } from "../../Animation/Fadeup";
 import {
   ArrowLeft,
   ArrowRight,
@@ -27,33 +29,7 @@ const budgets = [
   "Let's Discuss",
 ];
 
-/* =========================================
-   ANIMATION VARIANTS
-========================================= */
 
-const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
 
 const ContactSection = ({ services }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -171,7 +147,12 @@ const ContactSection = ({ services }) => {
   </motion.div>
 
   {/* Contact Form Section */}
-  <section className="
+<motion.section
+  variants={stagger}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.15 }}
+  className="
     w-[94%] lg:w-[85%]
     max-w-[1450px]
     mx-auto
@@ -180,14 +161,20 @@ const ContactSection = ({ services }) => {
     rounded-2xl
     py-6
     bg-white
-  ">
+  "
+>
 
   <div className="w-full h-full">
 
-    <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-4 h-full">
+    <motion.div
+     variants={fadeUp}
+    className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-4 h-full">
 
       {/* LEFT FORM */}
-<div className="bg-white rounded-2xl p-2 lg:p-5 h-full">
+<motion.div
+ 
+  className="bg-white rounded-2xl p-2 lg:p-5 h-full"
+>
 
   {/* Heading */}
   <div className="mb-5">
@@ -347,11 +334,13 @@ const ContactSection = ({ services }) => {
     </p>
 
   </form>
-</div>
+</motion.div>
 
           {/* ================= RIGHT SERVICE CAROUSEL ================= */}
 
-             <div className="relative h-[500px] lg:h-full min-h-0 rounded-2xl overflow-hidden bg-[#19142c]">
+             <motion.div 
+           
+             className="relative h-[500px] lg:h-full min-h-0 rounded-2xl overflow-hidden bg-[#19142c]">
 
             <AnimatePresence mode="wait">
 
@@ -516,14 +505,14 @@ const ContactSection = ({ services }) => {
 
             </div>
 
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
    
       </div>
 
 
-    </section>
+    </motion.section>
     </div>
   );
 };

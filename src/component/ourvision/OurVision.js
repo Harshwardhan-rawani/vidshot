@@ -3,10 +3,158 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowUpRight,
   Camera,
-  Clapperboard,
 } from "lucide-react";
+import vidshot from "../../icons/vidshot.png";
+// SVG ICONS
+import InstagramIcon from "../../icons/instagram.svg";
+import YoutubeIcon from "../../icons/youtube.svg";
+import FacebookIcon from "../../icons/facebook.svg";
+import MetaIcon from "../../icons/meta-ads.svg";
+import Videoediting from "../../icons/video-editing.svg";
+import PodcastIcon from "../../icons/poadcast.svg";
 
 const visionWords = ["Stories", "Ideas", "Brands", "Creators"];
+
+/* =========================================================
+   ORBIT ICONS
+========================================================= */
+
+const orbitIcons = [
+  {
+    name: "Instagram",
+    icon: InstagramIcon,
+    angle: 0,
+    distance: 210,
+    orbit: "outer",
+  },
+  {
+    name: "YouTube",
+    icon: YoutubeIcon,
+    angle: 60,
+    distance: 150,
+    orbit: "outer",
+  },
+  {
+    name: "Facebook",
+    icon: FacebookIcon,
+    angle: 120,
+    distance: 210,
+    orbit: "outer",
+  },
+  {
+    name: "Meta Ads",
+    icon: MetaIcon,
+    angle: 180,
+    distance: 160,
+    orbit: "outer",
+  },
+  {
+    name: "Design",
+    icon: PodcastIcon,
+    angle: 240,
+    distance: 210,
+    orbit: "inner",
+  },
+  {
+    name: "Video",
+    icon: Videoediting,
+    angle: 300,
+    distance: 150,
+    orbit: "inner",
+  },
+];
+
+/* =========================================================
+   ORBIT ICON
+========================================================= */
+
+function OrbitIcon({ item }) {
+  const angle = (item.angle * Math.PI) / 180;
+
+  const radius = item.distance;
+
+  const x = Math.cos(angle) * radius;
+  const y = Math.sin(angle) * radius;
+
+  const isOuter = item.orbit === "outer";
+
+  return (
+    <motion.div
+      className="absolute left-1/2 top-1/2 z-50"
+      style={{
+        marginLeft: -24,
+        marginTop: -24,
+      }}
+      animate={{
+        x,
+        y,
+      }}
+      transition={{
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
+      <motion.div
+        animate={{
+          y: [0, -5, 0],
+        }}
+        transition={{
+          duration: isOuter ? 3.2 : 2.8,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: item.angle * 0.003,
+        }}
+        whileHover={{
+          scale: 1.15,
+        }}
+        className="group relative cursor-pointer"
+      >
+        {/* Glow */}
+
+        <div className="absolute inset-[-12px] rounded-full bg-[#5428B0]/20 opacity-0 blur-xl transition-opacity group-hover:opacity-100" />
+
+        {/* Icon Container */}
+
+        <div
+          className="
+            relative flex h-12 w-12 items-center justify-center
+            rounded-full border border-[#17122a]/10
+            bg-white shadow-[0_10px_30px_rgba(23,18,42,.15)]
+            transition-all duration-500
+            group-hover:border-[#5428B0]/40
+            group-hover:shadow-[0_15px_40px_rgba(84,40,176,.25)]
+            sm:h-14 sm:w-14
+          "
+        >
+          <img
+            src={item.icon}
+            alt={item.name}
+            onError={(e) => {
+              console.error("Icon failed to load:", item.icon);
+              e.currentTarget.style.display = "none";
+            }}
+            className="h-6 w-6 object-contain sm:h-7 sm:w-7"
+          />
+        </div>
+
+        {/* Label */}
+
+        <div
+          className="
+            pointer-events-none absolute left-1/2 top-full z-50
+            mt-2 -translate-x-1/2 whitespace-nowrap
+            rounded-full bg-[#17122a] px-3 py-1
+            text-[9px] font-semibold text-white
+            opacity-0 transition-all duration-300
+            group-hover:opacity-100
+          "
+        >
+          {item.name}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 const principles = [
   {
@@ -34,8 +182,6 @@ export default function OurVision() {
     offset: ["start 85%", "end 20%"],
   });
 
-  const visualY = useTransform(scrollYProgress, [0, 1], [55, -35]);
-  const visualRotate = useTransform(scrollYProgress, [0, 1], [-4, 4]);
   const headingY = useTransform(scrollYProgress, [0, 1], [20, -10]);
 
   return (
@@ -291,228 +437,237 @@ export default function OurVision() {
             </div>
           </div>
 
-          {/* =================================================
-              RIGHT — LIGHT ORBIT VISUAL
-          ================================================= */}
-
-          <div className="relative mx-auto w-full max-w-[540px] hidden lg:block">
-            <motion.div
-              style={{
-                y: visualY,
-                rotate: visualRotate,
-              }}
-              className="relative aspect-square"
-            >
-              {/* Purple glow */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.08, 1],
-                  opacity: [0.25, 0.45, 0.25],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute left-1/2 top-1/2
-                  h-[52%] w-[52%]
-                  -translate-x-1/2 -translate-y-1/2
-                  rounded-full bg-[#5428B0]/10 blur-[75px]
-                "
-              />
-
-              {/* Yellow glow */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.15, 1],
-                  opacity: [0.1, 0.24, 0.1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute left-1/2 top-1/2
-                  h-[30%] w-[30%]
-                  -translate-x-1/2 -translate-y-1/2
-                  rounded-full bg-[#F8CC10]/20 blur-[55px]
-                "
-              />
-
-              {/* Outer orbit */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 35,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="
-                  absolute left-1/2 top-1/2
-                  h-[92%] w-[92%]
-                  -translate-x-1/2 -translate-y-1/2
-                  rounded-full border border-[#5428B0]/10
-                "
-              >
-                <span
-                  className="
-                    absolute left-1/2 top-[-4px]
-                    h-2.5 w-2.5 -translate-x-1/2
-                    rounded-full bg-[#F8CC10]
-                    shadow-[0_0_18px_rgba(248,204,16,0.9)]
-                  "
-                />
-              </motion.div>
-
-              {/* Dashed orbit */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{
-                  duration: 28,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="
-                  absolute left-1/2 top-1/2
-                  h-[72%] w-[72%]
-                  -translate-x-1/2 -translate-y-1/2
-                  rounded-full border border-dashed
-                  border-[#5428B0]/15
-                "
-              />
-
-              {/* Inner orbit */}
-              <div
-                className="
-                  absolute left-1/2 top-1/2
-                  h-[49%] w-[49%]
-                  -translate-x-1/2 -translate-y-1/2
-                  rounded-full border border-[#17122a]/10
-                "
-              />
-
-              {/* Decorative camera card */}
-              <motion.div
-                animate={{
-                  y: [0, -8, 0],
-                  rotate: [-3, 2, -3],
-                }}
-                transition={{
-                  duration: 4.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute left-[4%] top-[18%]
-                  flex h-14 w-14 items-center justify-center
-                  rounded-2xl border border-[#5428B0]/10
-                  bg-white/90 text-[#5428B0]
-                  shadow-[0_15px_40px_rgba(23,18,42,0.10)]
-                  backdrop-blur-xl
-                  sm:h-16 sm:w-16
-                "
-              >
-                <Camera size={24} />
-              </motion.div>
-
-              {/* Decorative clapper card */}
-              <motion.div
-                animate={{
-                  y: [0, 8, 0],
-                  rotate: [4, -2, 4],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute right-[3%] top-[30%]
-                  flex h-14 w-14 items-center justify-center
-                  rounded-2xl border border-[#F8CC10]/40
-                  bg-[#F8CC10]/15 text-[#5428B0]
-                  shadow-[0_15px_40px_rgba(248,204,16,0.12)]
-                  backdrop-blur-xl
-                  sm:h-16 sm:w-16
-                "
-              >
-                <Clapperboard size={24} />
-              </motion.div>
-
-              {/* Center */}
-              <motion.div
-                animate={{ scale: [1, 1.04, 1] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute left-1/2 top-1/2 z-20
-                  flex h-[34%] w-[34%]
-                  -translate-x-1/2 -translate-y-1/2
-                  flex-col items-center justify-center
-                  rounded-full bg-[#17122a]
-                  text-center
-                  shadow-[0_30px_80px_rgba(23,18,42,0.20)]
-                "
-              >
-                <span className="text-[8px] font-semibold uppercase tracking-[0.25em] text-white/45 sm:text-[10px]">
-                  We create
-                </span>
-
-                <span className="mt-1 text-xl font-black tracking-[-0.05em] text-white sm:text-2xl md:text-3xl">
-                  Impact
-                </span>
-
-                <span className="mt-2 h-1 w-8 rounded-full bg-[#F8CC10]" />
-
-                <span className="mt-3 text-[8px] font-medium uppercase tracking-[0.18em] text-white/30">
-                  VidShot
-                </span>
-              </motion.div>
-
-              {/* Orbit dots */}
-              <motion.span
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.3, 1, 0.3],
-                }}
-                transition={{ duration: 2.5, repeat: Infinity }}
-                className="
-                  absolute left-[12%] top-[54%]
-                  h-2 w-2 rounded-full bg-[#F8CC10]
-                "
-              />
-
-              <motion.span
-                animate={{
-                  scale: [1, 1.4, 1],
-                  opacity: [0.3, 1, 0.3],
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="
-                  absolute right-[10%] top-[18%]
-                  h-1.5 w-1.5 rounded-full bg-[#5428B0]
-                "
-              />
-
-              <motion.span
-                animate={{ y: [0, -8, 0] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="
-                  absolute bottom-[14%] left-[23%]
-                  h-1.5 w-1.5 rounded-full bg-[#5428B0]/50
-                "
-              />
-            </motion.div>
-          </div>
+               {/* =================================================
+                   RIGHT — ORBIT SYSTEM
+               ================================================== */}
+     
+               <motion.div
+                 initial={{
+                   opacity: 0,
+                   scale: 0.92,
+                 }}
+                 whileInView={{
+                   opacity: 1,
+                   scale: 1,
+                 }}
+                 viewport={{
+                   once: true,
+                   amount: 0.1,
+                 }}
+                 transition={{
+                   duration: 1,
+                   ease: [0.22, 1, 0.36, 1],
+                 }}
+                 className="
+                 
+                   relative
+                   mx-auto
+                   hidden
+                   lg:flex
+                   aspect-square
+                   w-full
+                   max-w-[540px]
+                   items-center
+                   justify-center
+                 "
+               >
+                 {/* =================================================
+                     AMBIENT GLOW
+                 ================================================== */}
+     
+                 <motion.div
+                   animate={{
+                     scale: [1, 1.08, 1],
+                     opacity: [0.25, 0.45, 0.25],
+                   }}
+                   transition={{
+                     duration: 5,
+                     repeat: Infinity,
+                     ease: "easeInOut",
+                   }}
+                   className="
+                     absolute
+                     h-[55%]
+                     w-[55%]
+                     rounded-full
+                     bg-[#5428B0]/10
+                     blur-[80px]
+                   "
+                 />
+     
+                 {/* =================================================
+                     OUTER ORBIT
+                 ================================================== */}
+     
+                 <motion.div
+                   animate={{
+                     rotate: 360,
+                   }}
+                   transition={{
+                     duration: 40,
+                     repeat: Infinity,
+                     ease: "linear",
+                   }}
+                   className="
+                     absolute
+                     h-[80%]
+                     w-[80%]
+                     rounded-full
+                     border
+                     border-[#17122a]/10
+                   "
+                 >
+              
+                 </motion.div>
+     
+     
+                 {/* =================================================
+                     MIDDLE ORBIT
+                 ================================================== */}
+     
+                 <motion.div
+                   animate={{
+                     rotate: -360,
+                   }}
+                   transition={{
+                     duration: 28,
+                     repeat: Infinity,
+                     ease: "linear",
+                   }}
+                   className="
+                     absolute
+                     h-[60%]
+                     w-[60%]
+                     rounded-full
+                     border
+                     border-[#17122a]/10
+                   "
+                 >
+                   
+                 </motion.div>
+     
+                 {/* =================================================
+                     INNER ORBIT
+                 ================================================== */}
+     
+                 <div
+                   className="
+                     absolute
+                     h-[40%]
+                     w-[40%]
+                     rounded-full
+                     border
+                     border-[#17122a]/10
+                   "
+                 />
+     
+                 {/* =================================================
+                     ROTATING ICON SYSTEM
+                 ================================================== */}
+     
+                 <motion.div
+                   className="absolute inset-0"
+                   animate={{
+                     rotate: 360,
+                   }}
+                   transition={{
+                     duration: 35,
+                     repeat: Infinity,
+                     ease: "linear",
+                   }}
+                 >
+                   {orbitIcons.map((item) => (
+                     <OrbitIcon
+                       key={item.name}
+                       item={item}
+                     />
+                   ))}
+                 </motion.div>
+     
+                 {/* =================================================
+                     CENTER PLANET
+                 ================================================== */}
+     
+               <div className="
+                          relative z-10
+                          w-36 h-36
+                          rounded-full
+                          bg-[#5503b0]
+                          border border-[#5503b0]
+                          shadow-[0_5px_25px_rgba(0,0,0,0.08)]
+                          flex items-center justify-center
+                        ">
+                          <img
+                            src={vidshot}
+                            alt="VidShot Media"
+                            className="w-28 h-28 object-contain"
+                          />
+                        </div>
+     
+                 {/* =================================================
+                     FLOATING DOTS
+                 ================================================== */}
+     
+                 <motion.span
+                   animate={{
+                     scale: [1, 1.5, 1],
+                     opacity: [0.3, 1, 0.3],
+                   }}
+                   transition={{
+                     duration: 2.5,
+                     repeat: Infinity,
+                   }}
+                   className="
+                     absolute
+                     left-[9%]
+                     top-[32%]
+                     h-2
+                     w-2
+                     rounded-full
+                     bg-[#F8CC10]
+                   "
+                 />
+     
+                 <motion.span
+                   animate={{
+                     scale: [1, 1.4, 1],
+                     opacity: [0.3, 1, 0.3],
+                   }}
+                   transition={{
+                     duration: 3,
+                     repeat: Infinity,
+                   }}
+                   className="
+                     absolute
+                     right-[9%]
+                     top-[27%]
+                     h-1.5
+                     w-1.5
+                     rounded-full
+                     bg-[#5428B0]
+                   "
+                 />
+     
+                 <motion.span
+                   animate={{
+                     y: [0, -8, 0],
+                   }}
+                   transition={{
+                     duration: 3,
+                     repeat: Infinity,
+                     ease: "easeInOut",
+                   }}
+                   className="
+                     absolute
+                     bottom-[17%]
+                     left-[19%]
+                     h-1.5
+                     w-1.5
+                     rounded-full
+                     bg-[#5428B0]/50
+                   "
+                 />
+               </motion.div>
         </div>
 
         {/* =====================================================
