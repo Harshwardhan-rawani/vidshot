@@ -91,10 +91,10 @@ function TestimonialCard({ testimonial }) {
       }}
       viewport={{
         once: true,
-        amount: 0.2,
+        amount: 0.1,
       }}
       transition={{
-        duration: 0.7,
+        duration: 0.1,
         ease: "easeOut",
       }}
       className="
@@ -185,7 +185,8 @@ export default function FeedbackMarquee() {
         w-full 
         overflow-hidden 
         bg-[var(--neutral)]
-        py-12 sm:py-16 lg:py-20
+        py-10 sm:py-16 
+      
       "
     >
       {/* Section container */}
@@ -263,7 +264,7 @@ export default function FeedbackMarquee() {
       SMOOTH INFINITE MARQUEE
 =============================== */}
 
-<div className="relative w-full overflow-hidden">
+<div className="relative w-full">
 
   {/* Left Gradient */}
   <div
@@ -299,7 +300,7 @@ export default function FeedbackMarquee() {
     pauseOnHover={true}
     pauseOnClick={false}
     gradient={false}
-    className="py-3 overflow-hidden"
+    className=" overflow-hidden"
   >
     {testimonials.map((testimonial) => (
       <TestimonialCard

@@ -92,7 +92,7 @@ const ContactSection = ({ services }) => {
   };
 
   return (
-<div className="relative w-full bg-[#FAFAFA] pt-24 pb-16 lg:pt-28 lg:pb-20">
+<div className="relative w-full bg-white pt-24 pb-16 lg:pt-28 lg:pb-20">
       {/* =========================================================
           BACKGROUND
       ========================================================= */}
@@ -155,6 +155,8 @@ const ContactSection = ({ services }) => {
   className="
     w-[94%] lg:w-[85%]
     max-w-[1450px]
+    border-2
+    border-gray-100
     mx-auto
     shadow-lg
     px-5 md:px-8
@@ -168,6 +170,7 @@ const ContactSection = ({ services }) => {
 
     <motion.div
      variants={fadeUp}
+    
     className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-4 h-full">
 
       {/* LEFT FORM */}

@@ -189,77 +189,15 @@ export default function OurVision() {
       ref={sectionRef}
       className="
         relative overflow-hidden
-        bg-white px-5 py-20 text-[#17122a]
-        sm:px-8 sm:py-5
-        lg:px-10 lg:py-3
+        bg-white px-5  text-[#17122a]
+        sm:px-8      
+        py-10
+        md:py-16
       "
     >
-      {/* =====================================================
-          BACKGROUND — WHITE / PURPLE / YELLOW
-      ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
-        {/* Very subtle editorial grid */}
-        <div
-          className="
-            absolute inset-0 opacity-[0.035]
-            [background-image:linear-gradient(#5428B0_1px,transparent_1px),linear-gradient(90deg,#5428B0_1px,transparent_1px)]
-            [background-size:64px_64px]
-          "
-        />
-
-        {/* Purple ambient glow */}
-        <motion.div
-          animate={{
-            x: [0, 45, -25, 0],
-            y: [0, -25, 30, 0],
-            scale: [1, 1.08, 0.96, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="
-            absolute -left-32 top-10
-            h-[380px] w-[380px]
-            rounded-full bg-[#5428B0]/7 blur-[120px]
-          "
-        />
-
-        {/* Yellow accent glow */}
-        <motion.div
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.16, 0.28, 0.16],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="
-            absolute -right-24 top-[18%]
-            h-[300px] w-[300px]
-            rounded-full bg-[#F8CC10]/12 blur-[110px]
-          "
-        />
-
-        {/* Bottom purple glow */}
-        <div
-          className="
-            absolute -bottom-44 left-1/3
-            h-[360px] w-[360px]
-            rounded-full bg-[#5428B0]/5 blur-[120px]
-          "
-        />
-      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        {/* =====================================================
-            TOP LABEL
-        ===================================================== */}
-
 
         {/* =====================================================
             MAIN VISION
@@ -268,9 +206,8 @@ export default function OurVision() {
         <div
           className="
             grid items-center gap-12
-            py-16 sm:py-20
             lg:grid-cols-[1.08fr_0.92fr]
-            lg:gap-10 lg:py-24
+            lg:gap-10 
           "
         >
           {/* =================================================

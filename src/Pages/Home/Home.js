@@ -9,7 +9,7 @@ import AnimatedButton1 from '../../component/Button/AnimatedButton1';
 import { motion } from 'framer-motion';
 import Hero from '../../component/Hero/Hero';
 import MetricsSection from '../../component/Cards/MetricsSection';
-import TestimonialCarousel from '../../component/Cards/TestimonialCarousel';
+import ClientSlider from '../../component/Cards/ClientSlider';
 
 
 
@@ -27,7 +27,8 @@ export default function Home({services}) {
      <TrustedPartners/>
      <ServicesSection services = {services} />
    
-         <section className="bg-white py-5 sm:py-10">
+         <section className="bg-[#F7F7F9]      py-10
+        md:py-16">
    
            <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
    
@@ -168,7 +169,7 @@ export default function Home({services}) {
            </div>
    
          </section>
-         <TestimonialCarousel/>
+         <ClientSlider/>
      <OurVision/>
 
    
@@ -188,7 +189,8 @@ export default function Home({services}) {
           transition={{
             duration: 1,
           }}
-   className="relative my-20 overflow-hidden rounded-[30px] border border-white/10 bg-[#4820A0] px-6 py-8 text-white shadow-[0_25px_80px_rgba(84,40,176,0.25)] sm:px-8 lg:px-10 lg:py-10">
+   className="relative my-20 overflow-hidden rounded-[30px] border border-white/10 bg-[#4820A0] px-6  text-white shadow-[0_25px_80px_rgba(84,40,176,0.25)] sm:px-8 lg:px-10      py-10
+        md:py-16">
 
   {/* ================= BACKGROUND TEXTURE ================= */}
   <div className="pointer-events-none absolute inset-0 overflow-hidden">

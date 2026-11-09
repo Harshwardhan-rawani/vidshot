@@ -56,7 +56,7 @@ const ServiceCard = ({ service, index, gridSpan }) => {
 
       transition={{
         duration: 0.65,
-        delay: index * 0.1,
+        delay: 0.1,
         ease: "easeOut",
       }}
 
@@ -219,42 +219,16 @@ const ServiceCollage = ({
         grid-cols-2
         gap-3
         rounded-[28px]
-        p-3
-        sm:gap-4 sm:p-4
-
+        p-10
+        sm:gap-4 sm:p-10
+ 
+        
         lg:grid-cols-6
         lg:grid-rows-[135px_135px_135px]
         lg:gap-3
 
-        overflow-hidden
+       
       ">
-
-
-        {/* Background Decorations */}
-
-        {showBackground && (
-          <>
-
-            <div className="
-              pointer-events-none
-              absolute -right-10 -top-10
-              h-40 w-40
-              rounded-full
-              bg-[#5428B0]/20
-              blur-3xl
-            " />
-
-            <div className="
-              pointer-events-none
-              absolute -bottom-10 -left-10
-              h-40 w-40
-              rounded-full
-              bg-[#F8CC10]/15
-              blur-3xl
-            " />
-
-          </>
-        )}
 
 
         {/* Service Cards */}

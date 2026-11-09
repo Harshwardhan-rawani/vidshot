@@ -824,7 +824,9 @@ export default function ServicesSection() {
         overflow-hidden
         bg-white
         px-5
-        py-24
+        py-10
+        md:py-16
+
         sm:px-8
         lg:px-12
       "

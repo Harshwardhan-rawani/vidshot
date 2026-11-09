@@ -62,7 +62,7 @@ export default function TrustedPartners() {
           direction="right"
           speed={40}
           delay={0}
-          pauseOnHover={true}
+          pauseOnHover={false}
           gradient={false}
           loop={0}
           autoFill={true}
@@ -79,9 +79,7 @@ export default function TrustedPartners() {
                     text-lg
                     leading-none
                     text-white/90
-                    transition-all
-                    duration-300
-                    group-hover:text-[#F8CC10]
+              
                     sm:text-xl
                     md:text-2xl
                     ${brand.className}
@@ -92,10 +90,7 @@ export default function TrustedPartners() {
 
               </div>
 
-              {/* Yellow Separator */}
-              <div className="flex items-center justify-center">
-                <span className="h-2 w-2 rounded-full bg-[#F8CC10] shadow-[0_0_12px_rgba(248,204,16,0.5)]" />
-              </div>
+     
 
             </React.Fragment>
           ))}

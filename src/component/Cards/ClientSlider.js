@@ -147,7 +147,7 @@ const clients = [
   },
 ];
 
-export default function TestimonialCarousel() {
+export default function ClientSlider() {
   const [current, setCurrent] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
   const [isPaused, setIsPaused] = useState(false);
@@ -243,7 +243,8 @@ export default function TestimonialCarousel() {
   }px) / ${visibleCards})`;
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+    <section className="relative w-full overflow-hidden bg-white      py-10
+        md:py-16">
 
       {/* HEADER */}
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -376,7 +377,7 @@ export default function TestimonialCarousel() {
               <article
                 key={client.id}
                 ref={index === 0 ? cardRef : null}
-                className="group relative shrink-0 overflow-hidden rounded-[28px] bg-neutral-900 shadow-lg"
+                className="group relative shrink-0 overflow-hidden rounded-3xl bg-neutral-900 shadow-lg"
                 style={{ width: cardWidth }}
               >
 
