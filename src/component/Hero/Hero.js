@@ -219,7 +219,7 @@ const ServiceCollage = ({
         grid-cols-2
         gap-3
         rounded-[28px]
-        p-10
+    
         sm:gap-4 sm:p-10
  
         
