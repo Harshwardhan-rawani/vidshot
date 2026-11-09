@@ -577,7 +577,7 @@ text ="Build with us" />
           className="
             overflow-hidden rounded-[28px]
             border border-[#17122a]/10
-            bg-[#f8f6fc]
+            bg-[#f8f6fc] mt-5 md:mt-0
             shadow-[0_20px_70px_rgba(23,18,42,0.06)]
           "
         >

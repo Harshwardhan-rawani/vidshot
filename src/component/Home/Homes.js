@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Play,
@@ -475,46 +476,35 @@ function ActiveService({ service }) {
 
           {/* CTA */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              delay: 0.4,
-              duration: 0.5,
-            }}
-            className="
-              mt-7
-              flex
-              items-center
-              gap-2
-              text-sm
-              font-semibold
-              text-white
-            "
-          >
-            Explore service
+        <Link to="/services" className="inline-block">
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{
+      delay: 0.4,
+      duration: 0.5,
+    }}
+   
+    className="
+      mt-7 flex items-center gap-2
+      text-sm font-semibold text-white
+      cursor-pointer group
+    "
+  >
+    Explore services
 
-            <span
-              className="
-                flex
-                h-7
-                w-7
-                items-center
-                justify-center
-                rounded-full
-                bg-[#f15b38]
-              "
-            >
-              <ArrowUpRight size={15} />
-            </span>
-
-          </motion.div>
+    <span
+      className="
+        flex h-7 w-7 items-center justify-center
+        rounded-full bg-white text-[#5428B0]
+        transition-transform duration-300
+        group-hover:rotate-45
+      "
+    >
+      <ArrowUpRight size={15} />
+    </span>
+  </motion.div>
+</Link>
 
         </div>
       </div>
@@ -776,13 +766,9 @@ function MobileServiceCard({
                   items-center
                   gap-3
                   rounded-full
-                  bg-[#F8CC10]
-                  px-5 py-3
                   text-xs
                   font-bold
-                  text-[#5428B0]
-                  transition-all
-                  hover:bg-white
+                  text-white
                 "
               >
                 Explore Service
@@ -791,8 +777,8 @@ function MobileServiceCard({
                   flex h-6 w-6
                   items-center justify-center
                   rounded-full
-                  bg-[#5428B0]
-                  text-white
+                  bg-white
+                  text-[#5428B0]
                 ">
                   <ArrowUpRight size={14} />
                 </span>
