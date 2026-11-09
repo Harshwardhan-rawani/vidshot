@@ -190,11 +190,12 @@ function ClosedService({ service }) {
         <span
           className="
             whitespace-nowrap
-            text-sm
-            font-extrabold
+            text-xl
+          
             uppercase
-            tracking-[0.16em]
+           
             text-white
+           font-bold tracking-tight
             drop-shadow-[0_2px_5px_rgba(0,0,0,0.9)]
             [writing-mode:vertical-rl]
             rotate-180
@@ -390,13 +391,13 @@ function ActiveService({ service }) {
             }}
             className="
               max-w-2xl
-              text-3xl
-              font-black
+         
               leading-[0.95]
-              tracking-[-0.05em]
+          
               text-white
               sm:text-4xl
               lg:text-5xl
+              text-3xl md:text-5xl font-bold tracking-tight
             "
           >
             {service.title}
@@ -626,11 +627,12 @@ function MobileServiceCard({
 
           <h3 className="
             truncate
-            text-base
             font-bold
             tracking-tight
             text-white
             sm:text-lg
+
+            
           ">
             {service.shortTitle || service.title}
           </h3>
@@ -813,7 +815,7 @@ function MobileServiceCard({
    MAIN SERVICES SECTION
 ========================================================= */
 
-export default function ServicesSection() {
+export default function Homes() {
 
   const [activeService, setActiveService] = useState(0);
 
@@ -826,7 +828,6 @@ export default function ServicesSection() {
         px-5
         py-10
         md:py-16
-
         sm:px-8
         lg:px-12
       "
@@ -858,102 +859,58 @@ export default function ServicesSection() {
             HEADER
         ================================================= */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-          className="
-            mb-12
-            flex
-            flex-col
-            justify-between
-            gap-6
-            md:flex-row
-            md:items-end
-          "
-        >
+     
+<motion.div
+  initial={{
+    opacity: 0,
+    y: 30,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{
+    once: true,
+    amount: 0.2,
+  }}
+  transition={{
+    duration: 0.8,
+    ease: "easeOut",
+  }}
+  className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-20 items-start mb-16"
+>
+  {/* Left Content */}
 
-          <div>
+  <div>
+    <p className="text-[10px] uppercase tracking-[3px] font-bold text-[#5428B0] mb-4">
+      What We Do
+    </p>
 
-            {/* Label */}
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight text-[#101418]">
+      Creative services
+      <span className="text-[#5428B0]"> built to move.</span>
+    </h2>
+  </div>
 
-            <div className="mb-5 flex items-center gap-3">
+  {/* Right Content */}
 
-              <span
-                className="
-                  h-2.5
-                  w-2.5
-                  rounded-full
-                  bg-[var(--secondary-dark)]
-                "
-              />
+  <div className="lg:pt-8">
+    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+      From the first idea to the final frame, we create meaningful
+      brand experiences that capture attention and inspire action.
+    </p>
 
-              <span
-                className="
-                  text-xs
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-                  text-[var(--primary-dark)]
+  
 
-                "
-              >
-                What we do
-              </span>
+    <div className="flex items-center gap-3 mt-7">
+      <span className="h-[2px] w-10 bg-[#F8CC10]" />
 
-            </div>
-
-            {/* Heading */}
-
-            <h2
-              className="
-                max-w-3xl
-                text-3xl
-                font-black
-                leading-[0.95]
-                text-[#101418]
-                sm:text-5xl
-                lg:text-5xl
-              
-              ">
-              Creative services
-              <br />
-
-              <span className="text-[var(--primary-dark)]">
-                built to move.
-              </span>
-            </h2>
-
-          </div>
-
-          {/* Description */}
-
-          <p
-            className="
-              max-w-sm
-              text-sm
-              leading-6
-              text-[var(--dark)]
-              md:text-base
-            "
-          >
-            From the first idea to the final frame, we
-            build content experiences that make brands
-            impossible to ignore.
-          </p>
-
-        </motion.div>
+      <span className="text-[10px] font-bold uppercase tracking-[2px] text-[#5428B0]">
+        Creativity Meets Strategy
+      </span>
+    </div>
+  </div>
+</motion.div>
 
 
         {/* =================================================

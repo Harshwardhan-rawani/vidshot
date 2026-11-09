@@ -177,7 +177,7 @@ function TestimonialCard({ testimonial }) {
   );
 }
 
-export default function FeedbackMarquee() {
+export default function Homefm() {
   return (
     <section
       className="
@@ -192,72 +192,69 @@ export default function FeedbackMarquee() {
       {/* Section container */}
       <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 md:px-10 lg:px-12 2xl:px-16">
         {/* Section heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="
-            mb-8 flex flex-col gap-5
-            sm:mb-10 sm:gap-6
-            md:mb-12
-            lg:flex-row lg:items-end lg:justify-between
-          "
-        >
-          {/* Heading content */}
-          <div className="min-w-0 flex-1">
-            {/* Label */}
-            <div className="mb-4 flex items-center gap-3 sm:mb-5">
-              <span
-                className="
-                  h-2 w-2 shrink-0 rounded-full
-                  bg-[var(--secondary-dark,#f8cc10)]
-                  sm:h-2.5 sm:w-2.5
-                "
-              />
 
-              <span
-                className="
-                  text-[10px] font-semibold uppercase
-                  tracking-[0.18em]
-                  text-[var(--primary-dark,#4820a0)]
-                  sm:text-xs sm:tracking-[0.2em]
-                "
-              >
-                Client Feedback
-              </span>
-            </div>
 
-            {/* Main heading */}
-            <h2
-              className="
-                max-w-4xl text-[clamp(2rem,5vw,3rem)]
-                font-black leading-[1.02]
-                text-[var(--dark)]
-              "
-            >
-              What Our Clients
-              <br />
+<motion.div
+  initial={{
+    opacity: 0,
+    y: 30,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{
+    once: true,
+    amount: 0.2,
+  }}
+  transition={{
+    duration: 0.8,
+    ease: "easeOut",
+  }}
+  className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-20 items-start mb-12 lg:mb-16"
+>
 
-              <span className="text-[var(--primary-dark,#4820a0)]">
-                Say About Us
-              </span>
-            </h2>
-          </div>
+  {/* Left Content */}
 
-          {/* Description */}
-          <p
-            className="
-              max-w-lg text-sm leading-6 text-[var(--dark)]
-              sm:text-base sm:leading-7
-              lg:max-w-sm lg:pb-1
-              xl:max-w-md
-            "
-          >
-            A team of directors, designers, strategists and creators who turn
-            ambitious ideas into memorable visual experiences.
-          </p>
-        </motion.div>
+  <div>
+
+    <p className="text-[10px] uppercase tracking-[3px] font-bold text-[#5428B0] mb-4">
+      Client Feedback
+    </p>
+
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight text-[#101418]">
+      Stories that
+      <span className="text-[#5428B0]"> speak for us.</span>
+    </h2>
+
+  </div>
+
+  {/* Right Content */}
+
+  <div className="lg:pt-8">
+
+    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+      The best measure of our work is the trust and satisfaction
+      of the people we work with. Their experiences inspire us
+      to keep creating better.
+    </p>
+
+
+
+    <div className="flex items-center gap-3 mt-7">
+
+      <span className="h-[2px] w-10 bg-[#F8CC10]" />
+
+      <span className="text-[10px] font-bold uppercase tracking-[2px] text-[#5428B0]">
+        Real People. Real Experiences.
+      </span>
+
+    </div>
+
+  </div>
+
+</motion.div>
+
       </div>
 
      {/* ===============================

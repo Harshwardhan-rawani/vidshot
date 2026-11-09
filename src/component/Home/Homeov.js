@@ -1,7 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  ArrowUpRight,
   Camera,
 } from "lucide-react";
 import vidshot from "../../icons/vidshot.png";
@@ -12,6 +11,7 @@ import FacebookIcon from "../../icons/facebook.svg";
 import MetaIcon from "../../icons/meta-ads.svg";
 import Videoediting from "../../icons/video-editing.svg";
 import PodcastIcon from "../../icons/poadcast.svg";
+import AnimatedButton from "../Button/AnimatedButton";
 
 const visionWords = ["Stories", "Ideas", "Brands", "Creators"];
 
@@ -174,7 +174,7 @@ const principles = [
   },
 ];
 
-export default function OurVision() {
+export default function Homeov() {
   const sectionRef = React.useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -189,7 +189,7 @@ export default function OurVision() {
       ref={sectionRef}
       className="
         relative overflow-hidden
-        bg-white px-5  text-[#17122a]
+        bg-[#F7F7F9] px-5  text-[#17122a]
         sm:px-8      
         py-10
         md:py-16
@@ -215,164 +215,122 @@ export default function OurVision() {
           ================================================= */}
 
           <div className="relative">
-            {/* Small floating camera */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7, rotate: -15 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="
-                absolute -right-2 -top-5 hidden
-                h-12 w-12 items-center justify-center
-                rounded-2xl border border-[#5428B0]/10
-                bg-[#5428B0]/5 text-[#5428B0]
-                lg:flex
-              "
-            >
-              <Camera size={20} />
-            </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="
-                text-[11px] font-bold uppercase
-                tracking-[0.25em] text-[#5428B0]
-              "
-            >
-              We believe in the power of
-            </motion.p>
+  {/* Small floating camera icon */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.7 }}
+    className="
+      absolute -right-2 -top-6 hidden
+      h-11 w-11 items-center justify-center
+      rounded-xl border border-[#5428B0]/10
+      bg-[#5428B0]/5 text-[#5428B0]
+      lg:flex
+    "
+  >
+    <Camera size={19} />
+  </motion.div>
 
-            <motion.h2
-              style={{ y: headingY }}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                mt-5 max-w-4xl
-                text-5xl font-black
-                leading-[0.9] 
-                text-[#17122a]
-                sm:text-4xl
-                md:text-5xl
-                lg:text-[60px]
-              "
-            >
-              Turning
-              <br />
+  {/* Section Label */}
+  <motion.p
+    initial={{ opacity: 0, y: 10 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5 }}
+    className="
+      mb-3 text-[10px] font-bold uppercase
+      tracking-[3px] text-[#5428B0]
+    "
+  >
+    Our Vision
+  </motion.p>
 
-              <span className="relative inline-block">
-                <span className="relative z-10 text-[#5428B0]">
-                  ideas
-                </span>
+  {/* Main Heading */}
+  <motion.h2
+    style={{ y: headingY }}
+    initial={{ opacity: 0, y: 25 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+    className="
+      max-w-3xl
+      text-3xl font-bold
+      leading-[1.15] tracking-tight
+      text-[#17122a]
+      sm:text-4xl
+      md:text-5xl
+    "
+  >
+    Turning ideas into
+    <span className="text-[#5428B0]"> meaningful impact.</span>
+  </motion.h2>
 
-                <motion.span
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.9, delay: 0.45 }}
-                  className="
-                    absolute bottom-1 left-0 h-2
-                    bg-[#F8CC10]/60 sm:h-3
-                  "
-                />
-              </span>
+  {/* Accent Line */}
+  <motion.div
+    initial={{ width: 0 }}
+    whileInView={{ width: 55 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.7, delay: 0.3 }}
+    className="mt-6 h-[3px] rounded-full bg-[#F8CC10]"
+  />
 
-              <br />
+  {/* Description */}
+  <motion.p
+    initial={{ opacity: 0, y: 15 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+    className="
+      mt-5 
+      mb-3
+      text-sm leading-7
+      text-gray-500
+      sm:text-base
+    "
+  >
+    Our vision is simple — build a creative ecosystem where
+    brands, creators, and ideas don't just get noticed,
+    they become impossible to ignore.
+  </motion.p>
 
-              <span className="text-[#17122a]">
-                into <span className="text-[#5428B0]">impact.</span>
-              </span>
-            </motion.h2>
+<AnimatedButton 
+to = "/contact"
+text ="Build with us" />
 
-            {/* Accent line */}
-            <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              whileInView={{ width: 72, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.65 }}
-              className="mt-7 h-1 rounded-full bg-[#F8CC10]"
-            />
+  {/* Vision Keywords */}
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 0.45 }}
+    className="mt-8 flex flex-wrap gap-2"
+  >
+    {visionWords.map((word, index) => (
+      <motion.span
+        key={word}
+        whileHover={{ y: -3 }}
+        className={`
+          rounded-full border px-3 py-1.5
+          text-[10px] font-semibold
+          transition-colors duration-300
+          ${
+            index % 2 === 0
+              ? "border-[#5428B0]/15 bg-[#5428B0]/5 text-[#5428B0]"
+              : "border-[#F8CC10]/40 bg-[#F8CC10]/15 text-[#5b4900]"
+          }
+        `}
+      >
+        {word}
+      </motion.span>
+    ))}
+  </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="
-                mt-7 max-w-xl text-sm leading-7
-                text-[#71697e] sm:text-base
-              "
-            >
-              Our vision is simple — build a creative ecosystem where
-              brands, creators, and ideas don't just get noticed,
-              they become impossible to ignore.
-            </motion.p>
-
-            {/* CTA */}
-            <motion.a
-              href="/contact"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              whileHover={{ y: -4 }}
-              whileTap={{ scale: 0.96 }}
-              className="
-                group mt-8 inline-flex items-center gap-3
-                rounded-full bg-[#5428B0]
-                px-5 py-3 text-sm font-bold text-white
-                shadow-[0_14px_35px_rgba(84,40,176,0.20)]
-                transition-shadow duration-300
-                hover:shadow-[0_18px_45px_rgba(84,40,176,0.30)]
-              "
-            >
-              Build with us
-
-              <span
-                className="
-                  flex h-7 w-7 items-center justify-center
-                  rounded-full bg-[#F8CC10] text-[#5428B0]
-                  transition-transform duration-300
-                  group-hover:rotate-45
-                "
-              >
-                <ArrowUpRight size={15} />
-              </span>
-            </motion.a>
-
-            {/* Word chips */}
-            <div className="mt-10 flex flex-wrap gap-2">
-              {visionWords.map((word, index) => (
-                <motion.span
-                  key={word}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.55 + index * 0.08 }}
-                  whileHover={{ y: -3 }}
-                  className={`
-                    rounded-full border px-3 py-1.5
-                    text-[10px] font-semibold
-                    transition-all duration-300
-                    ${
-                      index % 2 === 0
-                        ? "border-[#5428B0]/15 bg-[#5428B0]/5 text-[#5428B0]"
-                        : "border-[#F8CC10]/40 bg-[#F8CC10]/15 text-[#5b4900]"
-                    }
-                  `}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </div>
-          </div>
+</div>
 
                {/* =================================================
                    RIGHT — ORBIT SYSTEM

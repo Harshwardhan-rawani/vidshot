@@ -28,7 +28,7 @@ const brands = [
   },
 ];
 
-export default function TrustedPartners() {
+export default function Hometp() {
   return (
     <section className="relative my-3 w-full overflow-hidden bg-[#5428B0] py-5 sm:py-10">
 

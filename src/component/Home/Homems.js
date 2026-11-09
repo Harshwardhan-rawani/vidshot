@@ -76,7 +76,7 @@ function CountUp({ value, suffix = "", decimals = 0 }) {
    MAIN SECTION
 ----------------------------------------- */
 
-export default function MetricsSection() {
+export default function Homems() {
   return (
     <section className="
       grid

@@ -474,7 +474,7 @@ function LeftContent() {
   {/* Left: Text */}
   <div className="flex flex-col items-start">
     <p className="text-sm font-bold text-[#171717]">
-      Trusted by our clients
+      Trusted by
     </p>
 
 {/* Rating */}
@@ -548,7 +548,7 @@ function RightVisual({ services}) {
 // MAIN HERO COMPONENT
 // ========================================
 
-function Hero({ services = [] }) {
+export default function Homehero({ services = [] }) {
 
   return (
 
@@ -597,4 +597,3 @@ function Hero({ services = [] }) {
 
 }
 
-export default Hero;

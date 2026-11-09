@@ -147,7 +147,7 @@ const clients = [
   },
 ];
 
-export default function ClientSlider() {
+export default function Homeoc() {
   const [current, setCurrent] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
   const [isPaused, setIsPaused] = useState(false);
@@ -247,100 +247,69 @@ export default function ClientSlider() {
         md:py-16">
 
       {/* HEADER */}
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
 
-       <motion.div
-             initial={{
-               opacity: 0,
-               y: 30,
-             }}
-             whileInView={{
-               opacity: 1,
-               y: 0,
-             }}
-             viewport={{
-               once: true,
-               amount: 0.2,
-             }}
-             transition={{
-               duration: 0.7,
-             }}
-             className="
-               mb-12
-               flex
-               flex-col
-               justify-between
-               gap-6
-               md:flex-row
-               md:items-end
-               lg:mb-16
-             "
-           >
-             <div>
-               {/* Label */}
-   
-               <div className="mb-5 flex items-center gap-3">
-                 <span
-                   className="
-                     h-2.5
-                     w-2.5
-                     rounded-full
-                     bg-[var(--secondary-dark)]
-                   "
-                 />
-   
-                 <span
-                   className="
-                     text-xs
-                     font-semibold
-                     uppercase
-                     tracking-[0.2em]
-                     text-[var(--primary-dark)]
-                   "
-                 >
-                   Our Clients
-                 </span>
-               </div>
-   
-               {/* Heading */}
-   
-               <h2
-                 className="
-                   max-w-3xl
-                   text-4xl
-                   font-black
-                   leading-[0.95]
-                   text-[clamp(2rem,5vw,3rem)]
-                   text-[var(--dark)]
-                   sm:text-4xl
-                   lg:text-5xl
-                 "
-               >
-                 Brands We
-                 <br />
-   
-                 <span className="text-[var(--primary-dark)]">
-                   Have Worked With
-                 </span>
-               </h2>
-             </div>
-   
-             {/* Description */}
-   
-             <p
-               className="
-                 max-w-sm
-                 text-sm
-                 leading-6
-                 text-slate-500
-                 md:text-base
-               "
-             >
-               A simple, strategic process that turns your
-               vision into content people remember.
-             </p>
-           </motion.div>
+<div className="relative mx-auto max-w-7xl">
+
+  <motion.div
+    initial={{
+      opacity: 0,
+      y: 30,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+      amount: 0.2,
+    }}
+    transition={{
+      duration: 0.8,
+      ease: "easeOut",
+    }}
+    className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-20 items-start mb-12 lg:mb-16"
+  >
+
+    {/* Left Content */}
+
+    <div>
+
+      <p className="text-[10px] uppercase tracking-[3px] font-bold text-[#5428B0] mb-4">
+        Our Clients
+      </p>
+
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight text-[#101418]">
+        Brands we've
+        <span className="text-[#5428B0]"> worked with.</span>
+      </h2>
+
+    </div>
+
+    {/* Right Content */}
+
+    <div className="lg:pt-8">
+
+      <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+        Great partnerships create great results. We're proud to
+        collaborate with brands and businesses that trust us to
+        bring their ideas to life.
+      </p>
+
+      <div className="flex items-center gap-3 mt-7">
+
+        <span className="h-[2px] w-10 bg-[#F8CC10]" />
+
+        <span className="text-[10px] font-bold uppercase tracking-[2px] text-[#5428B0]">
+          Built on Trust. Driven by Creativity.
+        </span>
+
       </div>
+
+    </div>
+
+  </motion.div>
+
+</div>
 
       {/* CAROUSEL */}
       <motion.div
