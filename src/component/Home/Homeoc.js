@@ -274,13 +274,13 @@ export default function Homeoc() {
 
     <div>
 
-      <p className="text-[10px] uppercase tracking-[3px] font-bold text-[#5428B0] mb-4">
+      <p className="text-[10px] uppercase tracking-[3px] font-bold text-[var(--primary)] mb-4">
         Our Clients
       </p>
 
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight text-[#101418]">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight text-[var(--text)]">
         Brands we've
-        <span className="text-[#5428B0]"> worked with.</span>
+        <span className="text-[var(--primary)]"> worked with.</span>
       </h2>
 
     </div>
@@ -297,9 +297,9 @@ export default function Homeoc() {
 
       <div className="flex items-center gap-3 mt-7">
 
-        <span className="h-[2px] w-10 bg-[#F8CC10]" />
+        <span className="h-[2px] w-10 bg-[var(--secondary)]" />
 
-        <span className="text-[10px] font-bold uppercase tracking-[2px] text-[#5428B0]">
+        <span className="text-[10px] font-bold uppercase tracking-[2px] text-[var(--primary)]">
           Built on Trust. Driven by Creativity.
         </span>
 
@@ -357,7 +357,7 @@ export default function Homeoc() {
                     src={client.images?.[0]}
                     alt={client.name}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
                   />
 
                   {/* DARK OVERLAY */}
@@ -380,7 +380,7 @@ export default function Homeoc() {
                   </div>
 
                   {/* ARROW */}
-                  <div className="absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#F8CC10] text-lg text-[#5428B0] transition-transform duration-500 group-hover:rotate-45">
+                  <div className="absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--secondary)] text-lg text-[var(--primary)] transition-transform duration-500 group-hover:rotate-45">
                     ↗
                   </div>
 
@@ -442,7 +442,7 @@ export default function Homeoc() {
               aria-current={current === index ? "true" : undefined}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 current === index
-                  ? "w-10 bg-[#5428B0]"
+                  ? "w-10 bg-[var(--primary)]"
                   : "w-2 bg-neutral-300 hover:bg-neutral-400"
               }`}
             />
@@ -456,7 +456,7 @@ export default function Homeoc() {
             type="button"
             onClick={previousSlide}
             aria-label="Previous client"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 bg-white text-[#5428B0] shadow-sm transition-all duration-300 hover:-translate-x-1 hover:border-[#5428B0]/30 hover:bg-[#F3EEFF] active:scale-90"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 bg-white text-[var(--primary)] shadow-sm transition-all duration-300 hover:-translate-x-1 hover:border-[var(--primary)]/30 hover:bg-[#F3EEFF] active:scale-90"
           >
             ←
           </button>
@@ -465,7 +465,7 @@ export default function Homeoc() {
             type="button"
             onClick={nextSlide}
             aria-label="Next client"
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-[#5428B0] text-white shadow-[0_10px_25px_rgba(84,40,176,0.25)] transition-all duration-300 hover:translate-x-1 hover:bg-[#F8CC10] hover:text-[#5428B0] active:scale-90"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--primary)] text-white shadow-[0_10px_25px_rgba(84,40,176,0.25)] transition-all duration-300 hover:translate-x-1 hover:bg-[var(--secondary)] hover:text-[var(--primary)] active:scale-90"
           >
             →
           </button>

@@ -35,7 +35,7 @@ export default function TrustedClients({
         group relative z-20 mt-2 flex w-fit items-center gap-3
         whitespace-nowrap overflow-hidden rounded-full
         border border-white/15 bg-white/[0.08]
-        px-3 py-2 text-xs font-medium text-black
+        px-3 py-2 text-xs font-medium text-[var(--text)]
         shadow-[0_10px_40px_rgba(0,0,0,0.12)]
         backdrop-blur-xl
         transition-all duration-500
@@ -79,7 +79,7 @@ export default function TrustedClients({
       <span
         className="
           relative z-10 font-semibold uppercase
-          tracking-[0.12em] text-black
+          tracking-[0.12em] text-[var(--text)]
         "
       >
         Trusted By
@@ -95,7 +95,7 @@ export default function TrustedClients({
             key={client.name || index}
             className={`
               relative h-7 w-7 shrink-0 overflow-hidden
-              rounded-full border-2 border-[#ffffff]
+              rounded-full border-2 border-[var(--neutral)]
             
               ${index !== 0 ? "-ml-2" : ""}
             `}
@@ -104,7 +104,7 @@ export default function TrustedClients({
               src={client.image}
               alt={client.name || "Trusted client"}
               loading="lazy"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-top"
             />
           </div>
         ))}
@@ -115,13 +115,14 @@ export default function TrustedClients({
             className="
               relative z-20 -ml-2 flex h-7 min-w-7
               items-center justify-center rounded-full
-              border-2 border-[#ffffff]
-             bg-[#F8CC10] px-1.5
-              text-[9px] font-bold tracking-tight text-[#5428B0]
+              
+              border-2 border-[var(--neutral)]
+             bg-[var(--secondary)] px-1.5
+              text-[9px] font-bold tracking-tight text-[var(--primary)]
               shadow-[0_0_15px_rgba(84,40,176,0.35)]
               transition-all duration-300
-              group-hover:bg-[#F8CC10]
-              group-hover:text-[#5428B0]
+              group-hover:bg-[var(--secondary)]
+              group-hover:text-[var(--primary)]
             "
           >
             +{remainingClients}

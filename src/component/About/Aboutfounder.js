@@ -121,7 +121,10 @@ export default function Aboutfounder() {
                 <div className="
                   w-12 h-12
                   rounded-full
-                  bg-[#5428B0]
+                  bg-white
+                  shadow-lg
+                  border-2
+                  border-red-100
                   text-[#F8CC10]
                   flex items-center justify-center
                   font-bold text-xl

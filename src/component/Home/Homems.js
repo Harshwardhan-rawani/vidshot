@@ -13,24 +13,24 @@ import {
 
 const metrics = [
   {
-    value: 120,
+    value: 130,
     suffix: "+",
-    label: "brand stories launched",
+    label: "Monthly Reels Post",
   },
   {
-    value: 4.9,
+    value: 4.7,
     suffix: "/5",
     decimals: 1,
     label: "average client rating",
   },
   {
-    value: 8,
+    value: 5,
     suffix: "x",
     label: "faster campaign turnaround",
   },
   {
-    value: 28,
-    suffix: "K",
+    value: 10,
+    suffix: "M",
     label: "monthly views generated",
   },
 ];

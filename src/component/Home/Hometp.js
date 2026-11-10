@@ -30,7 +30,7 @@ const brands = [
 
 export default function Hometp() {
   return (
-    <section className="relative my-3 w-full overflow-hidden bg-[#5428B0] py-5 sm:py-10">
+    <section className="relative my-3 w-full overflow-hidden bg-[var(--primary)] py-5 sm:py-10">
 
       {/* Background glow */}
       <div className="pointer-events-none absolute -left-20 top-0 h-40 w-40 rounded-full bg-[#F8CC10]/10 blur-[80px]" />
@@ -53,10 +53,10 @@ export default function Hometp() {
       <div className="relative z-10 mt-7">
 
         {/* Left Gradient */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-12 bg-gradient-to-r from-[#5428B0] to-transparent sm:w-24 lg:w-36" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-12 bg-gradient-to-r from-[var(--primary)] to-transparent sm:w-24 lg:w-36" />
 
         {/* Right Gradient */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-12 bg-gradient-to-l from-[#5428B0] to-transparent sm:w-24 lg:w-36" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-12 bg-gradient-to-l from-[var(--primary)] to-transparent sm:w-24 lg:w-36" />
 
         <Marquee
           direction="right"

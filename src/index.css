@@ -5,16 +5,19 @@
 @tailwind utilities;
 
 :root {
-  /* ================================
-     VIDSHOT BRAND COLORS
-     ================================ */
 
-  --primary: #5428b0;
-  --primary-dark: #4820a0;
-  --secondary: #f8cc10;
-  --secondary-dark: #f8cc10;
-  --neutral: #ffffff;
-  --dark: #0a0a0a;
+  /* Brand Colors */
+  --primary: #5403AF;
+  --secondary: #FDCE03;
+  --neutral: #FFFFFF;
+
+  /* Background & Surface */
+  --background: #F7F7F9;
+
+  /* Text & Contrast */
+  
+  --text: #0A0A0A;
+
 
   --heading-font : "Montserrat",sans-serif;
   

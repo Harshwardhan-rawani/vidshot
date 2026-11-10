@@ -23,9 +23,9 @@ export default function AnimatedButton1({
           -inset-[1px]
           rounded-full
           bg-gradient-to-r
-          from-[var(--primary-dark)]
-          via-[var(--secondary-dark)]
-          to-[var(--primary-dark)]
+          from-[var(--primary)]
+          via-[var(--secondary)]
+          to-[var(--primary)]
           opacity-0
           blur-[5px]
           transition-opacity
@@ -47,16 +47,14 @@ export default function AnimatedButton1({
           overflow-hidden
           rounded-full
 
-          border
-          border-[var(--neutral)]
-
+      
           bg-[var(--neutral)]
           px-5
           py-2
 
           text-sm
           font-semibold
-          text-[var(--primary-dark)]
+          text-[var(--primary)]
 
           shadow-[0_8px_25px_rgba(84,40,176,0.18)]
 
@@ -173,13 +171,13 @@ export default function AnimatedButton1({
             z-30
             whitespace-nowrap
 
-            text-[var(--primary-dark)]
+            text-[var(--primary)]
 
             transition-colors
             duration-400
             ease-out
 
-            group-hover:text-[var(--primary-dark)]
+            group-hover:text-[var(--primary)]
           "
         >
           {text}
@@ -204,8 +202,8 @@ export default function AnimatedButton1({
             overflow-hidden
             rounded-full
 
-            bg-[var(--secondary-dark)]
-            text-[var(--primary-dark)]
+            bg-[var(--secondary)]
+            text-[var(--primary)]
 
             shadow-[0_3px_10px_rgba(248,204,16,0.25)]
 

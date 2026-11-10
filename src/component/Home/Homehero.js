@@ -123,7 +123,7 @@ const ServiceCard = ({ service, index, gridSpan }) => {
           text-[9px]
           font-semibold
           tracking-wider
-          text-[#F8CC10]
+          text-[var(--secondary)]
         ">
           {String(service.id).padStart(2, "0")}
           {service.category ? ` / ${service.category}` : ""}
@@ -149,7 +149,7 @@ const ServiceCard = ({ service, index, gridSpan }) => {
         <span className="
           absolute right-3 top-3
           rounded-full
-          bg-[#F8CC10]
+          bg-[var(--secondary)]
           px-2.5 py-1
           text-[9px]
           font-bold
@@ -293,7 +293,7 @@ function LeftContent() {
           absolute -right-40 -top-40
           h-[600px] w-[600px]
           rounded-full
-          bg-[#5428B0]/[0.06]
+          bg-[var(--primary)]/[0.06]
           blur-[120px]
         " />
 
@@ -301,7 +301,7 @@ function LeftContent() {
           absolute -bottom-40 -left-40
           h-[500px] w-[500px]
           rounded-full
-          bg-[#F8CC10]/[0.08]
+          bg-[var(--secondary)]/[0.08]
           blur-[120px]
         " />
 
@@ -328,11 +328,11 @@ function LeftContent() {
         tracking-wide text-gray-700
       ">
 
-        <span className="h-2 w-2 rounded-full bg-[#5428B0]" />
+        <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
 
         Creative Motion Studio
 
-        <span className="text-[#F8CC10]">✦</span>
+        <span className="text-[var(--secondary)]">✦</span>
 
       </div>
 
@@ -402,7 +402,7 @@ function LeftContent() {
                 className="
                   relative z-10
                   inline-block
-                  text-[#5428B0]
+                  text-[var(--primary)]
                 "
               >
                 {words[wordIndex]}.
@@ -420,7 +420,7 @@ function LeftContent() {
               h-2 sm:h-3
               w-full
               rounded-full
-              bg-[#F8CC10]/70
+              bg-[var(--secondary)]/70
             " />
 
           </span>
@@ -485,8 +485,8 @@ function LeftContent() {
       <Star
         key={star}
         size={15}
-        fill="#F8CC10"
-        stroke="#F8CC10"
+        fill="var(--secondary)"
+        stroke="var(--secondary)"
       />
     ))}
 

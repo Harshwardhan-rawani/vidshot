@@ -218,13 +218,13 @@ export default function Homefm() {
 
   <div>
 
-    <p className="text-[10px] uppercase tracking-[3px] font-bold text-[#5428B0] mb-4">
+    <p className="text-[10px] uppercase tracking-[3px] font-bold text-[var(--primary)] mb-4">
       Client Feedback
     </p>
 
-    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight text-[#101418]">
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight text-[var(--Text2)]">
       Stories that
-      <span className="text-[#5428B0]"> speak for us.</span>
+      <span className="text-[var(--primary)]"> speak for us.</span>
     </h2>
 
   </div>
@@ -233,7 +233,7 @@ export default function Homefm() {
 
   <div className="lg:pt-8">
 
-    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+    <p className="text-base md:text-lg text-[var(--Text2)]/80 leading-relaxed">
       The best measure of our work is the trust and satisfaction
       of the people we work with. Their experiences inspire us
       to keep creating better.
@@ -245,7 +245,7 @@ export default function Homefm() {
 
       <span className="h-[2px] w-10 bg-[#F8CC10]" />
 
-      <span className="text-[10px] font-bold uppercase tracking-[2px] text-[#5428B0]">
+      <span className="text-[10px] font-bold uppercase tracking-[2px] text-[var(--primary)]">
         Real People. Real Experiences.
       </span>
 

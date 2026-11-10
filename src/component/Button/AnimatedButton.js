@@ -51,9 +51,9 @@ export default function AnimatedButton({
           rounded-full
     
           border
-          border-[var(--primary-dark)]
+          border-[var(--primary)]
           
-          bg-[var(--primary-dark)]
+          bg-[var(--primary)]
           px-5
           py-2
 
@@ -86,7 +86,7 @@ export default function AnimatedButton({
             inset-0
             rounded-full
             border
-            border-[var(--primary-dark)]
+            border-[var(--primary)]
           "
         />
 
@@ -207,8 +207,8 @@ export default function AnimatedButton({
             overflow-hidden
             rounded-full
 
-            bg-[var(--secondary-dark)]
-            text-[var(--primary-dark)]
+            bg-[var(--secondary)]
+            text-[var(--primary)]
 
             shadow-[0_3px_10px_rgba(248,204,16,0.25)]
 

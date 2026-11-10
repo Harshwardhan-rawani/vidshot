@@ -206,7 +206,7 @@ const cardPositions = [
                       alt=""
                       className={`
                         absolute inset-0 h-full w-full object-cover
-                        transition-transform duration-700
+                        transition-transform duration-200
                         group-hover:scale-110
                         ${isActive ? "scale-110" : "scale-100"}
                       `}

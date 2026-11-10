@@ -44,7 +44,7 @@ const FloatingContact = () => {
         className="
           relative
           overflow-hidden
-          bg-[#5428B0]
+          bg-[var(--primary)]
           shadow-2xl
           shadow-purple-900/30
         "
@@ -65,8 +65,8 @@ const FloatingContact = () => {
             flex h-[60px] w-[60px]
             items-center justify-center
             rounded-full
-            bg-[#F8CC10]
-            text-[#5428B0]
+            bg-[var(--secondary)]
+            text-[var(--primary)]
             transition-transform
             hover:scale-95
             focus:outline-none
@@ -124,7 +124,7 @@ const FloatingContact = () => {
                 font-semibold
                 uppercase
                 tracking-[3px]
-                text-[#F8CC10]
+                text-[var(--secondary)]
               ">
                 Let's Connect
               </p>
@@ -162,7 +162,7 @@ const FloatingContact = () => {
                         text-xs
                         text-white/90
                         transition-colors
-                        hover:text-[#F8CC10]
+                        hover:text-[var(--secondary)]
                       "
                     >
                       <Icon

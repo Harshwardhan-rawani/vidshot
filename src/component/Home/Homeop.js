@@ -15,13 +15,13 @@ export default function Homeop(){
 
 <div>
 
-  <p className="text-[10px] uppercase tracking-[3px] font-bold text-[#5428B0] mb-3">
+  <p className="text-[10px] uppercase tracking-[3px] font-bold text-[var(--primary)] mb-3">
     Our Process
   </p>
 
   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
     Simple process.
-    <span className="text-[#5428B0]"> Serious output.</span>
+    <span className="text-[var(--primary)]"> Serious output.</span>
   </h2>
 
   <p className="    mt-5 
@@ -99,9 +99,9 @@ export default function Homeop(){
       pt-1
       text-xs font-bold
       tracking-wider
-      text-[#5428B0]
+      text-[var(--primary)]
       transition-colors duration-300
-      group-hover:text-[#F8CC10]
+      group-hover:text-[var(--secondary)]
     "
   >
     {number}
@@ -117,7 +117,7 @@ export default function Homeop(){
         tracking-tight
         text-[#17122a]
         transition-colors duration-300
-        group-hover:text-[#5428B0]
+        group-hover:text-[var(--primary)]
         sm:text-xl
       "
     >
