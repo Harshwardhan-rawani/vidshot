@@ -20,7 +20,7 @@ export default function Aboutcta() {
                 text-center
               ">
     
-                                {/* Decorative Background Circles */}
+            {/* Decorative Background Circles */}
 <div
   className="
     pointer-events-none

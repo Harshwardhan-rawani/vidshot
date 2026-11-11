@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Navbar from './component/Navbar/Navbar';
 import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
@@ -125,7 +125,6 @@ const services = [
 function App() {
    
     useEffect(() => {
-      
     document.title = `Vidshot`;
   }, []);
   return (
