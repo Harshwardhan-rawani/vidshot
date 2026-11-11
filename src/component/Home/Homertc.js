@@ -3,204 +3,87 @@ import { motion } from "framer-motion";
 import AnimatedButton1 from "../Button/AnimatedButton1";
 export default function Homertc(){
     return(
+      
+                <section className="bg-[#FAFAFA] py-16 md:py-24">
+          
+                  <div className="max-w-7xl mx-auto px-5">
+          
+                    <div className="
+                      relative
+                      overflow-hidden
+                      rounded-[25px]
+                      bg-[var(--primary)]
+                      px-6 py-16
+                      md:px-14 md:py-20
+                      text-center
+                    ">
+          
+                      {/* Decorative Circle */}
+          
+                  {/* Decorative Background Circles */}
+<div
+  className="
+    pointer-events-none
+    absolute
+    -top-32 -right-24
+    h-64 w-64
+    sm:h-80 sm:w-80
+    lg:h-96 lg:w-96
+    rounded-full
+    border border-[var(--secondary)]/50
+  "
+/>
+
+<div
+  className="
+    pointer-events-none
+    absolute
+    -bottom-32 -left-24
+    h-64 w-64
+    sm:h-80 sm:w-80
+    lg:h-96 lg:w-96
+    rounded-full
+    border border-[var(--secondary)]/50
+  "
+/>
+          
+                      <div className="relative z-10">
+          
+                        <p className="text-[10px] uppercase tracking-[3px] font-bold text-[#F8CC10] mb-4">
+                          Let's Build Together
+                        </p>
+          
+                        <h2 className="
+                          text-3xl sm:text-4xl md:text-6xl
+                          font-bold
+                          tracking-tight
+                          text-white
+                          leading-tight
+                        ">
+                          Ready to capture your 
+                          <br />
+                          <span className="text-[#F8CC10]">
+                            next big moment?
+                          </span>
+                        </h2>
+          
+                        <p className="text-sm text-white/60 max-w-lg mx-auto mt-5 mb-8 leading-7">
+                     Let's shape a video story that feels unmistakably yours, connects with your audience, and makes your brand stand out.
+                        </p>
+          
+                        <AnimatedButton1
+                          text="Start a Project"
+                          to="/contact"
+                        />
+          
+                      </div>
+          
+                    </div>
+          
+                  </div>
+          
+                </section>
         
-   <motion.section
-       initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 1,
-          }}
-   className="relative my-20 overflow-hidden rounded-[30px] border border-white/10 bg-[#4820A0] px-6  text-white shadow-[0_25px_80px_rgba(84,40,176,0.25)] sm:px-8 lg:px-10      py-10
-        md:py-16">
 
-  {/* ================= BACKGROUND TEXTURE ================= */}
-  <div className="pointer-events-none absolute inset-0 overflow-hidden">
-
-    {/* Main gradient */}
-    <div className="absolute inset-0 bg-gradient-to-br from-[#5428B0] via-[#4820A0] to-[#24104f]" />
-
-    {/* Purple glow */}
-    <div
-      className="
-        absolute -left-20 -top-32
-        h-80 w-80
-        rounded-full
-        bg-[#8b5cf6]/25
-        blur-[90px]
-      "
-    />
-
-    {/* Yellow glow */}
-    <div
-      className="
-        absolute -right-20 -top-20
-        h-64 w-64
-        rounded-full
-        bg-[#F8CC10]/15
-        blur-[90px]
-      "
-    />
-
-    {/* Bottom purple glow */}
-    <div
-      className="
-        absolute -bottom-32 left-1/3
-        h-72 w-72
-        rounded-full
-        bg-[#7c3aed]/20
-        blur-[100px]
-      "
-    />
-
-    {/* Subtle grid */}
-    <div
-      className="
-        absolute inset-0 opacity-[0.07]
-        [background-image:linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)]
-        [background-size:42px_42px]
-      "
-    />
-
-    {/* Dot texture */}
-    <div
-      className="
-        absolute inset-0 opacity-[0.12]
-        [background-image:radial-gradient(rgba(255,255,255,0.7)_1px,transparent_1px)]
-        [background-size:18px_18px]
-      "
-    />
-
-    {/* Diagonal light streak */}
-    <div
-      className="
-        absolute -right-20 top-1/2
-        h-[160%] w-24
-        -translate-y-1/2
-        rotate-[25deg]
-        bg-gradient-to-b
-        from-transparent
-        via-white/[0.06]
-        to-transparent
-        blur-sm
-      "
-    />
-
-    {/* Decorative circle */}
-    <div
-      className="
-        absolute -right-16 -bottom-24
-        h-64 w-64
-        rounded-full
-        border border-white/[0.08]
-      "
-    />
-
-    <div
-      className="
-        absolute -right-6 -bottom-14
-        h-40 w-40
-        rounded-full
-        border border-[#F8CC10]/10
-      "
-    />
-
-    {/* Floating yellow dot */}
-    <div
-      className="
-        absolute right-[22%] top-8
-        h-2.5 w-2.5
-        rounded-full
-        bg-[#F8CC10]
-        shadow-[0_0_20px_rgba(248,204,16,0.7)]
-      "
-    />
-
-    {/* Small decorative squares */}
-    <div
-      className="
-        absolute right-[12%] top-1/2
-        h-3 w-3
-        rotate-45
-        border border-[#F8CC10]/40
-      "
-    />
-
-    <div
-      className="
-        absolute bottom-8 right-[30%]
-        h-2 w-2
-        rounded-full
-        bg-white/30
-      "
-    />
-
-  </div>
-
-  {/* ================= CONTENT ================= */}
-  <div className="relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-10">
-    {/* Text */}
-<div className="max-w-2xl">
-
-  {/* Section Label */}
-  <p className="
-    mb-3 text-[10px] font-bold uppercase
-    tracking-[3px] text-[#F8CC10]
-  ">
-    Let's Create Together
-  </p>
-
-  {/* Heading */}
-  <h3 className="
-    max-w-2xl
-    text-3xl font-bold
-    leading-[1.15] tracking-tight
-    text-white
-    sm:text-4xl
-    lg:text-[42px]
-  ">
-    Ready to capture your
-    <span className="text-[#F8CC10]"> next big moment?</span>
-  </h3>
-
-  {/* Description */}
-  <p className="
-    mt-5 
-    text-sm leading-7
-    text-white/65
-    sm:text-base
-  ">
-    Let's shape a video story that feels unmistakably yours,
-    connects with your audience, and makes your brand stand out.
-  </p>
-
-</div>
-
-    {/* CTA */}
-    <div className="relative mt-7 shrink-0 lg:mt-0">
-
-      {/* Button glow */}
-      <div className="pointer-events-none absolute inset-0 rounded-full bg-[#F8CC10]/20 blur-xl" />
-
-      <div className="relative">
-        <AnimatedButton1
-          text="Start Your Project"
-          to="/contact"
-        />
-      </div>
-
-    </div>
-
-  </div>
-
-</motion.section>
     )
 }

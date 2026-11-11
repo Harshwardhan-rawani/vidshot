@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './component/Navbar/Navbar';
 import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
@@ -27,6 +27,7 @@ import {
   PenTool,
   Target,
 } from "lucide-react";
+import { useEffect } from 'react';
 
 const services = [
   {
@@ -122,6 +123,11 @@ const services = [
 ];
 
 function App() {
+   
+    useEffect(() => {
+      
+    document.title = `Vidshot`;
+  }, []);
   return (
     <BrowserRouter>
       <div className="app-shell">

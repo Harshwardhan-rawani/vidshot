@@ -1,10 +1,12 @@
 import React from "react";
-import AnimatedButton from "../../component/Button/AnimatedButton";
-
+import AnimatedButton1 from "../Button/AnimatedButton1";
+import { motion } from "framer-motion";
 export default function Aboutcta() {
   return (
     
-          <section className="bg-[#FAFAFA] py-16 md:py-24">
+          <motion.section
+          
+          className="bg-[#FAFAFA] py-16 md:py-24">
     
             <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
     
@@ -12,30 +14,38 @@ export default function Aboutcta() {
                 relative
                 overflow-hidden
                 rounded-[25px]
-                bg-[#171717]
+                bg-[var(--primary)]
                 px-6 py-16
                 md:px-14 md:py-20
                 text-center
               ">
     
-                {/* Decorative Circle */}
-    
-                <div className="
-                  absolute
-                  -top-40 -right-20
-                  w-96 h-96
-                  rounded-full
-                  border border-white/10
-                " />
-    
-                <div className="
-                  absolute
-                  -bottom-40 -left-20
-                  w-96 h-96
-                  rounded-full
-                  border border-[#F8CC10]/20
-                " />
-    
+                                {/* Decorative Background Circles */}
+<div
+  className="
+    pointer-events-none
+    absolute
+    -top-32 -right-24
+    h-64 w-64
+    sm:h-80 sm:w-80
+    lg:h-96 lg:w-96
+    rounded-full
+    border border-[var(--secondary)]/50
+  "
+/>
+
+<div
+  className="
+    pointer-events-none
+    absolute
+    -bottom-32 -left-24
+    h-64 w-64
+    sm:h-80 sm:w-80
+    lg:h-96 lg:w-96
+    rounded-full
+    border border-[var(--secondary)]/50
+  "
+/>
                 <div className="relative z-10">
     
                   <p className="text-[10px] uppercase tracking-[3px] font-bold text-[#F8CC10] mb-4">
@@ -61,7 +71,7 @@ export default function Aboutcta() {
                     thinking, production and energy to make it happen.
                   </p>
     
-                  <AnimatedButton
+                  <AnimatedButton1
                     text="Start a Project"
                     to="/contact"
                   />
@@ -72,5 +82,5 @@ export default function Aboutcta() {
     
             </div>
     
-          </section>
+          </motion.section>
   )}
