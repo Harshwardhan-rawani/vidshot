@@ -118,27 +118,14 @@ export default function Aboutfounder() {
                 className="mt-8 pt-6 border-t border-gray-200 flex items-center gap-4"
               >
 
-                <div className="
-                  w-12 h-12
-                  rounded-full
-                  bg-white
-                  shadow-lg
-                  border-2
-                  border-red-100
-                  text-[#F8CC10]
-                  flex items-center justify-center
-                  font-bold text-xl
-                ">
-                  R
-                </div>
 
                 <div>
 
-                  <p className="text-sm font-bold">
+                  <p className="text-sm font-bold  text-[var(--primary)]">
                     Rohit Kumar Singh
                   </p>
 
-                  <p className="text-[11px] text-gray-500 mt-1">
+                  <p className="text-[11px] mt-1">
                     Founder & CEO, VidShot Media
                   </p>
 
