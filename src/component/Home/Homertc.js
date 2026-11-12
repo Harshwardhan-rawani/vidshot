@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import AnimatedButton1 from "../Button/AnimatedButton1";
 export default function Homertc(){
     return(
