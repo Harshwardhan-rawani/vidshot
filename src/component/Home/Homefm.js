@@ -1,12 +1,16 @@
 import React from "react";
-import Marquee from "react-fast-marquee";
+import Slider from "react-slick";
 import { motion } from "framer-motion";
 
-import deepak from "../../Images/client/deepak pandey.jpeg"
-import mohit from "../../Images/client/mohit Beriwala.jpeg"
-import deven from "../../Images/client/deven u pandey.jpeg"
-import nidhi from "../../Images/client/nidhi aneja.png"
-import dhiren from "../../Images/client/dhiren bontra.jpeg" 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import deepak from "../../Images/client/deepak pandey.jpeg";
+import mohit from "../../Images/client/mohit Beriwala.jpeg";
+import deven from "../../Images/client/deven u pandey.jpeg";
+import nidhi from "../../Images/client/nidhi aneja.png";
+import dhiren from "../../Images/client/dhiren bontra.jpeg";
+
 const testimonials = [
   {
     id: 1,
@@ -54,6 +58,7 @@ const testimonials = [
     image: dhiren,
   },
 ];
+
 function Stars({ rating }) {
   return (
     <div
@@ -80,26 +85,10 @@ function Stars({ rating }) {
 
 function TestimonialCard({ testimonial }) {
   return (
-    <motion.article
-      initial={{
-        opacity: 0,
-        y: 30,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.1,
-      }}
-      transition={{
-        duration: 0.1,
-        ease: "easeOut",
-      }}
+    <article
       className="
-         group mx-3 flex shrink-0 flex-col
-        w-[340px] h-[280px]
+        group mx-3 flex flex-col
+        h-[280px]
         rounded-2xl
         border border-black/[0.04]
         bg-[#f6f6f8]
@@ -120,7 +109,6 @@ function TestimonialCard({ testimonial }) {
           mt-4 flex-1 overflow-hidden
           text-xs font-normal
           leading-[1.65]
-          tracking-normal
           text-[#303036]
         "
       >
@@ -150,165 +138,189 @@ function TestimonialCard({ testimonial }) {
           />
         </div>
 
-        {/* Name and Role */}
+        {/* Name */}
         <div className="min-w-0 flex-1">
-          <h3
-            className="
-              truncate text-sm
-              font-semibold tracking-tight
-              text-[var(--dark)]
-            "
-          >
+          <h3 className="truncate text-sm font-semibold tracking-tight text-[var(--dark)]">
             {testimonial.name}
           </h3>
 
-          <p
-            className="
-              mt-1 truncate
-              text-[11px] font-medium
-              leading-4 text-[#77777d]
-            "
-          >
+          <p className="mt-1 truncate text-[11px] font-medium leading-4 text-[#77777d]">
             {testimonial.role}
           </p>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }
 
 export default function Homefm() {
+
+  // RTL Continuous Slider Settings
+  const settings = {
+    dots: false,
+    arrows: false,
+
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 0,
+
+    speed: 6500,
+    cssEase: "linear",
+
+    slidesToShow: 3,
+    slidesToScroll: 1,
+
+    rtl: true,
+
+    pauseOnHover: true,
+    pauseOnFocus: true,
+
+    swipe: true,
+    draggable: true,
+
+    variableWidth: false,
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <section
       className="
-        relative 
-        w-full 
-        overflow-hidden 
+        relative
+        w-full
+        overflow-hidden
         bg-[var(--neutral)]
-        py-10 sm:py-16 
-      
+        py-10 sm:py-16
       "
     >
-      {/* Section container */}
+
+      {/* Section Container */}
       <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 md:px-10 lg:px-12 2xl:px-16">
-        {/* Section heading */}
 
+        {/* Section Heading */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+          className="
+            grid lg:grid-cols-[0.8fr_1.2fr]
+            gap-8 lg:gap-20
+            items-start
+            mb-12 lg:mb-16
+          "
+        >
 
-<motion.div
-  initial={{
-    opacity: 0,
-    y: 30,
-  }}
-  whileInView={{
-    opacity: 1,
-    y: 0,
-  }}
-  viewport={{
-    once: true,
-    amount: 0.2,
-  }}
-  transition={{
-    duration: 0.8,
-    ease: "easeOut",
-  }}
-  className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-20 items-start mb-12 lg:mb-16"
->
+          {/* Left Content */}
+          <div>
+            <p className="text-[10px] uppercase tracking-[3px] font-bold text-[var(--primary)] mb-4">
+              Client Feedback
+            </p>
 
-  {/* Left Content */}
+            <h2 className="
+              text-3xl sm:text-4xl md:text-5xl
+              font-bold leading-[1.08]
+              tracking-tight text-[var(--Text2)]
+            ">
+              Stories that
+              <span className="text-[var(--primary)]">
+                {" "}speak for us.
+              </span>
+            </h2>
+          </div>
 
-  <div>
+          {/* Right Content */}
+          <div className="lg:pt-8">
 
-    <p className="text-[10px] uppercase tracking-[3px] font-bold text-[var(--primary)] mb-4">
-      Client Feedback
-    </p>
+            <p className="
+              text-base md:text-lg
+              text-[var(--Text2)]
+              leading-relaxed
+            ">
+              The best measure of our work is the trust and satisfaction
+              of the people we work with. Their experiences inspire us
+              to keep creating better.
+            </p>
 
-    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight text-[var(--Text2)]">
-      Stories that
-      <span className="text-[var(--primary)]"> speak for us.</span>
-    </h2>
+            <div className="flex items-center gap-3 mt-7">
+              <span className="h-[2px] w-10 bg-[#F8CC10]" />
 
-  </div>
+              <span className="
+                text-[10px] font-bold
+                uppercase tracking-[2px]
+                text-[var(--primary)]
+              ">
+                Real People. Real Experiences.
+              </span>
+            </div>
 
-  {/* Right Content */}
+          </div>
+        </motion.div>
+      </div>
 
-  <div className="lg:pt-8">
+      {/* =================================
+          RTL CONTINUOUS TESTIMONIAL SLIDER
+      ================================= */}
 
-    <p className="text-base md:text-lg text-[var(--Text2)]/80 leading-relaxed">
-      The best measure of our work is the trust and satisfaction
-      of the people we work with. Their experiences inspire us
-      to keep creating better.
-    </p>
+      <div className="relative w-full testimonial-slider">
 
+        {/* Left Gradient */}
+        <div className="
+          pointer-events-none
+          absolute inset-y-0 left-0 z-10
+          w-12 sm:w-20 lg:w-32
+          bg-gradient-to-r
+          from-[var(--neutral)]
+          to-transparent
+        " />
 
+        {/* Right Gradient */}
+        <div className="
+          pointer-events-none
+          absolute inset-y-0 right-0 z-10
+          w-12 sm:w-20 lg:w-32
+          bg-gradient-to-l
+          from-[var(--neutral)]
+          to-transparent
+        " />
 
-    <div className="flex items-center gap-3 mt-7">
-
-      <span className="h-[2px] w-10 bg-[#F8CC10]" />
-
-      <span className="text-[10px] font-bold uppercase tracking-[2px] text-[var(--primary)]">
-        Real People. Real Experiences.
-      </span>
-
-    </div>
-
-  </div>
-
-</motion.div>
+        <Slider {...settings}>
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.id} className="px-0">
+              <TestimonialCard testimonial={testimonial} />
+            </div>
+          ))}
+        </Slider>
 
       </div>
 
-     {/* ===============================
-      SMOOTH INFINITE MARQUEE
-=============================== */}
-
-<div className="relative w-full">
-
-  {/* Left Gradient */}
-  <div
-    className="
-      pointer-events-none absolute
-      inset-y-0 left-0 z-10
-      w-12 sm:w-20 lg:w-32
-      bg-gradient-to-r
-      from-[var(--neutral)]
-      to-transparent
-    "
-  />
-
-  {/* Right Gradient */}
-  <div
-    className="
-      pointer-events-none absolute
-      inset-y-0 right-0 z-10
-      w-12 sm:w-20 lg:w-32
-      bg-gradient-to-l
-      from-[var(--neutral)]
-      to-transparent
-    "
-  />
-
-  <Marquee
-    direction="left"
-    speed={30}
-    delay={0}
-    loop={0}
-    autoFill={true}
-    play={true}
-    pauseOnHover={true}
-    pauseOnClick={false}
-    gradient={false}
-    className=" overflow-hidden"
-  >
-    {testimonials.map((testimonial) => (
-      <TestimonialCard
-        key={testimonial.id}
-        testimonial={testimonial}
-      />
-    ))}
-  </Marquee>
-
-</div>
     </section>
   );
 }
-

@@ -4,7 +4,7 @@ import Navbar from './component/Navbar/Navbar';
 import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
 import Services from './Pages/Services/Services';
-import Work from './Pages/Work/Work';
+
 import Contact from './Pages/Contact/Contact';
 import Footer from './component/Footer/Footer';
 import ScrollToTop from './ScrollToTop';
@@ -28,6 +28,9 @@ import {
   Target,
 } from "lucide-react";
 import { useEffect } from 'react';
+import Portfolio from './Pages/Portfolio/Portfolio';
+import LeadPopup from './component/Home/LeadPopup';
+import Pricing from './Pages/Pricing/Pricing';
 
 const services = [
   {
@@ -130,6 +133,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app-shell">
+        <LeadPopup/>
         <Navbar />
         <FloatingContact/>
         <main className="route-content bg-white">
@@ -138,7 +142,8 @@ function App() {
             <Route path="/" element={<Home services={services}/>} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services services={services} />} />
-            <Route path="/portfolio" element={<Work />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact services={services}/>} />
           </Routes>
         </main>

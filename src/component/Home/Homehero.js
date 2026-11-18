@@ -256,7 +256,7 @@ const ServiceCollage = ({
 // ROTATING WORDS
 // ========================================
 
-const words = ["Impact", "Influence", "Growth"];
+const words = ["are Hard to Ignore.", "Stand Out from the Crowd.", "Catch the Right Attention."];
 
 
 // ========================================
@@ -363,7 +363,7 @@ function LeftContent() {
           gap-x-3
         ">
 
-          Creating
+          That
 
           <span className="
             relative inline-block
@@ -439,9 +439,8 @@ function LeftContent() {
         sm:text-base sm:leading-8
       ">
 
-        From compelling content to high-impact campaigns, we turn
-        creative ideas into powerful brand experiences. Driven by
-        strategy, backed by creativity, and focused on results.
+Your business should not just join the conversation. Make sure it has something worth 
+saying. We help you tell that story right by bringing thinking and execution together. 
 
       </p>
 
@@ -461,7 +460,7 @@ function LeftContent() {
         />
 
         <AnimatedButton1
-          text="Explore our work"
+          text="Browse Our Projects"
           to="/portfolio"
         />
 

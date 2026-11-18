@@ -280,8 +280,8 @@ export default function Homeov() {
       md:text-5xl
     "
   >
-    Turning ideas into
-    <span className="text-[#5428B0]"> meaningful impact.</span>
+    Building a home for  
+    <span className="text-[#5428B0]"> creative souls.</span>
   </motion.h2>
 
   {/* Accent Line */}
@@ -307,14 +307,13 @@ export default function Homeov() {
       sm:text-base
     "
   >
-    Our vision is simple — build a creative ecosystem where
-    brands, creators, and ideas don't just get noticed,
-    they become impossible to ignore.
+  Our vision is to make room for curious minds who question the obvious, chase the 
+unusual, and aren't quite done exploring what an idea could become. 
   </motion.p>
 
 <AnimatedButton 
 to = "/contact"
-text ="Build with us" />
+text ="Got Big Plans? Let's Build." />
 
   {/* Vision Keywords */}
   <motion.div

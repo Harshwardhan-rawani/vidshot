@@ -27,7 +27,7 @@ const services = [
     title: "Video Editing",
     shortTitle: "Video Editing",
     description:
-      "From brand films to cinematic campaigns, we create videos that tell your story and make people stop scrolling.",
+      "From the first frame to the final cut, we focus on turning your brand’s message into moving visuals that capture attention and keep the story going",
     tags: [
       "Brand Films",
       "Commercials",
@@ -45,7 +45,7 @@ const services = [
     title: "Social Media Management",
     shortTitle: "Social Media",
     description:
-      "Scroll-stopping short-form content designed to build attention, engagement and a recognizable brand presence.",
+      "We take your “just one chance to make an impression” seriously. So we create short form content that doesn't just fill someone’s feed, but gives them a reason to stay. ",
     tags: [
       "Reels",
       "Shorts",
@@ -63,7 +63,7 @@ const services = [
     title: "Creative & Design",
     shortTitle: "Graphic Design",
     description:
-      "Visual identities and creative systems that give your brand a distinct personality across every touchpoint.",
+      "Recognisable at first glance is what we aim for you. Holding tight to consistency, we create your distinct visual identity on every platform.",
     tags: [
       "Brand Identity",
       "Motion Design",
@@ -80,7 +80,7 @@ const services = [
   title: "Content Writing",
   shortTitle: "Content",
   description:
-    "Create engaging, compelling, and SEO-friendly content that communicates your brand message, connects with your audience, and turns ideas into meaningful engagement.",
+    "We build your brand statements from scratch by turning the ideas you want to share into what people want to read. ",
   tags: [
     "Website Content",
     "SEO Writing",
@@ -99,7 +99,7 @@ const services = [
   title: "Meta Ads",
   shortTitle: "Meta Ads",
   description:
-    "Reach the right audience with powerful Facebook and Instagram ad campaigns. Generate quality leads, boost conversions, and maximize your business growth.",
+    "Good ads do not happen by pressing only the Boost Post button. We understand your pain, so we find your people and help you take your business a step further. ",
   tags: [
     "Facebook Ads",
     "Instagram Ads",
