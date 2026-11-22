@@ -4,10 +4,10 @@ import { motion} from "framer-motion";
 export default function Homeop(){
     return (
         
-         <section className="bg-[#F7F7F9]      py-10
+         <section className="bg-[#F7F7F9]  py-10
         md:py-16">
    
-           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+           <div className="mx-auto max-w-7xl">
    
              <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
    
@@ -20,8 +20,8 @@ export default function Homeop(){
   </p>
 
   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-    Simple process.
-    <span className="text-[var(--primary)]"> Serious output.</span>
+    From Let’s begin to  
+    <span className="text-[var(--primary)]"> We have mapped it out.</span>
   </h2>
 
   <p className="    mt-5 
@@ -29,9 +29,8 @@ export default function Homeop(){
       text-sm leading-7
       text-gray-500
       sm:text-base">
-    We follow a collaborative and transparent approach,
-    transforming your ideas into meaningful creative experiences
-    that help your brand connect, engage and grow.
+    The work behind the Wow happens by keeping you involved at every stage, so you 
+    know what is happening, why it is happening, and what comes next. 
   </p>
 
 </div>
@@ -43,22 +42,22 @@ export default function Homeop(){
                    [
                      "01",
                      "Discover",
-                     "We understand your brand, audience, goals and the problem we're solving.",
+                     "We get to know your business, audience, goals, and the challenge you want to solve.",
                    ],
                    [
                      "02",
                      "Define",
-                     "We turn the initial idea into a clear creative direction and production plan.",
+                     "We take a brief walk into a clear creative direction and turn your what-ifs into a strategy and production plan.",
                    ],
                    [
                      "03",
                      "Create",
-                     "Our team handles production, design, editing, motion and everything in between.",
+                     "We go through the lightbulb moments and turn the blueprint into polished creations through production, design, editing, and creative execution.",
                    ],
                    [
                      "04",
                      "Deliver",
-                     "You get polished, platform-ready content built to perform.",
+                     "We reduce the steps between you and the magic created by sending it your way.",
                    ],
                  ].map(([number, title, text], index) => (
    

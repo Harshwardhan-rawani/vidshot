@@ -1,12 +1,12 @@
 import React from "react";
 import {  motion} from "framer-motion";
 
-import ReelSlider from "./ReelSlider";
-import LongFormVideoSlider from "./LongFormVideoSlider";
-import GreenScreenComparison from "./GreenScreenComparison";
-import AnimatedGallery from "./AnimatedGallery";
-import LaptopPortfolioShowcase from "./LaptopPortfolioShowcase";
-import SocialMediaSlider from "./SocialMediaSlider";
+import ReelSlider from "../../component/Porfolio/ReelSlider";
+import LongFormVideoSlider from "../../component/Porfolio/LongFormVideoSlider";
+import LaptopPortfolioShowcase from "../../component/Porfolio/LaptopPortfolioShowcase";
+import SocialMediaSlider from "../../component/Porfolio/SocialMediaSlider";
+import GreenScreenComparison from "../../component/Porfolio/GreenScreenComparison";
+import AnimatedGallery from "../../component/Porfolio/AnimatedGallery";
 
 
 
@@ -39,7 +39,6 @@ export default function Portfolio() {
     <main className="relative min-h-screen overflow-hidden bg-white text-[#171717]">
 
 
-
       {/* Hero */}
       <section className="relative z-10 px-5 pb-20 pt-24 md:pb-20 ">
               {/* Subtle site-wide background details */}
@@ -68,21 +67,21 @@ export default function Portfolio() {
               variants={fadeUp}
               className="text-[10px] font-bold uppercase tracking-[3px] text-[#5428B0] mb-3"
             >
-              Let's Connect
+             Let’s get to work 
             </motion.p>
         
             <motion.h1
               variants={fadeUp}
               className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.06em] text-[#171717]"
             >
-              Portfolio <span className="text-[#5428B0]">Us.</span>
+              Our <span className="text-[#5428B0]">Portfolio</span>
             </motion.h1>
         
             <motion.p
               variants={fadeUp}
               className="text-sm text-gray-500 mt-4 max-w-md mx-auto leading-relaxed"
             >
-              Have a project in mind? Let's create something meaningful together.
+             Take a Peek at Our World of Creativity.  
             </motion.p>
         
           </motion.div>
@@ -100,107 +99,102 @@ export default function Portfolio() {
       </section>
      {/* ReelSlider */}
       <ReelSlider
-                  className="max-w-[1350px] mx-auto"
+              
             title="Our Reel Edits"
             subtitle="Creative videos that capture attention."
             reels={[
-              {
-                src: "/portfolio/reel-1.mp4",
-                title: "Brand Story",
-                category: "Video Editing",
-              },
-              {
-                src: "/portfolio/reel-2.mp4",
-                title: "Product Showcase",
-                category: "Reels",
-              },
-              {
-                src: "/portfolio/reel-3.mp4",
-                title: "Social Media Campaign",
-                category: "Creative",
-              },
-              {
-                src: "/portfolio/reel-4.mp4",
-                title: "Business Story",
-                category: "Reels",
-              },
-                  {
-                src: "/portfolio/reel-4.mp4",
-                title: "Business Story",
-                category: "Reels",
-              },
+  {
+    url: "https://res.cloudinary.com/dpxi1q0nl/video/upload/v1795165740/Video-33522.mp4",
+    poster: "/images/reel1.jpg",
+       views: "17.7K",
+  },
+  {
+    url: "https://res.cloudinary.com/dpxi1q0nl/video/upload/v1795165751/Video-53323.mp4",
+    poster: "/images/reel2.jpg",
+       views: "8.2K",
+  },
+  {
+    url: "https://res.cloudinary.com/dpxi1q0nl/video/upload/v1795165753/Video-24651.mp4",
+    poster: "/images/reel3.jpg",
+       views: "20.2K",
+  },
+    {
+    url: "https://res.cloudinary.com/dpxi1q0nl/video/upload/v1795165772/Video-85690.mp4",
+    poster: "/images/reel3.jpg",
+       views: "327K",
+  },
+    {
+    url: "https://res.cloudinary.com/dpxi1q0nl/video/upload/v1795165841/4_Tips_for_Distraction-Free_Studying_2.mp4",
+    poster: "/images/reel3.jpg",
+       views: "8.2K",
+  },
+
            
             ]}
           />
          {/* Green screen and Edited video */}
           <GreenScreenComparison
-  rawSrc="/portfolio/green-screen.mp4"
-  editedSrc="/portfolio/edited-reel.mp4"
+  rawSrc="https://res.cloudinary.com/devg82est/video/upload/v1795158072/raw_d9aelo.mp4"
+  editedSrc="https://res.cloudinary.com/devg82est/video/upload/v1795158176/4_Tips_for_Distraction-Free_Studying_2_whfbvv.mp4"
   rawTitle="Raw Green Screen"
-  editedTitle="Product Showcase"
+  editedTitle="Edited Showcase"
 />
           <LongFormVideoSlider
   title="Our Long-Form Videos"
   videos={[
-    {
-      src: "/portfolio/video-1.mp4",
-      poster: "/portfolio/video-1.jpg",
-      title: "Podcast Episode 01",
-      category: "Podcast",
-      duration: "18:42",
-    },
-    {
-      src: "/portfolio/video-2.mp4",
-      poster: "/portfolio/video-2.jpg",
-      title: "Brand Documentary",
-      category: "Video Production",
-      duration: "12:30",
-    },
-        {
-      src: "/portfolio/video-1.mp4",
-      poster: "/portfolio/video-1.jpg",
-      title: "Podcast Episode 01",
-      category: "Podcast",
-      duration: "18:42",
-    },
-    {
-      src: "/portfolio/video-2.mp4",
-      poster: "/portfolio/video-2.jpg",
-      title: "Brand Documentary",
-      category: "Video Production",
-      duration: "12:30",
-    },
+  
+  {
+    title: "Business Growth Podcast",
+    src: "https://www.youtube.com/watch?v=JoAntbQFGA4&t=330s",
+    category: "Podcast",
+  },
+  {
+    title: "Brand Story",
+    src: "https://www.youtube.com/watch?v=bbnPDeDV9ME&t=117s",
+    category: "Brand Film",
+  },
+  {
+    title: "Business Growth Podcast",
+    src: "https://www.youtube.com/watch?v=JoAntbQFGA4&t=330s",
+    category: "Podcast",
+  },
+  {
+    title: "Brand Story",
+    src: "https://www.youtube.com/watch?v=bbnPDeDV9ME&t=117s",
+    category: "Brand Film",
+  },
   ]}
 />
 <SocialMediaSlider
   images={[
-    {
-      src: "/portfolio/social-1.jpg",
-      alt: "Instagram post designs",
-      category: "Instagram Posts",
-    },
-        {
-      src: "/portfolio/social-1.jpg",
-      alt: "Instagram post designs",
-      category: "Instagram Posts",
-    },
-    
-
-    {
-      src: "/portfolio/social-2.jpg",
-      alt: "Brand campaign",
-      category: "Campaign",
-    },
-    {
-      src: "/portfolio/social-3.jpg",
-      alt: "Instagram carousel",
-      category: "Carousel",
-    },
-    {
-      src: "/portfolio/social-4.jpg",
-      alt: "Social media creatives",
-      category: "Creative Designs",
-    },
+{
+  src: "/images/client-photo.jpg",
+  alt: "Client portfolio",
+  clientName: "Your Client Name",
+  platform: "instagram",
+  category: "Social Media Management",
+},
+{
+  src: "/images/client-photo.jpg",
+  alt: "Client portfolio",
+  clientName: "Your Client Name",
+  platform: "instagram",
+  category: "Social Media Management",
+},
+{
+  src: "/images/client-photo.jpg",
+  alt: "Client portfolio",
+  clientName: "Your Client Name",
+  platform: "instagram",
+  category: "Social Media Management",
+},
+{
+  src: "/images/client-photo.jpg",
+  alt: "Client portfolio",
+  clientName: "Your Client Name",
+  platform: "instagram",
+  category: "Social Media Management",
+}
   ]}
 />
 <AnimatedGallery/>

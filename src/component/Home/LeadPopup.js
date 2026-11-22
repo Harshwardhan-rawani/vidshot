@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FiX } from "react-icons/fi";
-import AnimatedButton from "../Button/AnimatedButton";
+
+import AnimatedButton1 from "../Button/AnimatedButton1";
 
 export default function LeadPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,13 +33,11 @@ export default function LeadPopup() {
     };
   }, [isOpen]);
 
-
-
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-md animate-in fade-in duration-300"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-md animate-in fade-in duration-300"
       onClick={() => setIsOpen(false)}
     >
       {/* Popup Card */}
@@ -47,22 +46,20 @@ export default function LeadPopup() {
         aria-modal="true"
         aria-labelledby="vidshot-popup-title"
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-[#5428B0]/10 bg-white px-6 py-14 text-center shadow-2xl shadow-black/30 sm:px-12 sm:py-16 md:px-16 md:py-20 animate-in zoom-in-95 duration-500"
+        className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/15 bg-[#5428B0] px-6 py-14 text-center shadow-2xl shadow-black/40 sm:px-12 sm:py-16 md:px-16 md:py-20 animate-in zoom-in-95 duration-500"
       >
         {/* Background Decorative Elements */}
-        <div className="pointer-events-none absolute -left-24 -top-32 h-72 w-72 rounded-full bg-[#5428B0]/10 blur-[100px]" />
+        <div className="pointer-events-none absolute -left-24 -top-32 h-72 w-72 rounded-full bg-white/10 blur-[100px]" />
 
-        <div className="pointer-events-none absolute -bottom-32 -right-20 h-72 w-72 rounded-full bg-[#FFD43B]/20 blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-32 -right-20 h-72 w-72 rounded-full bg-[#F8CC10]/20 blur-[100px]" />
 
-        {/* Decorative Top Accent */}
-        <div className="absolute left-1/2 top-0 h-1.5 w-32 -translate-x-1/2 rounded-b-full bg-gradient-to-r from-[#5428B0] to-[#FFD43B]" />
 
         {/* Close Button */}
         <button
           type="button"
           onClick={() => setIsOpen(false)}
           aria-label="Close popup"
-          className="absolute right-4 top-4 z-20 rounded-full border border-[#5428B0]/15 bg-[#5428B0]/5 p-2.5 text-[#5428B0] transition-all duration-300 hover:rotate-90 hover:bg-[#5428B0] hover:text-white sm:right-6 sm:top-6"
+          className="absolute right-4 top-4 z-20 rounded-full border border-white/20 bg-white/10 p-2.5 text-white transition-all duration-300 hover:rotate-90 hover:bg-[#F8CC10] hover:text-[#5428B0] sm:right-6 sm:top-6"
         >
           <FiX size={22} />
         </button>
@@ -70,57 +67,40 @@ export default function LeadPopup() {
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-3xl">
 
-          {/* Small Label */}
-          <span className="mb-6 inline-flex items-center rounded-full border border-[#FFD43B]/60 bg-[#FFD43B]/20 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#5428B0]">
-            Let's Build Something Great
-          </span>
-
           {/* Heading */}
           <h2
             id="vidshot-popup-title"
-            className="font-sans text-3xl font-extrabold leading-[1.2] tracking-tight text-[#5428B0] sm:text-4xl md:text-5xl lg:text-[54px]"
+            className="font-sans text-3xl font-extrabold leading-[1.2] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[54px]"
           >
-            Ready to Make Your Brand
-            <br className="hidden sm:block" />
-
-            <span className="relative mt-1 inline-block text-[#E9AD00]">
-              Impossible to Ignore?
-
-              <span className="absolute -bottom-2 left-0 h-[4px] w-full rounded-full bg-[#FFD43B]" />
-            </span>
+            Ready for{" "}
+            <span className="text-[#F8CC10]">3X Growth?</span>
           </h2>
 
           {/* Description */}
-          <p className="mx-auto mt-9 max-w-2xl text-sm font-medium leading-7 text-gray-600 sm:text-base md:text-lg md:leading-8">
-            From scroll-stopping videos and creative designs to complete
-            social media management,{" "}
-            <span className="font-bold text-[#5428B0]">
-              Vidshot
+          <p className="mx-auto mt-9 max-w-2xl text-sm font-medium leading-7 text-white/80 sm:text-base md:text-lg md:leading-8">
+            We bring ideas off the leash and bring them to life through creative
+            execution that helps{" "}
+            <span className="font-bold text-[#F8CC10]">
+              your brand build visibility, reach more people, and create
+              stronger opportunities
             </span>{" "}
-            helps brands create content that captures attention and drives
-            growth.
+            for growth.
           </p>
 
           {/* CTA */}
-          <div className="mt-8 flex justify-center">
-            <AnimatedButton
+          <div className="mt-2 flex justify-center">
+            <AnimatedButton1
               to="/contact"
-              text="Let's Talk"
-            
+              text="Connect With Us"
             />
           </div>
 
           {/* Bottom Text */}
-          <p className="mt-6 text-xs font-semibold tracking-wide text-[#5428B0]/70 sm:text-sm">
-            Let's create something{" "}
-            <span className="font-bold text-[#D9A400]">
-              extraordinary
-            </span>{" "}
-            together.
+          <p className="mt-6 text-xs font-semibold tracking-wide text-white/75 sm:text-sm">
+            Your brand awaits the right creative partner.
           </p>
 
-          {/* Bottom Decorative Accent */}
-          <div className="mx-auto mt-8 h-1 w-16 rounded-full bg-[#FFD43B]" />
+        
 
         </div>
       </div>

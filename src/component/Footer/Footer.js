@@ -75,23 +75,22 @@ export default function Footer() {
               <span className="h-2 w-2 rounded-full bg-[var(--secondary)]" />
 
               <p className="text-[10px] font-semibold uppercase tracking-[3px] text-[var(--primary)]">
-                Let's work together
+                Let's Create Something Great 
               </p>
             </div>
 
             <h2 className="max-w-lg text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-              Your next big idea
-              <span className="text-[var(--primary)]"> starts here.</span>
+              Got an Idea? We are All 
+              <span className="text-[var(--primary)]"> Ears.</span>
             </h2>
 
             <p className="my-3 max-w-md text-sm leading-relaxed text-gray-500">
-              From creative storytelling to powerful digital campaigns,
-              let's create meaningful experiences that help your brand
-              stand out and grow.
+              Bring us your questions, ambitions, and wild ideas. We will bring the creative minds and 
+practical know-how to turn them into action. 
             </p>
 
             <AnimatedButton
-              text="Start Your Project"
+              text="Make the First Move "
               to="/contact"
             />
 

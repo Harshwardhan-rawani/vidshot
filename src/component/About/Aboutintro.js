@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+
 const statistics = [
   {
     number: "50+",
@@ -35,8 +36,8 @@ export default function Aboutintro() {
               </p>
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] tracking-tight">
-                We help brands create
-                <span className="text-[#5428B0]"> meaningful impact.</span>
+                Your Creative Partner, From  
+                <span className="text-[#5428B0]"> First Idea to Final Execution.</span>
               </h2>
 
             </div>
@@ -44,15 +45,14 @@ export default function Aboutintro() {
             <div className="lg:pt-8">
 
               <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                VidShot Media is a creative production partner for brands,
-                creators and ambitious businesses that believe great ideas
-                deserve great execution.
+                VidShot Media Production works with brands, creators, and ambitious businesses that 
+believe great ideas deserve great execution. 
               </p>
 
               <p className="text-sm md:text-base text-gray-500 leading-7 mt-5">
-                We bring together creative thinking, video production,
-                storytelling, design and digital marketing to help businesses
-                communicate better, build stronger connections and grow.
+            We bring together creative thinking, video production, storytelling, design, and digital 
+marketing under one roof, so you spend less time coordinating and more time building 
+your brand.
               </p>
 
               <div className="flex items-center gap-3 mt-7">

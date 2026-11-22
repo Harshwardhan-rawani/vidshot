@@ -313,7 +313,7 @@ unusual, and aren't quite done exploring what an idea could become.
 
 <AnimatedButton 
 to = "/contact"
-text ="Got Big Plans? Let's Build." />
+text ="Let's Build." />
 
   {/* Vision Keywords */}
   <motion.div

@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FiCheck,
@@ -292,23 +292,85 @@ const addons = [
 
 const EASE = [0.22, 1, 0.36, 1];
 
+// Replace this with your Vidshot WhatsApp Business number (country code + number).
+// Example: "919876543210" — do not include +, spaces or dashes.
+const WHATSAPP_NUMBER = "91XXXXXXXXXX";
+
 export default function Pricing() {
   const [activeTab, setActiveTab] = useState(0);
   const activeGroup = pricingGroups[activeTab];
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [customer, setCustomer] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    business: "",
+    message: "",
+  });
 
-  const handlePlanSelect = (plan) => {
-    const contact = document.getElementById("contact");
-
-    if (contact) {
-      contact.scrollIntoView({ behavior: "smooth" });
-    }
-
-    // Optional: pass selected plan to your contact form here.
-    console.log("Selected Vidshot plan:", plan);
+  const handleGetStarted = (group, plan) => {
+    setSelectedPlan({ ...plan, category: group.title });
+    setShowPaymentModal(true);
   };
 
+  const closePaymentModal = () => setShowPaymentModal(false);
+
+  // Lock background scrolling and support closing the popup with Escape.
+  useEffect(() => {
+    if (!showPaymentModal) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") closePaymentModal();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showPaymentModal]);
+
+  const handleCheckoutRequest = (event) => {
+    event.preventDefault();
+    if (!selectedPlan) return;
+
+    const message = [
+      "Hi Vidshot! I would like to get started with this plan.",
+      "",
+      `Service: ${selectedPlan.category}`,
+      `Plan: ${selectedPlan.name}`,
+      `Price: ${selectedPlan.price} ${selectedPlan.unit}`,
+      selectedPlan.sub ? `Note: ${selectedPlan.sub}` : "",
+      "",
+      `Name: ${customer.name}`,
+      `Email: ${customer.email}`,
+      `Phone: ${customer.phone}`,
+      customer.business ? `Business: ${customer.business}` : "",
+      customer.message ? `Project details: ${customer.message}` : "",
+      "",
+      "Please share the next steps and a secure payment link.",
+    ].filter(Boolean).join("\\n");
+
+    if (WHATSAPP_NUMBER.includes("X")) {
+      window.alert("Please add your Vidshot WhatsApp Business number in the WHATSAPP_NUMBER constant before using this button.");
+      return;
+    }
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+
+
   return (
-    <main className="min-h-screen mt-24 overflow-hidden bg-white text-[#171717]">
+    <main className="min-h-screen mt-24 overflow-hidden bg-white text-[#111111]">
   {/* Heading */}
   <motion.div
     variants={stagger}
@@ -319,14 +381,14 @@ export default function Pricing() {
 
     <motion.p
       variants={fadeUp}
-      className="text-[10px] font-bold uppercase tracking-[3px] text-[#5428B0] mb-3"
+      className="text-[10px] font-bold uppercase tracking-[3px] text-[var(--primary)] mb-3"
     >
       Let's Connect
     </motion.p>
 
     <motion.h1
       variants={fadeUp}
-      className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.06em] text-[#171717]"
+      className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.06em] text-[#111111]"
     >
       Pricing 
     </motion.h1>
@@ -345,27 +407,62 @@ export default function Pricing() {
       <section id="plans" className="px-5 pb-20 pt-6 sm:pb-24">
         <div className="mx-auto max-w-7xl">
 
-          {/* CATEGORY TABS */}
-          <div className="mb-10 flex flex-wrap gap-2 border-b border-neutral-200 pb-5">
-            {pricingGroups.map((group, index) => (
-              <button
-                key={group.label}
-                onClick={() => setActiveTab(index)}
-                className={`rounded-full border px-5 py-2.5 text-xs font-bold transition-all duration-300 sm:text-sm ${
-                  activeTab === index
-                    ? "border-[#5428B0] bg-[#5428B0] text-white shadow-lg shadow-[#5428B0]/20"
-                    : "border-neutral-200 bg-white text-neutral-600 hover:border-[#5428B0]/40 hover:text-[#5428B0]"
-                }`}
-              >
-                {group.label}
-              </button>
-            ))}
-          </div>
+        {/* CATEGORY TABS */}
+<div className="mb-10 flex justify-center">
+  <div
+    className="
+      flex w-full max-w-full items-center
+      justify-center overflow-x-auto
+      border-b border-neutral-200
+      scrollbar-hide
+    "
+    role="tablist"
+    aria-label="Pricing categories"
+  >
+    {pricingGroups.map((group, index) => (
+      <button
+        key={group.label}
+        type="button"
+        role="tab"
+        aria-selected={activeTab === index}
+        onClick={() => setActiveTab(index)}
+        className={`
+          relative shrink-0 whitespace-nowrap
+          px-5 py-3.5 sm:px-7 sm:py-4
+          text-xs font-semibold sm:text-sm
+          transition-all duration-300 ease-in-out
+
+          ${
+            activeTab === index
+              ? "rounded-t-lg bg-[#5428B0] text-white"
+              : "text-neutral-500 hover:bg-[#5428B0]/5 hover:text-[#5428B0]"
+          }
+
+          focus-visible:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-[#5428B0]
+          focus-visible:ring-inset
+        `}
+      >
+        {group.label}
+
+        {/* Active Indicator */}
+        {activeTab === index && (
+          <span className="
+            absolute bottom-0 left-0
+            h-[3px] w-full
+            rounded-t-full bg-[#F8CC10]
+          " />
+        )}
+      </button>
+    ))}
+  </div>
+</div>
 
           {/* ACTIVE CATEGORY HEADING */}
           <div className="mb-9 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="mb-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[#5428B0]">
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[var(--primary)]">
                 Choose Your Service
               </p>
 
@@ -411,14 +508,14 @@ export default function Pricing() {
                   }}
                   className={`group relative flex flex-col overflow-hidden rounded-2xl border p-6 transition-all duration-500 hover:-translate-y-1 sm:p-7 ${
                     plan.popular
-                      ? "border-[#5428B0] bg-[#171326] text-white shadow-xl shadow-[#5428B0]/15"
-                      : "border-neutral-200 bg-white text-[#171717] hover:border-[#5428B0]/40 hover:shadow-xl hover:shadow-[#5428B0]/5"
+                      ? "border-[var(--primary)] bg-[var(--primary)] text-white shadow-xl shadow-[var(--primary)]/15"
+                      : "border-neutral-200 bg-white text-[#111111] hover:border-[var(--primary)]/40 hover:shadow-xl hover:shadow-[var(--primary)]/5"
                   }`}
                 >
                   {/* Popular badge */}
                   {plan.popular && (
                     <div className="absolute right-5 top-5">
-                      <span className="rounded-full bg-[#F8CC10] px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[1.5px] text-[#171717]">
+                      <span className="rounded-full bg-[var(--secondary)] px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[1.5px] text-[#111111]">
                         Most Popular
                       </span>
                     </div>
@@ -452,7 +549,7 @@ export default function Pricing() {
 
                     {plan.sub && (
                       <p className={`mt-2 text-xs font-semibold ${
-                        plan.popular ? "text-[#F8CC10]" : "text-[#5428B0]"
+                        plan.popular ? "text-[var(--secondary)]" : "text-[var(--primary)]"
                       }`}>
                         {plan.sub}
                       </p>
@@ -471,8 +568,8 @@ export default function Pricing() {
                       <div key={featureIndex} className="flex items-start gap-3">
                         <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
                           plan.popular
-                            ? "bg-[#F8CC10]/15 text-[#F8CC10]"
-                            : "bg-[#5428B0]/10 text-[#5428B0]"
+                            ? "bg-[var(--secondary)]/15 text-[var(--secondary)]"
+                            : "bg-[var(--primary)]/10 text-[var(--primary)]"
                         }`}>
                           <FiCheck size={12} strokeWidth={3} />
                         </span>
@@ -488,11 +585,12 @@ export default function Pricing() {
 
                   {/* CTA */}
                   <button
-                    onClick={() => handlePlanSelect(plan)}
+                   
+                    onClick={() => handleGetStarted(activeGroup, plan)}
                     className={`group/btn mt-9 flex min-h-12 w-full items-center justify-center gap-2 rounded-lg px-5 text-xs font-bold transition-all duration-300 ${
                       plan.popular
-                        ? "bg-[#F8CC10] text-[#171717] hover:bg-white"
-                        : "bg-[#171717] text-white hover:bg-[#5428B0]"
+                        ? "bg-[var(--secondary)] text-[#111111] hover:bg-white"
+                        : "bg-[var(--primary)] text-white hover:bg-black"
                     }`}
                   >
                     Get Started
@@ -505,7 +603,7 @@ export default function Pricing() {
 
           <p className="mt-7 text-center text-xs text-gray-400">
             Need a custom scope?{" "}
-            <a href="#contact" className="font-bold text-[#5428B0] hover:underline">
+            <a href="#contact" className="font-bold text-[var(--primary)] hover:underline">
               Talk to our team
             </a>
           </p>
@@ -513,16 +611,16 @@ export default function Pricing() {
       </section>
 
       {/* ADD-ONS */}
-      <section id="addons" className="bg-[#F8F7FC] px-5 py-20 sm:py-24">
+      <section id="addons" className="bg-[#FFFFFF] px-5 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl">
 
           <div className="mb-10 max-w-2xl">
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[3px] text-[#5428B0]">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[3px] text-[var(--primary)]">
               Flexible Extras
             </p>
 
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Add-ons & <span className="text-[#5428B0]">Extra Services.</span>
+              Add-ons & <span className="text-[var(--primary)]">Extra Services.</span>
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-gray-500">
@@ -532,7 +630,7 @@ export default function Pricing() {
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
-            <div className="hidden grid-cols-[1fr_1.5fr_0.7fr] gap-6 bg-[#171326] px-7 py-5 text-[10px] font-bold uppercase tracking-[2px] text-white sm:grid">
+            <div className="hidden grid-cols-[1fr_1.5fr_0.7fr] gap-6 bg-[#111111] px-7 py-5 text-[10px] font-bold uppercase tracking-[2px] text-white sm:grid">
               <span>Service</span>
               <span>What's Included</span>
               <span className="text-right">Price</span>
@@ -543,7 +641,7 @@ export default function Pricing() {
                 key={addon.name}
                 className="grid gap-2 border-b border-neutral-100 px-5 py-5 last:border-0 sm:grid-cols-[1fr_1.5fr_0.7fr] sm:items-center sm:gap-6 sm:px-7"
               >
-                <h3 className="text-sm font-bold text-[#171717]">
+                <h3 className="text-sm font-bold text-[#111111]">
                   {addon.name}
                 </h3>
 
@@ -551,7 +649,7 @@ export default function Pricing() {
                   {addon.scope}
                 </p>
 
-                <p className="text-sm font-bold text-[#5428B0] sm:text-right">
+                <p className="text-sm font-bold text-[var(--primary)] sm:text-right">
                   {addon.price}
                 </p>
               </div>
@@ -586,7 +684,7 @@ export default function Pricing() {
             },
           ].map((item) => (
             <div key={item.title} className="flex items-start gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#5428B0]/10 text-[#5428B0]">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--primary)]/10 text-[var(--primary)]">
                 <item.icon size={20} />
               </div>
 
@@ -601,64 +699,291 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* CONTACT CTA */}
-      <section className="relative overflow-hidden bg-[#171326] px-5 py-20 text-white sm:py-28">
-        <div className="pointer-events-none absolute -right-32 -top-40 h-[400px] w-[400px] rounded-full bg-[#5428B0]/30 blur-[110px]" />
-        <div className="pointer-events-none absolute -bottom-40 -left-32 h-[350px] w-[350px] rounded-full bg-[#F8CC10]/10 blur-[100px]" />
+  {/* CONTACT CTA */}
+<section className="relative overflow-hidden bg-white px-5 py-20 text-[#171717] sm:py-28">
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
-          <div>
-            <p className="mb-4 text-[10px] font-bold uppercase tracking-[3px] text-[#F8CC10]">
-              Let's Work Together
-            </p>
+  {/* Background Accents */}
+  <div className="pointer-events-none absolute -right-32 -top-40 h-[400px] w-[400px] rounded-full bg-[#5428B0]/10 blur-[110px]" />
+  <div className="pointer-events-none absolute -bottom-40 -left-32 h-[350px] w-[350px] rounded-full bg-[#F8CC10]/15 blur-[100px]" />
 
-            <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
-              Not sure which plan
-              <span className="text-[#A88AFF]"> fits your brand?</span>
-            </h2>
+  <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-white/60 sm:text-base">
-              Tell us what you're creating, how often you publish and
-              where you want to grow. We'll help you find the right plan.
-            </p>
+    {/* Left Content */}
+    <div>
+      <p className="mb-4 text-[10px] font-bold uppercase tracking-[3px] text-[#5428B0]">
+        Let's Work Together
+      </p>
 
-            <a
-              href="#contact"
-              className="group mt-8 inline-flex items-center gap-3 rounded-lg bg-[#F8CC10] px-7 py-4 text-sm font-bold text-[#171717] transition-all duration-300 hover:-translate-y-1 hover:bg-white"
-            >
-              Let's Talk
-              <FiArrowRight className="transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
+      <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-[#171717] sm:text-4xl md:text-5xl">
+        Not sure which plan
+        <span className="text-[#5428B0]"> fits your brand?</span>
+      </h2>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-md sm:p-8">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#5428B0] text-white">
-                <FiMessageCircle size={20} />
-              </div>
-              <div>
-                <h3 className="text-base font-bold">Talk to Vidshot</h3>
-                <p className="text-xs text-white/50">
-                  Let's discuss your next project.
-                </p>
-              </div>
-            </div>
+      <p className="mt-5 max-w-xl text-sm leading-7 text-gray-600 sm:text-base">
+        Tell us what you're creating, how often you publish and
+        where you want to grow. We'll help you find the right plan.
+      </p>
 
-            <p className="text-sm leading-7 text-white/60">
-              Whether you need a single video edit or complete social media
-              management, our team can help you plan the right approach.
-            </p>
+      <a
+        href="#contact"
+        className="group mt-8 inline-flex items-center gap-3 rounded-lg bg-[#F8CC10] px-7 py-4 text-sm font-bold text-[#171717] transition-all duration-300 hover:-translate-y-1 hover:bg-[#5428B0] hover:text-white"
+      >
+        Let's Talk
+        <FiArrowRight className="transition-transform group-hover:translate-x-1" />
+      </a>
+    </div>
 
-            <a
-              href="#contact"
-              className="mt-7 flex items-center justify-between border-t border-white/10 pt-5 text-sm font-semibold text-white transition-colors hover:text-[#F8CC10]"
-            >
-              Contact our team
-              <FiArrowUpRight size={19} />
-            </a>
-          </div>
+    {/* Right Card */}
+    <div className="rounded-2xl border border-[#5428B0]/10 bg-white p-6 shadow-[0_15px_50px_rgba(84,40,176,0.08)] sm:p-8">
+
+      <div className="mb-6 flex items-center gap-3">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#5428B0] text-white">
+          <FiMessageCircle size={20} />
         </div>
-      </section>
+
+        <div>
+          <h3 className="text-base font-bold text-[#171717]">
+            Talk to Vidshot
+          </h3>
+          <p className="text-xs text-gray-500">
+            Let's discuss your next project.
+          </p>
+        </div>
+      </div>
+
+      <p className="text-sm leading-7 text-gray-600">
+        Whether you need a single video edit or complete social media
+        management, our team can help you plan the right approach.
+      </p>
+
+      <a
+        href="#contact"
+        className="mt-7 flex items-center justify-between border-t border-gray-100 pt-5 text-sm font-semibold text-[#5428B0] transition-colors hover:text-[#E0AD00]"
+      >
+        Contact our team
+        <FiArrowUpRight size={19} />
+      </a>
+
+    </div>
+  </div>
+</section>
+
+      {/* PLAN / PAYMENT POPUP */}
+      <AnimatePresence>
+        {showPaymentModal && selectedPlan && (
+          <motion.div
+            className="fixed inset-0 z-[1000] flex items-center justify-center overflow-y-auto bg-black/60 p-3 backdrop-blur-sm sm:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) closePaymentModal();
+            }}
+          >
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="checkout-title"
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 18, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: EASE }}
+              className="relative my-auto grid w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl md:grid-cols-[1.05fr_0.95fr]"
+            >
+              <button
+                type="button"
+                onClick={closePaymentModal}
+                aria-label="Close checkout"
+                className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white text-2xl leading-none text-gray-600 transition hover:bg-gray-100"
+              >
+                ×
+              </button>
+
+              {/* LEFT: CUSTOMER DETAILS / PAYMENT REQUEST */}
+              <div className="p-6 pt-14 sm:p-9 sm:pt-10">
+                <p className="mb-2 text-[10px] font-bold uppercase tracking-[2.5px] text-[var(--primary)]">
+                  Get Started with Vidshot
+                </p>
+                <h2 id="checkout-title" className="text-2xl font-bold tracking-tight text-[#111111] sm:text-3xl">
+                  Let’s make it happen.
+                </h2>
+                <p className="mt-2 max-w-md text-sm leading-6 text-gray-500">
+                  Share your details. Our team will confirm the scope and send you a secure payment link.
+                </p>
+
+                <form onSubmit={handleCheckoutRequest} className="mt-7 space-y-4">
+                  <div>
+                    <label htmlFor="checkout-name" className="mb-1.5 block text-xs font-semibold text-gray-700">
+                      Full name *
+                    </label>
+                    <input
+                      id="checkout-name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      required
+                      value={customer.name}
+                      onChange={(event) => setCustomer({ ...customer, name: event.target.value })}
+                      placeholder="Your name"
+                      className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none transition placeholder:text-gray-400 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                    />
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="checkout-email" className="mb-1.5 block text-xs font-semibold text-gray-700">
+                        Email address *
+                      </label>
+                      <input
+                        id="checkout-email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        value={customer.email}
+                        onChange={(event) => setCustomer({ ...customer, email: event.target.value })}
+                        placeholder="you@example.com"
+                        className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none transition placeholder:text-gray-400 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="checkout-phone" className="mb-1.5 block text-xs font-semibold text-gray-700">
+                        Phone number *
+                      </label>
+                      <input
+                        id="checkout-phone"
+                        name="phone"
+                        type="tel"
+                        autoComplete="tel"
+                        required
+                        value={customer.phone}
+                        onChange={(event) => setCustomer({ ...customer, phone: event.target.value })}
+                        placeholder="+91 98765 43210"
+                        className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none transition placeholder:text-gray-400 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="checkout-business" className="mb-1.5 block text-xs font-semibold text-gray-700">
+                      Company / brand <span className="font-normal text-gray-400">(optional)</span>
+                    </label>
+                    <input
+                      id="checkout-business"
+                      name="business"
+                      type="text"
+                      value={customer.business}
+                      onChange={(event) => setCustomer({ ...customer, business: event.target.value })}
+                      placeholder="Your business name"
+                      className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none transition placeholder:text-gray-400 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="checkout-message" className="mb-1.5 block text-xs font-semibold text-gray-700">
+                      Tell us about your project <span className="font-normal text-gray-400">(optional)</span>
+                    </label>
+                    <textarea
+                      id="checkout-message"
+                      name="message"
+                      rows={2}
+                      value={customer.message}
+                      onChange={(event) => setCustomer({ ...customer, message: event.target.value })}
+                      placeholder="Any goals, requirements or questions?"
+                      className="w-full resize-none rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none transition placeholder:text-gray-400 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[var(--primary)] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-black"
+                  >
+                    Request Payment Link
+                    <FiArrowUpRight size={17} />
+                  </button>
+
+                  <p className="text-center text-[10px] leading-5 text-gray-400">
+                    You won’t be charged now. We’ll confirm the details before sharing payment instructions.
+                  </p>
+                </form>
+              </div>
+
+              {/* RIGHT: SELECTED PLAN SUMMARY */}
+              <div className="relative overflow-hidden bg-[#4B0DAA] p-6 text-white sm:p-9">
+                <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+                <div className="relative">
+                  <p className="text-[10px] font-bold uppercase tracking-[2.5px] text-white/55">
+                    Your selected plan
+                  </p>
+
+                  <p className="mt-5 text-sm font-medium text-white/70">
+                    {selectedPlan.category}
+                  </p>
+                  <h3 className="mt-1 pr-8 text-2xl font-bold tracking-tight sm:text-3xl">
+                    {selectedPlan.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-white/65">
+                    {selectedPlan.description}
+                  </p>
+
+                  <div className="mt-7 border-y border-white/20 py-6">
+                    <p className="text-[10px] font-bold uppercase tracking-[2px] text-white/50">
+                      Plan price
+                    </p>
+                    <div className="mt-2 flex flex-wrap items-baseline gap-2">
+                      <span className="text-4xl font-bold tracking-tight sm:text-5xl">
+                        {selectedPlan.price}
+                      </span>
+                      <span className="text-sm text-white/65">
+                        {selectedPlan.unit}
+                      </span>
+                    </div>
+                    {selectedPlan.sub && (
+                      <p className="mt-2 text-xs font-semibold text-[var(--secondary)]">
+                        {selectedPlan.sub}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="mt-7">
+                    <p className="mb-5 text-[10px] font-bold uppercase tracking-[2px] text-white/50">
+                      What’s included
+                    </p>
+                    <ul className="space-y-4">
+                      {selectedPlan.features.map((feature, index) => (
+                        <li key={`${feature}-${index}`} className="flex items-start gap-3 text-sm leading-6 text-white/85">
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--secondary)]/15 text-[var(--secondary)]">
+                            <FiCheck size={12} strokeWidth={3} />
+                          </span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-9 rounded-xl border border-white/15 bg-white/10 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <FiShield className="text-[var(--secondary)]" />
+                      Secure payment process
+                    </div>
+                    <p className="mt-2 text-xs leading-5 text-white/60">
+                      Your plan and final scope will be confirmed by our team. We’ll then share the appropriate payment link.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={closePaymentModal}
+                    className="mt-5 text-xs font-semibold text-white/60 underline decoration-white/30 underline-offset-4 transition hover:text-white"
+                  >
+                    Go back to pricing
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

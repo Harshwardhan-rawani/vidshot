@@ -9,19 +9,19 @@ const capabilities = [
     icon: FiZap,
     title: "Creative Thinking",
     description:
-      "Fresh ideas and creative directions that make your brand stand out.",
+      "Looking beyond the obvious to find ideas and directions that give your brand a distinct voice ",
   },
   {
     icon: FiTarget,
     title: "Strategic Execution",
     description:
-      "Every creative decision is aligned with your business goals.",
+      "Connecting creativity with your business objectives, so every piece of work has a reason behind it. ",
   },
   {
     icon: FiLayers,
     title: "Complete Production",
     description:
-      "From planning and shooting to editing, design and distribution.",
+      "From planning and shooting to editing, design, and delivery, we bring the entire creative process together.",
   },
 ];
 
@@ -41,15 +41,15 @@ export default function Aboutwwd() {
               </p>
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                Creativity meets
-                <span className="text-[#5428B0]"> strategy.</span>
+                Where Big Ideas Get <br/>
+                <span className="text-[#5428B0]"> Their Game Plan.</span>
               </h2>
 
             </div>
 
             <p className="text-sm text-gray-500 leading-6 max-w-sm">
-              We combine creative ideas with strategic thinking to create
-              work that looks good and serves a purpose.
+A great-looking idea is only the beginning. It needs the right direction, thoughtful 
+execution, and a purpose behind every creative decision, and we have you covered. e.
             </p>
 
           </div>

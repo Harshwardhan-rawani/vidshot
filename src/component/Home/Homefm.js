@@ -249,9 +249,9 @@ export default function Homefm() {
               font-bold leading-[1.08]
               tracking-tight text-[var(--Text2)]
             ">
-              Stories that
+              Enough About Us.  
               <span className="text-[var(--primary)]">
-                {" "}speak for us.
+                {" "}See for Yourself.
               </span>
             </h2>
           </div>
@@ -264,9 +264,9 @@ export default function Homefm() {
               text-[var(--Text2)]
               leading-relaxed
             ">
-              The best measure of our work is the trust and satisfaction
-              of the people we work with. Their experiences inspire us
-              to keep creating better.
+              The people we work with have their own stories to tell. Their experiences, feedback, 
+and trust say more about our work than we ever could. Their trust pushes us to raise the 
+bar every time. 
             </p>
 
             <div className="flex items-center gap-3 mt-7">
@@ -277,7 +277,7 @@ export default function Homefm() {
                 uppercase tracking-[2px]
                 text-[var(--primary)]
               ">
-                Real People. Real Experiences.
+                Not Just Testimonials. Real Stories.
               </span>
             </div>
 

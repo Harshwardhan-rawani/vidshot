@@ -4,7 +4,11 @@ import {
   FiPlay,
 
 } from "react-icons/fi";
-
+import thumbnailA from "../../Images/thumbnail/thumbnailA.jpeg"
+import thumbnailB from "../../Images/thumbnail/thumbnailB.jpeg"
+import cover1 from "../../Images/thumbnail/cover1.jpeg"
+import cover2 from "../../Images/thumbnail/cover2.jpeg"
+import cover3 from "../../Images/thumbnail/cover3.jpeg"
 const portfolioSlides = [
   {
     id: 1,
@@ -15,7 +19,6 @@ const portfolioSlides = [
     items: [
       "/portfolio/long-1.jpg",
       "/portfolio/long-2.jpg",
-      "/portfolio/long-3.jpg",
     ],
   },
   {
@@ -38,10 +41,8 @@ const portfolioSlides = [
     description: "Creative visuals that capture attention.",
     type: "thumbnails",
     items: [
-      "/portfolio/thumb-1.jpg",
-      "/portfolio/thumb-2.jpg",
-      "/portfolio/thumb-3.jpg",
-      "/portfolio/thumb-4.jpg",
+      thumbnailA,
+      thumbnailB,
     ],
   },
   {
@@ -51,21 +52,9 @@ const portfolioSlides = [
     description: "Make every first impression count.",
     type: "covers",
     items: [
-      "/portfolio/cover-1.jpg",
-      "/portfolio/cover-2.jpg",
-      "/portfolio/cover-3.jpg",
-    ],
-  },
-  {
-    id: 5,
-    category: "POSTERS & GRAPHICS",
-    title: "Creative Graphic Design",
-    description: "Visual identities designed to stand out.",
-    type: "posters",
-    items: [
-      "/portfolio/poster-1.jpg",
-      "/portfolio/poster-2.jpg",
-      "/portfolio/poster-3.jpg",
+cover1,
+cover2,
+cover3
     ],
   },
 ];
@@ -228,58 +217,83 @@ export default function LaptopPortfolioShowcase({
                     </div>
 
                   </div>
+{/* Media Gallery */}
 
-                  {/* Media Gallery */}
-                  <div
-                    className={`grid min-h-0 flex-1 gap-2 sm:gap-4 ${
-                      activeSlide.type === "reels"
-                        ? "grid-cols-4"
-                        : activeSlide.type === "video"
-                        ? "grid-cols-3"
-                        : "grid-cols-2"
-                    }`}
-                  >
+<div
+  className={`
+    grid min-h-0 min-w-0 flex-1
+    items-center justify-items-center
+    ${
+      activeSlide.type === "reels" ||
+      activeSlide.type === "covers"
+        ? "grid-cols-4 gap-2 sm:gap-4"
+        : activeSlide.type === "video"
+        ? "grid-cols-2 gap-3 sm:gap-5"
+        : "grid-cols-2 gap-3 sm:gap-4"
+    }
+  `}
+>
+  {activeSlide.items.map((item, index) => {
+    const isPortrait =
+      activeSlide.type === "reels" ||
+      activeSlide.type === "covers";
 
-                    {activeSlide.items.map((item, index) => (
-                      <motion.div
-                        key={item}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          delay: index * 0.08,
-                          duration: 0.4,
-                        }}
-                        className={`group relative min-h-0 overflow-hidden rounded-md bg-gray-200 shadow-sm sm:rounded-xl ${
-                          activeSlide.type === "reels"
-                            ? "aspect-[9/16] self-center"
-                            : activeSlide.type === "thumbnails"
-                            ? "aspect-video self-center"
-                            : activeSlide.type === "covers"
-                            ? "aspect-[9/16] self-center"
-                            : activeSlide.type === "posters"
-                            ? "aspect-[3/4] self-center"
-                            : "aspect-video self-center"
-                        }`}
-                      >
+    const isLandscape =
+      activeSlide.type === "video" ||
+      activeSlide.type === "thumbnails";
 
-                        <img
-                          src={item}
-                          alt={`${activeSlide.category} ${index + 1}`}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
+    const aspectClass = isPortrait
+      ? "aspect-[9/16]"
+      : isLandscape
+      ? "aspect-video"
+      : "aspect-[3/4]";
 
-                        {activeSlide.type === "video" && (
-                          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                            <span className="grid h-7 w-7 place-items-center rounded-full bg-white/90 text-[#5428B0] sm:h-12 sm:w-12">
-                              <FiPlay size={18} fill="currentColor" />
-                            </span>
-                          </div>
-                        )}
+    return (
+      <motion.div
+        key={`${item}-${index}`}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: index * 0.08,
+          duration: 0.4,
+        }}
+        className={`
+          group relative w-full min-w-0
+          overflow-hidden rounded-lg
+          bg-gray-200 shadow-sm
+          sm:rounded-xl
+          ${aspectClass}
+        `}
+      >
+        <img
+          src={item}
+          alt={`${activeSlide.category} ${index + 1}`}
+          loading="lazy"
+          className="
+            absolute inset-0
+            h-full w-full
+            object-cover
+            transition-transform duration-500
+            group-hover:scale-105
+          "
+        />
 
-                      </motion.div>
-                    ))}
-
-                  </div>
+        {activeSlide.type === "video" && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
+            <span className="
+              grid h-7 w-7 place-items-center
+              rounded-full bg-white/90
+              text-[#5428B0]
+              sm:h-12 sm:w-12
+            ">
+              <FiPlay size={18} fill="currentColor" />
+            </span>
+          </div>
+        )}
+      </motion.div>
+    );
+  })}
+</div>
 
                   {/* Bottom Label */}
                   <div className="mt-3 flex items-center justify-between sm:mt-5">

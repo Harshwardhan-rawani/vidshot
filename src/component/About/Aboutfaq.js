@@ -12,27 +12,27 @@ const faqs = [
   {
     question: "What services does VidShot Media provide?",
     answer:
-      "We provide video production, video editing, social media management, creative design, content creation, Meta Ads and performance marketing.",
+      "We offer video production, video editing, social media management, content creation, graphic design, Meta Ads, and performance marketing. Whether you need one creative asset or support across multiple channels, we can help. ",
   },
   {
     question: "How do we start working together?",
     answer:
-      "Simply contact us through our inquiry form. We'll understand your requirements, discuss your goals and suggest the right creative solution.",
+      "Simply get in touch with us. Tell us about your business, your requirements, and what you have in mind. We will discuss the brief, understand your goals, and work out the next steps together. ",
   },
   {
     question: "Do you work with startups and small businesses?",
     answer:
-      "Yes. We work with startups, growing businesses, established brands and creators looking to improve their digital presence.",
+      "Absolutely. You do not need to be a large brand to have a great story or a strong creative idea. We work with businesses at different stages and help them find the right creative solutions for their goals. ",
   },
   {
     question: "Can you manage our complete social media presence?",
     answer:
-      "Yes. We can help with content strategy, creative production, editing, publishing and performance-focused social media management.",
+      "Yes. We can support your social media presence through strategy, content planning, creative production, copywriting, and platform management, depending on your requirements. ",
   },
   {
     question: "How long does a typical project take?",
     answer:
-      "Timelines depend on the project scope. We'll share a clear production schedule and delivery expectations before starting.",
+      "It depends on the scope, format, and complexity of the project. Once we understand your brief, we can share a realistic timeline and keep you informed throughout the process. ",
   },
 ];
 

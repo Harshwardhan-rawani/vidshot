@@ -256,7 +256,7 @@ const ServiceCollage = ({
 // ROTATING WORDS
 // ========================================
 
-const words = ["are Hard to Ignore.", "Stand Out from the Crowd.", "Catch the Right Attention."];
+const words = ["Get Noticed",  "Stand Out", "Captivates" ];
 
 
 // ========================================
@@ -558,8 +558,8 @@ export default function Homehero({ services = [] }) {
     ">
 
       <div className="
-        mx-auto
-        grid w-full max-w-[1600px]
+        page-margin
+        grid w-full
         min-h-[calc(100svh-80px)]
 
         grid-cols-1

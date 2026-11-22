@@ -8,10 +8,10 @@ const missionSlides = [
   {
     id: 1,
     label: "Our Mission",
-    title: "Making every idea",
-    highlight: "worth remembering.",
+    title: "Making Your Brand",
+    highlight: "Part of the Conversation.",
     description:
-      "We help brands communicate their stories through meaningful creativity, powerful visuals and thoughtful execution.",
+      "Because your brand deserves better than another predictable post, another forgettable design, or another campaign that looks like everyone else's. ",
     image:
       "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1800",
   },
@@ -28,10 +28,10 @@ const missionSlides = [
   {
     id: 3,
     label: "Our Philosophy",
-    title: "Creativity with",
-    highlight: "a purpose.",
+    title: "Creativity That Knows ",
+    highlight: "Where It's Going.",
     description:
-      "We combine creative thinking, storytelling and strategy to turn ambitious ideas into impactful experiences.",
+      "Ideas Are Easy. Knowing What to Do With Them? That's the Art. ",
     image:
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1800",
   },

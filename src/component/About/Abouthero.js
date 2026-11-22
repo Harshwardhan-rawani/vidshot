@@ -94,10 +94,12 @@ export default function Abouthero() {
     
                 <motion.p
                   variants={fadeUp}
-                  className="text-sm text-gray-500 mt-4 max-w-md mx-auto leading-relaxed"
+                  className="text-sm text-gray-600 mt-4  mx-auto leading-relaxed"
                 >
-                  A creative team turning ideas into stories, experiences and
-                  meaningful brand connections.
+                 We came together in 2025 with curious minds, creative instincts, and a shared love for 
+making things happen. Today, we are a team of thinkers, storytellers, and makers who 
+bring different skills to the table and turn interesting ideas into work worth putting out 
+into the world.
                 </motion.p>
     
               </motion.div>

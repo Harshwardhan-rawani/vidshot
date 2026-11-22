@@ -23,7 +23,7 @@ const brands = [
     className: "font-bold tracking-tight",
   },
   {
-    name: "SS Alam",
+    name: "S S Alam",
     className: "font-semibold tracking-wide",
   },
 ];

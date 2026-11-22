@@ -347,7 +347,7 @@ export default function Services({services}) {
               variants={fadeUp}
               className="text-[10px] font-bold uppercase tracking-[3px] text-[#5428B0] mb-3"
             >
-              The Story Behind VidShot
+              Vidshot Toolkit 
             </motion.p>
 
             <motion.h1
@@ -359,10 +359,11 @@ export default function Services({services}) {
 
             <motion.p
               variants={fadeUp}
-              className="text-sm text-gray-500 mt-4 max-w-md mx-auto leading-relaxed"
+              className="text-sm text-gray-500  mx-auto leading-relaxed"
             >
-              A creative team turning ideas into stories, experiences and
-              meaningful brand connections.
+              Different ideas call for different creative approaches. Luckily, we are not a one-trick 
+studio. From shaping your brand identity to creating content and campaigns, we have got a few 
+things up our sleeves. 
             </motion.p>
 
           </motion.div>

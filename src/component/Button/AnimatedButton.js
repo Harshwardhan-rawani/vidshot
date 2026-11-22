@@ -12,7 +12,7 @@ export default function AnimatedButton({
   return (
     <Link
       to={to}
-      className={`group relative inline-flex rounded-full ${className}`}
+      className={`group relative inline-flex rounded-xl ${className}`}
     >
       {/* =========================================
           OUTER GLOW
@@ -24,7 +24,7 @@ export default function AnimatedButton({
           pointer-events-none
           absolute
           -inset-[1px]
-          rounded-full
+          rounded-xl
           bg-gradient-to-r
           from-[var(--primary)]
           via-[var(--secondary)]
@@ -48,7 +48,7 @@ export default function AnimatedButton({
           items-center
           gap-3
           overflow-hidden
-          rounded-full
+          rounded-xl
     
           border
           border-[var(--primary)]
@@ -84,7 +84,7 @@ export default function AnimatedButton({
             pointer-events-none
             absolute
             inset-0
-            rounded-full
+            rounded-xl
             border
             border-[var(--primary)]
           "
@@ -181,7 +181,7 @@ export default function AnimatedButton({
             transition-colors
             duration-400
             ease-out
-
+          
             group-hover:text-[var(--neutral)]
           "
         >
@@ -205,7 +205,7 @@ export default function AnimatedButton({
             justify-center
 
             overflow-hidden
-            rounded-full
+            rounded-xl
 
             bg-[var(--secondary)]
             text-[var(--primary)]
@@ -284,7 +284,7 @@ export default function AnimatedButton({
             h-1
             w-1
 
-            rounded-full
+            rounded-xl
             bg-[var(--neutral)]/40
 
             opacity-0
