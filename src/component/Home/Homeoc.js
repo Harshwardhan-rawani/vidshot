@@ -21,18 +21,14 @@ const clients = [
   {
     id: 1,
     name: "Deven U Pandey",
-    category: "Creator",
-     type : "Social Media Management",
+    category: "Founder",
+     type : "IRA Skills",
     socials: [
-      {
-        platform: "Instagram",
-        icon: InstagramIcon,
-        followers: "101K",
-      },
+
       {
         platform: "YouTube",
         icon: YoutubeIcon,
-        followers: "52.4K",
+        followers: "55.7K",
       },
     ],
 
@@ -46,9 +42,18 @@ const clients = [
     id: 2,
     name: "Deepak Pandey",
     category: "Creator",
-    type : "AI Tech and Business",
-
-  
+    type : "AI and Technology",
+    socials :[
+      {
+        platform: "YouTube",
+        icon: YoutubeIcon,
+        followers: "2.3K",
+      },
+      {  platform: "Instagram",
+        icon: InstagramIcon,
+        followers: "453",
+      },
+    ],
     images: [
       deepak
     ],
@@ -59,7 +64,23 @@ const clients = [
     name: "Mohit Beriwala",
     category: "Founder",
     type : "Shree Rama Manager LLP",
-
+      socials: [
+          {
+        platform: "YouTube",
+        icon: YoutubeIcon,
+        followers: "1.2K",
+      },
+      {
+        platform: "Instagram",
+        icon: InstagramIcon,
+        followers: "2.9K",
+      },
+      {
+        platform: "Facebook",
+        icon: FacebookIcon,
+        followers: "5.5k",
+      },
+    ],
 
     images: [
     mohit
@@ -69,24 +90,15 @@ const clients = [
   {
     id: 4,
     name: "Nidhi Aneja",
-    category: "Creator",
-     type : "Social Media Management",
+    category: "CEO",
+     type : "IRA Skills",
     socials: [
       {
         platform: "Instagram",
         icon: InstagramIcon,
-        followers: "96K",
+        followers: "53.4k",
       },
-      {
-        platform: "Facebook",
-        icon: FacebookIcon,
-        followers: "54K",
-      },
-      {
-        platform: "YouTube",
-        icon: YoutubeIcon,
-        followers: "31K",
-      },
+
     ],
 
     images: [
@@ -96,24 +108,15 @@ const clients = [
    {
     id: 5,
     name: "Dhiren Bontra",
-    category: "Creator",
-     type : "Social Media Management",
+    category: "Brand",
+     type : "Cyclist",
     socials: [
       {
         platform: "Instagram",
         icon: InstagramIcon,
-        followers: "96K",
+        followers: "5k",
       },
-      {
-        platform: "Facebook",
-        icon: FacebookIcon,
-        followers: "54K",
-      },
-      {
-        platform: "YouTube",
-        icon: YoutubeIcon,
-        followers: "31K",
-      },
+ 
     ],
 
     images: [
@@ -123,24 +126,29 @@ const clients = [
    {
     id: 6,
     name: "S S Alam",
-    category: "Creator",
-     type : "Social Media Management",
+    category: "Fonder",
+     type : "Jewellery Manufacture",
     socials: [
+          {
+        platform: "YouTube",
+        icon: YoutubeIcon,
+        followers: "1.2K",
+      },
       {
         platform: "Instagram",
         icon: InstagramIcon,
-        followers: "101K",
+        followers: "11.1K",
       },
       {
-        platform: "YouTube",
-        icon: YoutubeIcon,
-        followers: "52.4K",
+        platform: "Facebook",
+        icon: FacebookIcon,
+        followers: "46k",
       },
+  
     ],
 
     images: [
-      ssalam
-      
+      ssalam  
     ],
   },
 ];
@@ -229,7 +237,7 @@ export default function Homeoc() {
           {clients.map((client) => (
             <div key={client.id} className="px-2 py-3">
               <article className="group relative overflow-hidden rounded-3xl bg-neutral-900 shadow-lg">
-                <div className="relative aspect-[3/4] w-full overflow-hidden">
+                <div className="relative aspect-[7/10] w-full overflow-hidden">
                   <img
                     src={client.images?.[0]}
                     alt={client.name}

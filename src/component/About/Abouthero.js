@@ -4,7 +4,12 @@ import {
   fadeUp,
   stagger, } from "../../Animation/Fadeup";
 
+import videoediting from "../../Images/Services/Video_editing.jpeg"
 
+import social_media from "../../Images/Services/social media.png"
+import metaads from "../../Images/Services/metaads.png"
+import graphic from "../../Images/Services/Graphic.jpeg"
+import content from "../../Images/Services/content.jpeg"
 /* =========================================
    IMAGE DATA
 ========================================= */
@@ -12,31 +17,31 @@ import {
 const galleryImages = [
   {
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800",
+      videoediting,
     alt: "Creative team collaborating",
     className: "h-[150px] md:h-[190px]",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800",
+      social_media,
     alt: "Modern creative workspace",
     className: "h-[120px] md:h-[155px] mt-8",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800",
+      metaads,
     alt: "Team brainstorming",
     className: "h-[170px] md:h-[220px]",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800",
+    graphic,
     alt: "Creative office environment",
     className: "h-[125px] md:h-[165px] mt-8",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800",
+     content,
     alt: "Team working together",
     className: "h-[150px] md:h-[190px]",
   },

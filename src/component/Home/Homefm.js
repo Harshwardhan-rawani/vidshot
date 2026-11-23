@@ -18,7 +18,7 @@ const testimonials = [
     feedback:
       "VidShot Media did an excellent job bringing our ideas to life. Their creative approach, attention to detail, and commitment to quality made the entire experience smooth and professional. Highly recommended!",
     name: "Deepak Pandey",
-    role: "Client",
+    role: "Creator",
     image: deepak,
   },
   {
@@ -27,7 +27,7 @@ const testimonials = [
     feedback:
       "What impressed me most was their understanding of our vision. The team delivered creative content with great attention to detail and made the entire process effortless. Really appreciate their work!",
     name: "Mohit Beriwala",
-    role: "Client",
+    role: "Founder",
     image: mohit,
   },
   {
@@ -36,7 +36,7 @@ const testimonials = [
     feedback:
       "A talented and dedicated team with a great understanding of modern branding and content creation. They brought fresh ideas to the table and delivered results that truly stood out.",
     name: "Deven U. Pandey",
-    role: "Client",
+    role: "Founder of IRA",
     image: deven,
   },
   {
@@ -45,7 +45,7 @@ const testimonials = [
     feedback:
       "Working with VidShot Media was a great experience. Their creativity, communication, and professionalism made a real difference. They understand how to turn ideas into impactful visual content.",
     name: "Nidhi Aneja",
-    role: "Client",
+    role: "CEO of IRA",
     image: nidhi,
   },
   {
@@ -54,7 +54,7 @@ const testimonials = [
     feedback:
       "The team brings a perfect combination of creativity and professionalism. From understanding the requirements to delivering the final work, everything was handled with care and dedication.",
     name: "Dhiren Bontra",
-    role: "Client",
+    role: "Cyclist",
     image: dhiren,
   },
 ];

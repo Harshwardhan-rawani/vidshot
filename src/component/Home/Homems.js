@@ -13,9 +13,14 @@ import {
 
 const metrics = [
   {
-    value: 130,
+    value: 200,
     suffix: "+",
     label: "Monthly Reels Post",
+  },
+    {
+    value: 30,
+    suffix: "+",
+    label: "Monthly Long video Post",
   },
   {
     value: 4.7,
@@ -23,17 +28,14 @@ const metrics = [
     decimals: 1,
     label: "average client rating",
   },
+
   {
-    value: 5,
-    suffix: "x",
-    label: "faster campaign turnaround",
-  },
-  {
-    value: 10,
+    value: 7,
     suffix: "M",
     label: "monthly views generated",
   },
 ];
+
 
 /* -----------------------------------------
    COUNT UP ANIMATION

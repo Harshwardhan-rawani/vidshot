@@ -92,6 +92,7 @@ export default function Portfolio() {
 
    
 <LaptopPortfolioShowcase
+className="hidden sm:block"
   autoPlay={true}
   interval={3500}
 />

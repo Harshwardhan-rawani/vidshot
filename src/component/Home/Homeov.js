@@ -11,6 +11,8 @@ import FacebookIcon from "../../icons/facebook.svg";
 import MetaIcon from "../../icons/meta-ads.svg";
 import Videoediting from "../../icons/video-editing.svg";
 import PodcastIcon from "../../icons/poadcast.svg";
+import LinkedinIcon from "../../icons/Linkedin.png";
+
 import AnimatedButton from "../Button/AnimatedButton";
 
 const visionWords = ["Stories", "Ideas", "Brands", "Creators"];
@@ -49,15 +51,15 @@ const orbitIcons = [
     orbit: "outer",
   },
   {
-    name: "Podcast",
-    icon: PodcastIcon,
+    name: "LinkedinIcon",
+    icon: LinkedinIcon,
     angle: 50,
     distance: 150,
     orbit: "inner",
   },
   {
-    name: "Video",
-    icon: Videoediting,
+    name: "Poadcast",
+    icon: PodcastIcon,
     angle: 140,
     distance: 150,
     orbit: "inner",
@@ -69,13 +71,7 @@ const orbitIcons = [
     distance: 150,
     orbit: "inner",
   },
-      {
-    name: "Video",
-    icon: Videoediting,
-    angle: 320,
-    distance: 150,
-    orbit: "inner",
-  },
+
 ];
 
 /* =========================================================
