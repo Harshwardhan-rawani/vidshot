@@ -336,38 +336,40 @@ export default function Services({services}) {
             HEADER
         ========================================================= */}
 
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            className="text-center mb-12"
-          >
-
-            <motion.p
-              variants={fadeUp}
-              className="text-[10px] font-bold uppercase tracking-[3px] text-[#5428B0] mb-3"
-            >
-              Vidshot Toolkit 
-            </motion.p>
-
-            <motion.h1
-              variants={fadeUp}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.06em]"
+                    {/* Heading */}
+            
+                      <motion.div
+                        variants={stagger}
+                        initial="hidden"
+                        animate="visible"
+                        className="text-center mb-12"
+                      >
+            
+                        <motion.p
+                          variants={fadeUp}
+                          className="text-[10px] font-bold uppercase tracking-[3px] text-[#5428B0] mb-3"
+                        >
+                           Vidshot Toolkit 
+                        </motion.p>
+            
+                               <motion.h1
+                          variants={fadeUp}
+                          className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.06em]"
             >
               Our <span className="text-[#5428B0]">Services.</span>
             </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="text-sm text-gray-500  mx-auto leading-relaxed"
-            >
-              Different ideas call for different creative approaches. Luckily, we are not a one-trick 
+            
+                        <motion.p
+                          variants={fadeUp}
+                          className="text-sm text-gray-600 mt-4  mx-auto leading-relaxed"
+                        >
+                       Different ideas call for different creative approaches. Luckily, we are not a one-trick 
 studio. From shaping your brand identity to creating content and campaigns, we have got a few 
 things up our sleeves. 
-            </motion.p>
+                        </motion.p>
+            
+                      </motion.div>
 
-          </motion.div>
-     
   <ServiceCollage services={services}/>
       
       </div>

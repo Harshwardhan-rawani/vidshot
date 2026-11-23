@@ -142,27 +142,23 @@ export default function Portfolio() {
           <LongFormVideoSlider
   title="Our Long-Form Videos"
   videos={[
-  
+ 
   {
     title: "Business Growth Podcast",
-    src: "https://www.youtube.com/watch?v=JoAntbQFGA4&t=330s",
+    src: "https://res.cloudinary.com/dpxi1q0nl/video/upload/v1795403735/kolkata_jeweller_intro_1_1.mp4",
     category: "Podcast",
   },
   {
     title: "Brand Story",
-    src: "https://www.youtube.com/watch?v=bbnPDeDV9ME&t=117s",
+    src: "https://res.cloudinary.com/dpxi1q0nl/video/upload/v1795403731/Sanjay_sir_jio_ipo_starting_for_website.mp4",
     category: "Brand Film",
   },
   {
     title: "Business Growth Podcast",
-    src: "https://www.youtube.com/watch?v=JoAntbQFGA4&t=330s",
+    src: "https://res.cloudinary.com/dpxi1q0nl/video/upload/v1795403708/10_STEPS_VERIFICATIO_Intro.mp4",
     category: "Podcast",
   },
-  {
-    title: "Brand Story",
-    src: "https://www.youtube.com/watch?v=bbnPDeDV9ME&t=117s",
-    category: "Brand Film",
-  },
+
   ]}
 />
 <SocialMediaSlider

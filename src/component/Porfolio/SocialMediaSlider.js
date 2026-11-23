@@ -1,128 +1,137 @@
-import React, { useMemo, useRef } from "react";
+
+import React, { useMemo } from "react";
 import Slider from "react-slick";
 
-import {
-  FaInstagram,
-  FaFacebookF,
-  FaLinkedinIn,
-  FaYoutube,
-  FaTiktok,
-} from "react-icons/fa";
+// SVG Imports
+import instagramIcon from "../../icons/instagram.svg";
+import facebookIcon from "../../icons/facebook.svg";
+import linkedinIcon from "../../icons/Linkedin.png";
+import youtubeIcon from "../../icons/youtube.svg";
 
+
+// Analytics Images
+import analytics1 from "../../Images/analytics/analytics1.jpeg";
+import analytics2 from "../../Images/analytics/analytics2.jpeg";
+import analytics3 from "../../Images/analytics/analytics3.jpeg";
+import analytics4 from "../../Images/analytics/analytics4.jpeg";
+import analytics5 from "../../Images/analytics/analytics5.jpeg";
+
+// Slick CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const socialMediaImages = [
+// Portfolio Images
+const images = [
   {
-    src: "/images/social-1.jpg",
-    alt: "Client social media campaign",
-    clientName: "Brand One",
-    platform: "instagram",
-    category: "Social Media Management",
-  },
-  {
-    src: "/images/social-2.jpg",
+    src: analytics1,
     alt: "Client social media campaign",
     clientName: "Brand Two",
     platform: "facebook",
     category: "Campaign",
   },
   {
-    src: "/images/social-3.jpg",
+    src: analytics2,
     alt: "Client content design",
     clientName: "Brand Three",
     platform: "linkedin",
     category: "Content Creation",
   },
   {
-    src: "/images/social-4.jpg",
+    src: analytics3,
     alt: "Client brand design",
     clientName: "Brand Four",
     platform: "youtube",
     category: "Branding",
   },
   {
-    src: "/images/social-5.jpg",
-    alt: "Client Instagram carousel",
+    src: analytics4,
+    alt: "Social media marketing project",
     clientName: "Brand Five",
     platform: "instagram",
-    category: "Carousel",
+    category: "Social Media",
   },
   {
-    src: "/images/social-6.jpg",
-    alt: "Client social media creative",
+    src: analytics5,
+    alt: "Digital marketing campaign",
     clientName: "Brand Six",
-    platform: "tiktok",
-    category: "Creative",
+    platform: "instagram",
+    category: "Marketing",
   },
 ];
 
+// Platform SVG Icons
 const platformIcons = {
-  instagram: FaInstagram,
-  facebook: FaFacebookF,
-  linkedin: FaLinkedinIn,
-  youtube: FaYoutube,
-  tiktok: FaTiktok,
+  instagram: instagramIcon,
+  facebook: facebookIcon,
+  linkedin: linkedinIcon,
+  youtube: youtubeIcon,
+
 };
 
 export default function SocialMediaSlider({
-  images = socialMediaImages,
-  title = "Social Media Management",
   subtitle = "Creating consistent, engaging and visually compelling social media experiences for brands.",
   className = "",
   speed = 6000,
 }) {
-  const sliderRef = useRef(null);
-
+  // Filter valid images
   const safeImages = useMemo(
     () => images.filter((image) => image?.src),
-    [images]
+    []
   );
 
+  const imageCount = safeImages.length;
+
+  if (!imageCount) return null;
+
+  // Slider Settings
   const settings = {
     dots: false,
     arrows: false,
-    infinite: safeImages.length > 1,
-    autoplay: safeImages.length > 1,
+
+    infinite: imageCount > 1,
+    autoplay: imageCount > 1,
     autoplaySpeed: 0,
+
     speed,
     cssEase: "linear",
-    slidesToShow: Math.min(4, safeImages.length),
+
+    slidesToShow: Math.min(4, imageCount),
     slidesToScroll: 1,
+
     pauseOnHover: true,
     pauseOnFocus: true,
+
     swipe: true,
     draggable: true,
     swipeToSlide: true,
     touchMove: true,
+
     accessibility: true,
-    rtl: true,
+    rtl: false,
 
     responsive: [
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: Math.min(3, safeImages.length),
+          slidesToShow: Math.min(3, imageCount),
         },
       },
       {
         breakpoint: 900,
         settings: {
-          slidesToShow: Math.min(2, safeImages.length),
+          slidesToShow: Math.min(2, imageCount),
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: Math.min(1, safeImages.length),
-          centerMode: safeImages.length > 1,
-          centerPadding: "35px",
+          slidesToShow: 1,
+          centerMode: imageCount > 1,
+          centerPadding: imageCount > 1 ? "35px" : "0px",
         },
       },
     ],
   };
-
-  if (!safeImages.length) return null;
 
   return (
     <section
@@ -131,7 +140,6 @@ export default function SocialMediaSlider({
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
 
         {/* Header */}
-
         <div className="mb-8 grid items-start gap-8 lg:mb-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
 
           <div>
@@ -142,6 +150,7 @@ export default function SocialMediaSlider({
             <h2 className="text-3xl font-bold leading-[1.08] tracking-tight text-[#171717] sm:text-4xl md:text-5xl">
               Building Brands.
               <br />
+
               <span className="text-[#5428B0]">
                 One Post at a Time.
               </span>
@@ -149,6 +158,7 @@ export default function SocialMediaSlider({
           </div>
 
           <div className="lg:pt-8">
+
             <p className="text-base leading-relaxed text-gray-700 md:text-lg">
               {subtitle}
             </p>
@@ -159,34 +169,37 @@ export default function SocialMediaSlider({
             </p>
 
             <div className="mt-7 flex items-center gap-3">
+
               <span className="h-[2px] w-10 bg-[#F8CC10]" />
 
               <span className="text-[10px] font-bold uppercase tracking-[2px] text-[#5428B0]">
                 Content That Connects
               </span>
+
             </div>
           </div>
 
         </div>
 
-        {/* Client Portfolio Slider */}
-
+        {/* Portfolio Slider */}
         <div className="social-media-slider">
-          <Slider ref={sliderRef} {...settings}>
+
+          <Slider {...settings}>
 
             {safeImages.map((image, index) => {
+
               const PlatformIcon =
                 platformIcons[image.platform?.toLowerCase()];
 
               return (
                 <div
-                  key={`${image.src}-${index}`}
+                  key={`${image.clientName || "client"}-${index}`}
                   className="px-2 py-5 sm:px-3"
                 >
-                  <article className="group relative aspect-[9/16] w-full overflow-hidden rounded-xl bg-neutral-100 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#5428B0]/15">
 
-                    {/* Client Image */}
+                  <article className="group relative aspect-[9/16] w-full overflow-hidden rounded-xl bg-neutral-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-[#5428B0]/15">
 
+                    {/* Portfolio Image */}
                     <img
                       src={image.src}
                       alt={
@@ -195,32 +208,34 @@ export default function SocialMediaSlider({
                         `Client ${index + 1}`
                       }
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      draggable="false"
+                      className="h-full w-full object-cover"
                     />
 
-                    {/* Social Media Icon - Top Right */}
-
+                    {/* Platform SVG Icon */}
                     {PlatformIcon && (
-                      <div className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-black/40 text-lg text-white shadow-lg backdrop-blur-md">
-                        <PlatformIcon />
+                      <div className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/40 shadow-lg backdrop-blur-md">
+
+                        <img
+                          src={PlatformIcon}
+                          alt={`${image.platform} icon`}
+                          draggable="false"
+                          className="h-5 w-5 object-contain"
+                        />
+
                       </div>
                     )}
 
-                    {/* Bottom Gradient */}
-
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
-
-                    {/* Client Information - Bottom */}
-
-                    <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
+                    {/* Client Details */}
+                    <div className="absolute bottom-0 left-0 right-0 z-10 bg-white p-5">
 
                       {image.category && (
-                        <p className="mb-1 text-[9px] font-semibold uppercase tracking-[2px] text-white/70">
+                        <p className="mb-1 text-[9px] font-semibold uppercase tracking-[2px] text-black">
                           {image.category}
                         </p>
                       )}
 
-                      <h3 className="text-lg font-bold tracking-tight text-white sm:text-xl">
+                      <h3 className="text-lg font-bold tracking-tight text-black sm:text-xl">
                         {image.clientName || "Our Client"}
                       </h3>
 
@@ -229,22 +244,23 @@ export default function SocialMediaSlider({
                     </div>
 
                     {/* Border */}
-
                     <div className="pointer-events-none absolute inset-0 rounded-xl border border-white/20 transition-colors duration-300 group-hover:border-[#5428B0]" />
 
                   </article>
+
                 </div>
               );
             })}
 
           </Slider>
+
         </div>
 
       </div>
 
-      {/* Slick Styling */}
-
+      {/* Custom Slick CSS */}
       <style>{`
+
         .social-media-slider .slick-list {
           margin-left: -8px;
           margin-right: -8px;
@@ -254,6 +270,7 @@ export default function SocialMediaSlider({
         .social-media-slider .slick-track {
           display: flex;
           align-items: stretch;
+          will-change: transform;
         }
 
         .social-media-slider .slick-slide {
@@ -275,18 +292,24 @@ export default function SocialMediaSlider({
         }
 
         @media (max-width: 600px) {
+
           .social-media-slider .slick-list {
             margin-left: -4px;
             margin-right: -4px;
           }
+
         }
 
         @media (prefers-reduced-motion: reduce) {
+
           .social-media-slider .slick-track {
             transition-duration: 0ms !important;
           }
+
         }
+
       `}</style>
+
     </section>
   );
 }
