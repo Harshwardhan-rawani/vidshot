@@ -4,7 +4,7 @@ import {  motion} from "framer-motion";
 import ReelSlider from "../../component/Porfolio/ReelSlider";
 import LongFormVideoSlider from "../../component/Porfolio/LongFormVideoSlider";
 import LaptopPortfolioShowcase from "../../component/Porfolio/LaptopPortfolioShowcase";
-import SocialMediaSlider from "../../component/Porfolio/SocialMediaSlider";
+// import SocialMediaSlider from "../../component/Porfolio/SocialMediaSlider";
 import GreenScreenComparison from "../../component/Porfolio/GreenScreenComparison";
 import AnimatedGallery from "../../component/Porfolio/AnimatedGallery";
 import SEO from "../../component/SEO/SEO";
