@@ -542,7 +542,7 @@ export default function LaptopPortfolioShowcase({
 
                               controls
 
-                              preload="auto"
+                              preload="none"
 
                               disablePictureInPicture
 
@@ -572,8 +572,9 @@ export default function LaptopPortfolioShowcase({
 
                               alt={`${activeSlide.category} ${index + 1}`}
 
-                              loading="lazy"
-
+                              
+  loading="lazy"
+  decoding="async"
                               className="
                                 absolute
                                 inset-0

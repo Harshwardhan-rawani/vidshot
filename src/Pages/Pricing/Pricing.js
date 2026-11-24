@@ -13,6 +13,7 @@ import {
 import {
   fadeUp,
   stagger, } from "../../Animation/Fadeup";
+import SEO from "../../component/SEO/SEO";
 const pricingGroups = [
   {
     label: "Social Media",
@@ -370,6 +371,8 @@ export default function Pricing() {
 
 
   return (
+    <>
+    <SEO/>
     <main className="min-h-screen mt-24 overflow-hidden bg-white text-[#111111]">
   {/* Heading */}
   <motion.div
@@ -985,5 +988,6 @@ export default function Pricing() {
         )}
       </AnimatePresence>
     </main>
+    </>
   );
 }

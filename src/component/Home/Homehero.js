@@ -83,7 +83,9 @@ const ServiceCard = ({ service, index, gridSpan }) => {
       <img
         src={service.image}
         alt={service.title}
-        loading="lazy"
+ 
+ loading="eager"
+    fetchPriority="high"
         className="
           absolute inset-0
           h-full w-full
@@ -504,6 +506,8 @@ saying. We help you tell that story right by bringing thinking and execution tog
       <img
         key={index}
         src={image}
+    loading="eager"
+    fetchPriority="high"
         alt={`Trusted client ${index + 1}`}
         className="w-10 h-10 rounded-full object-cover border-[3px] border-white shadow-sm"
         style={{ zIndex: 10 - index }}

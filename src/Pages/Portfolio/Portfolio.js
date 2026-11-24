@@ -7,6 +7,7 @@ import LaptopPortfolioShowcase from "../../component/Porfolio/LaptopPortfolioSho
 import SocialMediaSlider from "../../component/Porfolio/SocialMediaSlider";
 import GreenScreenComparison from "../../component/Porfolio/GreenScreenComparison";
 import AnimatedGallery from "../../component/Porfolio/AnimatedGallery";
+import SEO from "../../component/SEO/SEO";
 
 
 
@@ -36,6 +37,8 @@ export default function Portfolio() {
 
 
   return (
+    <>
+    <SEO/>
     <main className="relative min-h-screen overflow-hidden bg-white text-[#171717]">
 
 
@@ -162,7 +165,7 @@ className="hidden sm:block"
 
   ]}
 />
-<SocialMediaSlider
+{/* <SocialMediaSlider
   images={[
 {
   src: "/images/client-photo.jpg",
@@ -193,10 +196,11 @@ className="hidden sm:block"
   category: "Social Media Management",
 }
   ]}
-/>
+/> */}
 <AnimatedGallery/>
 
 
     </main>
+    </>
   );
 }

@@ -148,7 +148,7 @@ export default function LongFormVideoSlider({
                     controlsList="nodownload"
 
                     // Performance
-                    preload="metadata"
+                    preload="none"
 
                     // Accessibility
                     title={video.title || `Video ${index + 1}`}

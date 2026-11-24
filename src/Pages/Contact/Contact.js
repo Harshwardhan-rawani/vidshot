@@ -9,6 +9,7 @@ import {
   Check,
   Send,
 } from "lucide-react";
+import SEO from "../../component/SEO/SEO";
 
 
 const projectTypes = [
@@ -92,6 +93,8 @@ const ContactSection = ({ services }) => {
   };
 
   return (
+    <>
+    <SEO/>
 <div className="relative w-full bg-white pt-24 pb-16 lg:pt-28 lg:pb-20">
       {/* =========================================================
           BACKGROUND
@@ -361,6 +364,8 @@ const ContactSection = ({ services }) => {
                 <img
                   src={activeService.image}
                   alt={activeService.title}
+                  loading="lazy"
+                    decoding="async"
                   className="w-full h-full object-cover"
                 />
 
@@ -517,6 +522,7 @@ const ContactSection = ({ services }) => {
 
     </motion.section>
     </div>
+    </>
   );
 };
 

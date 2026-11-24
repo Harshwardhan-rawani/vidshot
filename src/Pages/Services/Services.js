@@ -8,6 +8,7 @@ import {
 import {
   fadeUp,
   stagger, } from "../../Animation/Fadeup";
+import SEO from "../../component/SEO/SEO";
 
 
 function ServiceCollage({services}) {
@@ -53,6 +54,8 @@ const cardPositions = [
                 <img
                   src={activeService.image}
                   alt={activeService.title}
+                  loading="lazy"
+                    decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
 
@@ -203,6 +206,8 @@ const cardPositions = [
 
                     <img
                       src={service.image}
+                      loading="lazy"
+                    decoding="async"
                       alt=""
                       className={`
                         absolute inset-0 h-full w-full object-cover
@@ -304,6 +309,9 @@ export default function Services({services}) {
   
 
   return (
+    <>
+    <SEO/>
+ 
     <section
       id="services"
       className="relative overflow-hidden bg-white py-24 md:py-24"
@@ -374,5 +382,6 @@ things up our sleeves.
       
       </div>
     </section>
+       </>
   );
 }

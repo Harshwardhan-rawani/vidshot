@@ -7,6 +7,7 @@ import Aboutfounder from "../../component/About/Aboutfounder";
 import Aboutwwd from "../../component/About/Aboutwwd";
 import Abouthww from "../../component/About/Abouthww.js";
 import Aboutcta from "../../component/About/Aboutcta.js";
+import SEO from "../../component/SEO/SEO.js";
 
 
 
@@ -17,6 +18,8 @@ import Aboutcta from "../../component/About/Aboutcta.js";
 export default function About() {
 
  return (
+    <>
+    <SEO/>
     <main className="overflow-hidden bg-[#FAFAFA] text-[#171717]">
 
       {/* =========================================
@@ -37,8 +40,6 @@ export default function About() {
 ========================================= */}
 
    <Aboutcarusel/>
-
-
 
 
       {/* =========================================
@@ -72,5 +73,6 @@ export default function About() {
     <Aboutcta/>
 
     </main>
+    </>
   );
 }

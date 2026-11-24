@@ -157,7 +157,9 @@ Thumbnails, posters, reel covers, and more — all designed to catch the eye and
               <img
                 src={item.src}
                 alt={item.alt}
-                loading="lazy"
+       
+                  loading="lazy"
+  decoding="async"
                 className="
                   absolute inset-0 h-full w-full object-cover
                   transition-transform duration-700 ease-out
@@ -232,6 +234,8 @@ Thumbnails, posters, reel covers, and more — all designed to catch the eye and
             src={selectedImage.src}
             alt={selectedImage.alt}
             onClick={(e) => e.stopPropagation()}
+              loading="lazy"
+  decoding="async"
             className="
               max-h-[90vh] max-w-[95vw]
               rounded-lg object-contain shadow-2xl

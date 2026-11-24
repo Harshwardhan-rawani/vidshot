@@ -1,25 +1,22 @@
 import './App.css';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Navbar from './component/Navbar/Navbar';
-import Home from './Pages/Home/Home';
-import About from './Pages/About/About';
-import Services from './Pages/Services/Services';
 
-import Contact from './Pages/Contact/Contact';
+import React, { lazy, Suspense } from 'react';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Navbar from './component/Navbar/Navbar';
 import Footer from './component/Footer/Footer';
 import ScrollToTop from './ScrollToTop';
+
 import FloatingContact from './component/Button/FloatingContact';
-import videoediting from "./Images/Services/Video_editing.jpeg"
-import social_media from "./Images/Services/social media.png"
-import metaads from "./Images/Services/metaads.png"
-import graphic from "./Images/Services/Graphic.jpeg"
-import content from "./Images/Services/content.jpeg"
+import LeadPopup from './component/Home/LeadPopup';
 
+import videoediting from "./Images/Services/Video_editing.jpeg";
+import social_media from "./Images/Services/social media.png";
+import metaads from "./Images/Services/metaads.png";
+import graphic from "./Images/Services/Graphic.jpeg";
+import content from "./Images/Services/content.jpeg";
 
-
-/* =========================================================
-   SERVICES DATA
-========================================================= */
 import {
   Play,
   Smartphone,
@@ -27,11 +24,18 @@ import {
   PenTool,
   Target,
 } from "lucide-react";
-import { useEffect } from 'react';
-import Portfolio from './Pages/Portfolio/Portfolio';
-import LeadPopup from './component/Home/LeadPopup';
-import Pricing from './Pages/Pricing/Pricing';
 
+
+// Lazy load pages
+const Home = lazy(() => import('./Pages/Home/Home'));
+const About = lazy(() => import('./Pages/About/About'));
+const Services = lazy(() => import('./Pages/Services/Services'));
+const Contact = lazy(() => import('./Pages/Contact/Contact'));
+const Portfolio = lazy(() => import('./Pages/Portfolio/Portfolio'));
+const Pricing = lazy(() => import('./Pages/Pricing/Pricing'));
+
+
+// Services Data
 const services = [
   {
     id: 1,
@@ -47,8 +51,7 @@ const services = [
       "Corporate Films",
     ],
     icon: Play,
-    image:
-      videoediting
+    image: videoediting,
   },
 
   {
@@ -65,8 +68,7 @@ const services = [
       "Content Strategy",
     ],
     icon: Smartphone,
-    image:
-      social_media
+    image: social_media,
   },
 
   {
@@ -83,72 +85,127 @@ const services = [
       "Creative Direction",
     ],
     icon: Palette,
-    image:
-      graphic
+    image: graphic,
   },
-{
-  id: 4,
-  number: "04",
-  title: "Content Writing",
-  shortTitle: "Content",
-  description:
-    "Create engaging, compelling, and SEO-friendly content that communicates your brand message, connects with your audience, and turns ideas into meaningful engagement.",
-  tags: [
-    "Website Content",
-    "SEO Writing",
-    "Social Media Copy",
-    "Blog Writing",
-    "Brand Storytelling",
-  ],
-  icon: PenTool,
-  image:
-    content
-},
 
-{
-  id: 5,
-  number: "05",
-  title: "Meta Ads",
-  shortTitle: "Meta Ads",
-  description:
-    "Reach the right audience with powerful Facebook and Instagram ad campaigns. Generate quality leads, boost conversions, and maximize your business growth.",
-  tags: [
-    "Facebook Ads",
-    "Instagram Ads",
-    "Lead Generation",
-    "Audience Targeting",
-   
-  ],
-  icon: Target,
-  image:
-    metaads
-},
+  {
+    id: 4,
+    number: "04",
+    title: "Content Writing",
+    shortTitle: "Content",
+    description:
+      "Create engaging, compelling, and SEO-friendly content that communicates your brand message, connects with your audience, and turns ideas into meaningful engagement.",
+    tags: [
+      "Website Content",
+      "SEO Writing",
+      "Social Media Copy",
+      "Blog Writing",
+      "Brand Storytelling",
+    ],
+    icon: PenTool,
+    image: content,
+  },
+
+  {
+    id: 5,
+    number: "05",
+    title: "Meta Ads",
+    shortTitle: "Meta Ads",
+    description:
+      "Reach the right audience with powerful Facebook and Instagram ad campaigns. Generate quality leads, boost conversions, and maximize your business growth.",
+    tags: [
+      "Facebook Ads",
+      "Instagram Ads",
+      "Lead Generation",
+      "Audience Targeting",
+    ],
+    icon: Target,
+    image: metaads,
+  },
 ];
 
+
+// Loading Animation Component
+const PageLoader = () => {
+  return (
+    <div className="page-loader">
+      <div className="loader-content">
+
+        <div className="loader-logo">
+          VID<span>SHOT</span>
+        </div>
+
+        <div className="loader-spinner"></div>
+
+        <p>Creating Something Amazing...</p>
+
+      </div>
+    </div>
+  );
+};
+
+
 function App() {
-   
-    useEffect(() => {
-    document.title = `Vidshot`;
-  }, []);
+
   return (
     <BrowserRouter>
+
       <div className="app-shell">
-        <LeadPopup/>
+
+        <LeadPopup />
+
         <Navbar />
-        <FloatingContact/>
+
+        <FloatingContact />
+
         <main className="route-content bg-white">
-             <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home services={services}/>} />
-            <Route path="/about" element={<About services={services} />} />
-            <Route path="/services" element={<Services services={services} />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/contact" element={<Contact services={services}/>} />
-          </Routes>
+
+          <ScrollToTop />
+
+          <Suspense fallback={<PageLoader />}>
+
+            <Routes>
+
+              <Route
+                path="/"
+                element={<Home services={services} />}
+              />
+
+              <Route
+                path="/about"
+                element={<About />}
+              />
+
+              <Route
+                path="/services"
+                element={<Services services={services} />}
+              />
+
+              <Route
+                path="/portfolio"
+                element={<Portfolio />}
+              />
+
+              <Route
+                path="/pricing"
+                element={<Pricing />}
+              />
+
+              <Route
+                path="/contact"
+                element={<Contact services={services} />}
+              />
+
+            </Routes>
+
+          </Suspense>
+
         </main>
+
+        <Footer />
+
       </div>
-      <Footer/>
+
     </BrowserRouter>
   );
 }

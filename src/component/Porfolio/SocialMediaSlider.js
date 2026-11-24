@@ -219,6 +219,8 @@ export default function SocialMediaSlider({
                         <img
                           src={PlatformIcon}
                           alt={`${image.platform} icon`}
+                            loading="lazy"
+                            decoding="async"
                           draggable="false"
                           className="h-5 w-5 object-contain"
                         />

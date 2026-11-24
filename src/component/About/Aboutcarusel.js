@@ -87,6 +87,8 @@ export default function Aboutcarusel() {
           <motion.img
             src={missionSlides[activeSlide].image}
             alt={missionSlides[activeSlide].label}
+              loading="lazy"
+  decoding="async"
             initial={{ scale: 1.08 }}
             animate={{ scale: 1 }}
             transition={{ duration: 5, ease: "linear" }}

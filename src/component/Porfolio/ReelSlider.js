@@ -203,7 +203,7 @@ const toggleMute = (index) => {
     muted
     loop
     autoPlay
-    preload="metadata"
+    preload="none"
     controls={false}
     disablePictureInPicture
 

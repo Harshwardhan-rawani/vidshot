@@ -241,7 +241,9 @@ export default function Homeoc() {
                   <img
                     src={client.images?.[0]}
                     alt={client.name}
-                    loading="lazy"
+              
+                      loading="lazy"
+                      decoding="async"
                     draggable="false"
                     className="h-full w-full select-none object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
                   />

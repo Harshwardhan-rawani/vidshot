@@ -146,6 +146,8 @@ into the world.
                     <img
                       src={item.image}
                       alt={item.alt}
+                      loading="lazy"
+                    decoding="async"
                       className="
                         w-full h-full object-cover
                         transition-transform duration-700

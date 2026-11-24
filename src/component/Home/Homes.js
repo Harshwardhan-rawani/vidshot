@@ -140,6 +140,8 @@ function ClosedService({ service }) {
         <motion.img
           src={service.image}
           alt={service.title}
+            loading="lazy"
+  decoding="async"
           className="
             absolute inset-0
             h-full w-full
@@ -271,6 +273,8 @@ function ActiveService({ service }) {
           }}
           src={service.image}
           alt={service.title}
+            loading="lazy"
+  decoding="async"
           className="
             h-full
             w-full
@@ -560,6 +564,8 @@ function MobileServiceCard({
         <motion.img
           src={service.image}
           alt={service.title}
+            loading="lazy"
+  decoding="async"
           animate={{
             scale: isActive ? 1.05 : 1,
           }}

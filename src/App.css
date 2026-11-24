@@ -5,3 +5,90 @@
 
 
 
+/* =================================
+   PAGE LOADER
+================================= */
+
+.page-loader {
+  width: 100%;
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  position: relative;
+  z-index: 10;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+}
+
+/* Logo */
+
+.loader-logo {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  color: #5428B0;
+}
+
+.loader-logo span {
+  color: #F8CC10;
+}
+
+/* Spinner */
+
+.loader-spinner {
+  width: 48px;
+  height: 48px;
+
+  border: 4px solid #eeeeee;
+  border-top: 4px solid #5428B0;
+
+  border-radius: 50%;
+
+  animation: vidshotSpin 0.8s linear infinite;
+}
+
+@keyframes vidshotSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading Text */
+
+.loader-content p {
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #777777;
+
+  letter-spacing: 0.5px;
+
+  animation: loaderPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

@@ -34,6 +34,8 @@ export default function Aboutfounder() {
 
                 <img
                   src={rohitsir}
+                    loading="lazy"
+  decoding="async"
                   alt="Rohit Kumar Singh - Founder of VidShot Media"
                   className="w-full h-full object-cover object-top"
                 />
